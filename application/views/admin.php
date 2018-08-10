@@ -38,7 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#services" class="page-scroll">Book</a></li>
+						<li><a href="<?php echo site_url('gambar/') ?>" class="page-scroll">Book</a></li>
 						<li><a href="#services" class="page-scroll">Booking</a></li>
 						<li><a href="#services" class="page-scroll">Testimonial</a></li>
 						<li><a href="<?php echo site_url('crud/index') ?>" class="page-scroll">Profile</a></li>
@@ -69,15 +69,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div id="portfolio">
 			<div class="container">
 				<div class="section-title text-center center">
-					<h2>Projects</h2>
+					<h2>Buku</h2>
 					<hr>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit duis sed dapibus leonec.</p>
+					<p>Silahkan Update Buku Terbaru</p>
 				</div>
 				<div class="categories">
 					<ul class="cat">
 						<li>
 							<ol class="type">
-								<li><a href="#" data-filter="*" class="active">All Projects</a></li>
+								<li><a href="#" data-filter="*" class="active">All Book</a></li>
 								<li><a href="#" data-filter=".residential">Residential</a></li>
 								<li><a href="#" data-filter=".office">Office</a></li>
 								<li><a href="#" data-filter=".commercial">Commercial</a></li>
@@ -88,114 +88,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div>
 				<div class="row">
 					<div class="portfolio-items">
+					<?php
+						if( ! empty($gambar)){ // Jika data pada database tidak sama dengan empty (alias ada datanya)
+					    foreach($gambar->result() as $data){
+					?>
 						<div class="col-sm-6 col-md-3 col-lg-3 residential">
 							<div class="portfolio-item">
-								<div class="hover-bg"> <a href="img/book/mapel5.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-									<div class="hover-text">
-										<h4>Project Name</h4>
-									</div>
-									<img src="img/book/mapel5.jpg" class="img-responsive" alt="Project Title" width="401" height="565"> </a> </div>
+								<div class="hover-bg"> 
+								<a href="<?php echo base_url('images/'.$data->nama_file) ?>" title="<?php echo $data->deskripsi ;?>" data-lightbox-gallery="gallery1">
+								<div class="hover-text">
+									<h4><?php echo "<td>".$data->deskripsi."</td>";?></h4>		
+								</div> 
+								<?php
+					              echo "<img src='".base_url("images/".$data->nama_file)."' width='401' height='565' class='img-responsive' alt='Buku Pelajaran'>";
+					          	?>
+					          	</a>
+								</div>
 							</div>
 						</div>
-						<div class="col-sm-6 col-md-3 col-lg-3 office">
-							<div class="portfolio-item">
-								<div class="hover-bg"> <a href="img/book/mapel3.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-									<div class="hover-text">
-										<h4>Project Name</h4>
-									</div>
-									<img src="img/book/mapel3.jpg" class="img-responsive" alt="Project Title" width="401" height="565"> </a> </div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3 col-lg-3 commercial">
-							<div class="portfolio-item">
-								<div class="hover-bg"> <a href="iimg/book/mapel4.png" title="Project Title" data-lightbox-gallery="gallery1">
-									<div class="hover-text">
-										<h4>Project Name</h4>
-									</div>
-									<img src="img/book/mapel4.png" class="img-responsive" alt="Project Title" width="401" height="565"> </a> </div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3 col-lg-3 residential">
-							<div class="portfolio-item">
-								<div class="hover-bg"> <a href="img/book/mapel2.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-									<div class="hover-text">
-										<h4>Project Name</h4>
-									</div>
-									<img src="img/book/mapel2.jpg" class="img-responsive" alt="Project Title" width="401" height="565"> </a> </div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3 col-lg-3 office">
-							<div class="portfolio-item">
-								<div class="hover-bg"> <a href="img/book/novel1.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-									<div class="hover-text">
-										<h4>Project Name</h4>
-									</div>
-									<img src="img/book/novel1.jpg" class="img-responsive" alt="Project Title" width="401" height="565"> </a> </div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3 col-lg-3 commercial">
-							<div class="portfolio-item">
-								<div class="hover-bg"> <a href="img/book/novel2.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-									<div class="hover-text">
-										<h4>Project Name</h4>
-									</div>
-									<img src="img/book/novel2.jpg" class="img-responsive" alt="Project Title" width="401" height="565"> </a> </div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3 col-lg-3 residential">
-							<div class="portfolio-item">
-								<div class="hover-bg"> <a href="img/book/novel3.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-									<div class="hover-text">
-										<h4>Project Name</h4>
-									</div>
-									<img src="img/book/novel3.jpg" class="img-responsive" alt="Project Title" width="401" height="565"> </a> </div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3 col-lg-3 office">
-							<div class="portfolio-item">
-								<div class="hover-bg"> <a href="img/book/novel4.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-									<div class="hover-text">
-										<h4>Project Name</h4>
-									</div>
-									<img src="img/book/novel4.jpg" class="img-responsive" alt="Project Title" width="401" height="565"> </a> </div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3 col-lg-3 commercial">
-							<div class="portfolio-item">
-								<div class="hover-bg"> <a href="img/portfolio/09-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-									<div class="hover-text">
-										<h4>Project Name</h4>
-									</div>
-									<img src="img/portfolio/09-small.jpg" class="img-responsive" alt="Project Title" width="401" height="565"> </a> </div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3 col-lg-3 residential">
-							<div class="portfolio-item">
-								<div class="hover-bg"> <a href="img/portfolio/10-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-									<div class="hover-text">
-										<h4>Project Name</h4>
-									</div>
-									<img src="img/portfolio/10-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3 col-lg-3 office">
-							<div class="portfolio-item">
-								<div class="hover-bg"> <a href="img/portfolio/11-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-									<div class="hover-text">
-										<h4>Project Name</h4>
-									</div>
-									<img src="img/portfolio/11-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3 col-lg-3 commercial">
-							<div class="portfolio-item">
-								<div class="hover-bg"> <a href="img/portfolio/12-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-									<div class="hover-text">
-										<h4>Project Name</h4>
-									</div>
-									<img src="img/portfolio/12-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-							</div>
-						</div>
+						<?php
+					            }
+					          }
+					          else{ // Jika data tidak ada
+					            echo "<tr><td colspan='5'>Data tidak ada</td></tr>";
+					          } 
+						?>
 					</div>
 				</div>
 			</div>
@@ -269,7 +186,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 		<script type="text/javascript">
 		
-				var images = ["book.jpg", "book4.jpg", "perpus.jpg", "book2.jpg", "book3.jpg",];
+				var images = ["book.jpg", "book4.jpg", "perpus.jpg", "book2.jpg",];
 				$(function () {
 						var i = 0;
 						$("#image").css("background-image", "url(<?php echo base_url() ?>asset/img/thumbnails/" + images[i] + ")");

@@ -832,6 +832,14 @@ color: #777;
 	padding:10px; 
 	display:block;
 }
+.label-edit-profile{
+	color:#fff; 
+	font-size:20px; 
+	padding:10px; 
+	display:inline-block;
+	width: 230px;
+    text-align: right;
+}
 .label-profile{
 	color:white;
 	display:inline-block;
@@ -847,6 +855,8 @@ color: #777;
 	-moz-border-radius: 2px;
 	-ms-border-radius: 2px;
 	border-radius: 30px;
+	padding-top: 15px;
+    padding-bottom: 30px;
 }
 .card .body {
 	font-size: 14px;
@@ -873,4 +883,117 @@ color: #777;
 	margin-top: 30px;
 	margin-bottom: 30px;
 	text-align: center;
+}
+.link-active{
+	border-bottom: 2px solid #fff;
+}
+.profile-admin{
+	padding-bottom: 30px;
+	padding-top: 30px;
+	text-align: center;
+}
+#header-admin .intro-text{
+	padding-top: 200px;
+    padding-bottom: 200px;
+    text-align: center;
+}
+.intro-admin .overlay{
+	background: url(../img/background/back.jpg);
+    background-size: cover;
+    background-position: center bottom;
+    color:#fff;
+}
+.label-admin{
+	font-size: 60px;
+}
+.create-admin{
+	text-align: center;
+    font-size: 25px;
+    color: #fff;
+    font-weight: 900;
+    background-color: #cd2f57;
+    border-radius: 5px;
+    font-family: cursive;
+}
+.create-admin:hover{
+	color: #fff;
+    border-bottom: 2px solid yellowgreen;
+}
+.tabel-admin{
+	text-align: left;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.title-field{
+	font-weight: 900;
+	font-size: 20px;
+	background-color: #c1ff03cc;
+}
+.tabel-admin td{
+	padding: 0;
+    padding: 10px;
+    color: #776b6b;
+}
+.link-action-read{
+	background-color: #ffc903;
+	color: #fff;
+	border-radius: 5px;
+	width: 100px;
+}
+.link-action-update{
+	background-color: #e82020;
+	color: #fff;
+	border-radius: 5px;
+	width: 100px;
+}
+.link-action-delete{
+	background-color: #00a1ff;
+	color: #fff;
+	border-radius: 5px;
+	width: 100px;
+}
+.form-group{
+	width: 100%;
+    height: auto;
+    margin-top: 15px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+.form-group-add{
+	width: 40%;
+    height: 40px;
+    margin-top: 15px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+/* - Upload - */
+.label-upload{
+	color:#fff;
+}
+
+/* - Table - */
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;    color: white;
+}
+
+input[type="file"] {
+    display: inline-block;
+    color: #fff;
 }

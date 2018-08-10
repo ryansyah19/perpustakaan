@@ -42,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<li><a href="#services" class="page-scroll">Book</a></li>
 						<li><a href="#services" class="page-scroll">Testimonial</a></li>
 						<li><a href="#services" class="page-scroll">Contact Us</a></li>
-						<li><a href="<?php echo site_url('crud/index') ?>" class="page-scroll">Profile</a></li>
+						<li><a href="<?php echo site_url('crud/read') ?>" class="page-scroll">Profile</a></li>
 						<li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
 					</ul>
 				</div>
@@ -123,114 +123,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div>
 				<div class="row">
 					<div class="portfolio-items">
+					<?php
+						if( ! empty($gambar)){ // Jika data pada database tidak sama dengan empty (alias ada datanya)
+					    foreach($gambar->result() as $data){
+					?>
 						<div class="col-sm-6 col-md-3 col-lg-3 residential">
 							<div class="portfolio-item">
-								<div class="hover-bg"> <a href="img/book/mapel5.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-									<div class="hover-text">
-										<h4>Project Name</h4>
-									</div>
-									<img src="img/book/mapel5.jpg" class="img-responsive" alt="Project Title" width="401" height="565"> </a> </div>
+								<div class="hover-bg"> 
+								<a href="<?php echo base_url('images/'.$data->nama_file) ?>" title="<?php echo $data->deskripsi ;?>" data-lightbox-gallery="gallery1">
+								<div class="hover-text">
+									<h4><?php echo "<td>".$data->deskripsi."</td>";?></h4>		
+								</div> 
+								<?php
+					              echo "<img src='".base_url("images/".$data->nama_file)."' width='401' height='565' class='img-responsive' alt='Buku Pelajaran'>";
+					          	?>
+					          	</a>
+								</div>
 							</div>
 						</div>
-						<div class="col-sm-6 col-md-3 col-lg-3 office">
-							<div class="portfolio-item">
-								<div class="hover-bg"> <a href="img/book/mapel3.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-									<div class="hover-text">
-										<h4>Project Name</h4>
-									</div>
-									<img src="img/book/mapel3.jpg" class="img-responsive" alt="Project Title" width="401" height="565"> </a> </div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3 col-lg-3 commercial">
-							<div class="portfolio-item">
-								<div class="hover-bg"> <a href="iimg/book/mapel4.png" title="Project Title" data-lightbox-gallery="gallery1">
-									<div class="hover-text">
-										<h4>Project Name</h4>
-									</div>
-									<img src="img/book/mapel4.png" class="img-responsive" alt="Project Title" width="401" height="565"> </a> </div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3 col-lg-3 residential">
-							<div class="portfolio-item">
-								<div class="hover-bg"> <a href="img/book/mapel2.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-									<div class="hover-text">
-										<h4>Project Name</h4>
-									</div>
-									<img src="img/book/mapel2.jpg" class="img-responsive" alt="Project Title" width="401" height="565"> </a> </div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3 col-lg-3 office">
-							<div class="portfolio-item">
-								<div class="hover-bg"> <a href="img/book/novel1.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-									<div class="hover-text">
-										<h4>Project Name</h4>
-									</div>
-									<img src="img/book/novel1.jpg" class="img-responsive" alt="Project Title" width="401" height="565"> </a> </div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3 col-lg-3 commercial">
-							<div class="portfolio-item">
-								<div class="hover-bg"> <a href="img/book/novel2.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-									<div class="hover-text">
-										<h4>Project Name</h4>
-									</div>
-									<img src="img/book/novel2.jpg" class="img-responsive" alt="Project Title" width="401" height="565"> </a> </div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3 col-lg-3 residential">
-							<div class="portfolio-item">
-								<div class="hover-bg"> <a href="img/book/novel3.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-									<div class="hover-text">
-										<h4>Project Name</h4>
-									</div>
-									<img src="img/book/novel3.jpg" class="img-responsive" alt="Project Title" width="401" height="565"> </a> </div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3 col-lg-3 office">
-							<div class="portfolio-item">
-								<div class="hover-bg"> <a href="img/book/novel4.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-									<div class="hover-text">
-										<h4>Project Name</h4>
-									</div>
-									<img src="img/book/novel4.jpg" class="img-responsive" alt="Project Title" width="401" height="565"> </a> </div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3 col-lg-3 commercial">
-							<div class="portfolio-item">
-								<div class="hover-bg"> <a href="img/portfolio/09-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-									<div class="hover-text">
-										<h4>Project Name</h4>
-									</div>
-									<img src="img/portfolio/09-small.jpg" class="img-responsive" alt="Project Title" width="401" height="565"> </a> </div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3 col-lg-3 residential">
-							<div class="portfolio-item">
-								<div class="hover-bg"> <a href="img/portfolio/10-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-									<div class="hover-text">
-										<h4>Project Name</h4>
-									</div>
-									<img src="img/portfolio/10-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3 col-lg-3 office">
-							<div class="portfolio-item">
-								<div class="hover-bg"> <a href="img/portfolio/11-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-									<div class="hover-text">
-										<h4>Project Name</h4>
-									</div>
-									<img src="img/portfolio/11-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3 col-lg-3 commercial">
-							<div class="portfolio-item">
-								<div class="hover-bg"> <a href="img/portfolio/12-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-									<div class="hover-text">
-										<h4>Project Name</h4>
-									</div>
-									<img src="img/portfolio/12-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-							</div>
-						</div>
+						<?php
+					            }
+					          }
+					          else{ // Jika data tidak ada
+					            echo "<tr><td colspan='5'>Data tidak ada</td></tr>";
+					          } 
+						?>
 					</div>
 				</div>
 			</div>
@@ -247,15 +164,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</div>
 					<div id="row">
 						<div class="col-md-4 col-sm-8 team">
-							<div class="thumbnail"> <img src="img/thumbnails/afe.jpg" alt="Siswa SMKN 4 Malang" width="684" height="720" class="team-img">
+							<div class="thumbnail"> <img src="<?php echo base_url() ?>asset/img/thumbnails/afe.jpg" alt="Siswa SMKN 4 Malang" width="684" height="720" class="team-img">
 								<div class="caption">
 									<h3>Afi Lintang C</h3>
 									<p>Siswa Kelas XII RPL A</p>
+									<p>"Webnya sangat bagus sangat bermanfaat"</p>
 								</div>
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-8 team">
-							<div class="thumbnail"> <img src="img/thumbnails/kiki.jpg" alt="Siswa SMKN 4 Malang" width="684" height="720" class="img-circle team-img">
+							<div class="thumbnail"> <img src="<?php echo base_url() ?>asset/img/thumbnails/kiki.jpg" alt="Siswa SMKN 4 Malang" width="684" height="720" class="img-circle team-img">
 								<div class="caption">
 									<h3>M Rizqi A</h3>
 									<p>Siswa Kelas XII PD F</p>
@@ -263,7 +181,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-8 team">
-							<div class="thumbnail"> <img src="img/thumbnails/azalai.jpg" alt="Siswa SMKN 4 Malang" width="837" height="853S" class="img-circle team-img">
+							<div class="thumbnail"> <img src="<?php echo base_url() ?>asset/img/thumbnails/azalai.jpg" alt="Siswa SMKN 4 Malang" width="837" height="853S" class="img-circle team-img">
 								<div class="caption">
 									<h3>Azalia PB</h3>
 									<p>Siswa Kelas X MM A</p>
@@ -281,40 +199,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<div class="section-title text-center">
 					<h2>Contact Us</h2>
 					<hr>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit duis sed dapibus leonec.</p>
+					<p>Silahkan Hubungi Admin jika ada sesuatu hal yang perlu ditanyakan</p>
 				</div>
 				<div class="col-md-4">
 					<h3>Contact Info</h3>
 					<div class="contact-item"> <span>Address</span>
-						<p>4321 California St,<br>
-							San Francisco, CA 12345</p>
+						<p>22 Tanimbar St,<br>
+							kasin, klojen, Malang city 65117</p>
 					</div>
 					<div class="contact-item"> <span>Email</span>
-						<p>info@company.com</p>
+						<p>mryanfirmansyah88@gmail.com</p>
 					</div>
 					<div class="contact-item"> <span>Phone</span>
-						<p> +1 123 456 1234</p>
+						<p> +62 8123 456 1234</p>
 					</div>
 				</div>
 				<div class="col-md-8">
 					<h3>Leave us a message</h3>
-					<form name="sentMessage" id="contactForm" novalidate>
+					<form name="sentMessage" id="contactForm" action="<?php echo base_url(); ?>index.php/welcome/action_add" method="post" role="form">
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<input type="text" id="name" class="form-control" placeholder="Name" required="required">
+									<input type="text" id="username" class="form-control" required="required" name="username" value="<?php echo $this->session->userdata('username');?>" disabled>
 									<p class="help-block text-danger"></p>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<input type="email" id="email" class="form-control" placeholder="Email" required="required">
+									<input type="email" id="email" class="form-control" placeholder="Email" required="required" name="email">
 									<p class="help-block text-danger"></p>
 								</div>
 							</div>
 						</div>
 						<div class="form-group">
-							<textarea name="message" id="message" class="form-control" rows="4" placeholder="Message" required></textarea>
+							<textarea name="pesan" id="message" class="form-control" rows="4" placeholder="Message" required></textarea>
 							<p class="help-block text-danger"></p>
 						</div>
 						<div id="success"></div>
@@ -352,7 +270,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 		<script type="text/javascript">
 		
-				var images = ["book.jpg", "book4.jpg", "perpus.jpg", "book2.jpg", "book3.jpg",];
+				var images = ["book.jpg", "book4.jpg", "perpus.jpg", "book2.jpg",];
 				$(function () {
 						var i = 0;
 						$("#image").css("background-image", "url(<?php echo base_url() ?>asset/img/thumbnails/" + images[i] + ")");

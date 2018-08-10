@@ -2,6 +2,15 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
+
+	function __construct()
+	{
+		parent::__construct();
+		$this->load->model('app_model');
+		$this->load->library('session');
+		
+
+	}
 	 
 	public function index()
 	{
@@ -21,6 +30,10 @@ class Welcome extends CI_Controller {
 					redirect('welcome/admin');
 				}
 				elseif($pelogin->level == 'user'){
+					$data=array();
+					$data['username']=$cek->username;
+					$data['password']=$cek->password;
+					$this->session->set_userdata($data);
 					redirect('welcome/beranda');
 				}
 				//redirect('welcome/beranda','refresh');
@@ -36,17 +49,41 @@ class Welcome extends CI_Controller {
 
 	public function beranda()
 	{
-		$this->load->view('beranda');
+		$data['gambar'] = $this->db->get('gambar');
+		$this->load->view('beranda',$data);
 	}
 
 	public function admin()
 	{
-		$this->load->view('admin');
+		$data['gambar'] = $this->db->get('gambar');
+		$data['contact']=$this->db->get('contact');
+		$this->load->view('admin',$data);
+
 	}
 
 	public function logout()
 	{
 		$this->session->sess_destroy();
 		redirect('welcome/index','refresh');
+	}
+
+	// Add a new item
+	public function add()
+	{
+		$this->load->view('welcome/add');
+	}
+
+	public function action_add()
+	{
+		$data = array(
+
+			'username'=> $this->session->userdata('username'),
+			'email' => $this->input->post('email'),
+			'pesan' => $this->input->post('pesan')
+		 );
+		
+		$this->db->insert('contact', $data);
+
+		redirect('welcome/beranda','refresh');
 	}
 }
