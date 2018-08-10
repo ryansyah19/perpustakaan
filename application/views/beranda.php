@@ -113,9 +113,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<li>
 							<ol class="type">
 								<li><a href="#" data-filter="*" class="active">All Projects</a></li>
-								<li><a href="#" data-filter=".residential">Residential</a></li>
-								<li><a href="#" data-filter=".office">Office</a></li>
-								<li><a href="#" data-filter=".commercial">Commercial</a></li>
 							</ol>
 						</li>
 					</ul>
@@ -246,11 +243,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="container text-center">
 				<div class="social">
 					<ul>
-						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-						<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-						<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-						<li><a href="#"><i class="fa fa-youtube"></i></a></li>
+						<li><a href="https://www.facebook.com/muhammad.r.firmansyah.9028"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="https://www.instagram.com/ryan_syah19/"><i class="fa fa-instagram"></i></a></li>
+						<li><a href="https://mail.google.com/mail/u/0/#inbox"><i class="fa fa-envelope-o"></i></a></li>
+						<li><a href="https://id.pinterest.com/mryanfirmansyah88/"><i class="fa fa-pinterest"></i></a></li>
+						<li><a href="https://www.youtube.com/channel/UCbuLABCTkMZChBTpvaqkHGA?view_as=subscriber"><i class="fa fa-youtube"></i></a></li>
 					</ul>
 				</div>
 				<div>
