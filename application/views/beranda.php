@@ -38,10 +38,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#services" class="page-scroll">About</a></li>
-						<li><a href="#services" class="page-scroll">Book</a></li>
-						<li><a href="#services" class="page-scroll">Testimonial</a></li>
-						<li><a href="#services" class="page-scroll">Contact Us</a></li>
+						<li><a href="#about" class="page-scroll">About</a></li>
+						<li><a href="#portfolio" class="page-scroll">Book</a></li>
+						<li><a href="#testimoni" class="page-scroll">Testimonial</a></li>
+						<li><a href="#contact" class="page-scroll">Contact Us</a></li>
 						<li><a href="<?php echo site_url('crud/read') ?>" class="page-scroll">Profile</a></li>
 						<li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
 					</ul>

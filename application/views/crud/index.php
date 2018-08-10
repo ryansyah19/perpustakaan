@@ -69,7 +69,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<a href="<?php echo base_url(); ?>index.php/crud/add" class="w3-btn create-admin">Create</a>
 			<table border="1" class="tabel-admin" id="customers">
 				<tr class="title-field">
-					<td >ID :</td>
+					<td>ID :</td>
 					<td>Nama :</td>
 					<td>Status :</td>
 					<td>Jurusan :</td>
