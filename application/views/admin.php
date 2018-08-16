@@ -19,6 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 		<!-- Stylesheet -->
 		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/css/nivo-lightbox/nivo-lightbox.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/css/nivo-lightbox/default.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/css/style.css">
@@ -38,9 +39,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
+						<li><a href="<?php echo site_url('welcome/admin') ?>" class="page-scroll">Home</a></li>
 						<li><a href="<?php echo site_url('gambar/') ?>" class="page-scroll">Book</a></li>
 						<li><a href="#services" class="page-scroll">Booking</a></li>
-						<li><a href="#services" class="page-scroll">Testimonial</a></li>
+						<li><a href="#testimoni" class="page-scroll">Testimonial</a></li>
 						<li><a href="<?php echo site_url('crud/index') ?>" class="page-scroll">Profile</a></li>
 						<li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
 					</ul>
@@ -78,14 +80,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<li>
 							<ol class="type">
 								<li><a href="#" data-filter="*" class="active">All Book</a></li>
-								<li><a href="#" data-filter=".residential">Residential</a></li>
-								<li><a href="#" data-filter=".office">Office</a></li>
-								<li><a href="#" data-filter=".commercial">Commercial</a></li>
 							</ol>
 						</li>
 					</ul>
 					<div class="clearfix"></div>
 				</div>
+				<!-- Search Fitur -->
+				<?php echo form_open("page/cari"); ?>
+					
+					<select name="cariberdasarkan" class="search-item">
+						<option value="">Cari Berdasarkan</option>
+						<option value="deskripsi">Judul</option>
+						<option value="kategori">Kategori</option>
+					</select>
+					<div class="demo-1 search">
+		                    <span class="icon"><i class="fa fa-search"></i></span>
+		                    <input type="text" name="yangdicari" class="search-item" placeholder="Cari sesuatu yang anda inginkan" />
+		            </div>
+					<input type="submit" value="cari" class="w3-btn create-admin">
+
+				<?php echo form_close(); ?>
 				<div class="row">
 					<div class="portfolio-items">
 					<?php
@@ -94,15 +108,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					?>
 						<div class="col-sm-6 col-md-3 col-lg-3 residential">
 							<div class="portfolio-item">
-								<div class="hover-bg"> 
-								<a href="<?php echo base_url('images/'.$data->nama_file) ?>" title="<?php echo $data->deskripsi ;?>" data-lightbox-gallery="gallery1">
-								<div class="hover-text">
-									<h4><?php echo "<td>".$data->deskripsi."</td>";?></h4>		
-								</div> 
-								<?php
-					              echo "<img src='".base_url("images/".$data->nama_file)."' width='401' height='565' class='img-responsive' alt='Buku Pelajaran'>";
-					          	?>
-					          	</a>
+								<div class="hover-bg">
+									<div class="hover-text">
+										<h4><?php echo "<td>".$data->deskripsi."</td>";?></h4>	
+										<a href="<?php echo base_url() ?>index.php/gambar/preview/<?php echo $data->id ?>" class="w3-btn read-more">Read More >></a> 	
+									</div> 
+									<?php
+						              echo "<img src='".base_url("images/".$data->nama_file)."' width='401' height='565' class='img-responsive img-book' alt='Buku Pelajaran'>";
+						          	?>
 								</div>
 							</div>
 						</div>
@@ -129,26 +142,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</div>
 					<div id="row">
 						<div class="col-md-4 col-sm-8 team">
-							<div class="thumbnail"> <img src="img/thumbnails/afe.jpg" alt="Siswa SMKN 4 Malang" width="684" height="720" class="team-img">
+							<div class="thumbnail"> <img src="<?php echo base_url() ?>asset/img/thumbnails/afe.jpg" alt="Siswa SMKN 4 Malang" width="684" height="720" class="team-img">
 								<div class="caption">
 									<h3>Afi Lintang C</h3>
 									<p>Siswa Kelas XII RPL A</p>
+									<p>"Webnya sangat bagus & bermanfaat"</p>
 								</div>
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-8 team">
-							<div class="thumbnail"> <img src="img/thumbnails/kiki.jpg" alt="Siswa SMKN 4 Malang" width="684" height="720" class="img-circle team-img">
+							<div class="thumbnail"> <img src="<?php echo base_url() ?>asset/img/thumbnails/kiki.jpg" alt="Siswa SMKN 4 Malang" width="684" height="720" class="img-circle team-img">
 								<div class="caption">
 									<h3>M Rizqi A</h3>
 									<p>Siswa Kelas XII PD F</p>
+									<p>"Sangat memudahkan Siswa & maupun Guru"</p>
 								</div>
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-8 team">
-							<div class="thumbnail"> <img src="img/thumbnails/azalai.jpg" alt="Siswa SMKN 4 Malang" width="837" height="853S" class="img-circle team-img">
+							<div class="thumbnail"> <img src="<?php echo base_url() ?>asset/img/thumbnails/azalai.jpg" alt="Siswa SMKN 4 Malang" width="837" height="853S" class="img-circle team-img">
 								<div class="caption">
 									<h3>Azalia PB</h3>
 									<p>Siswa Kelas X MM A</p>
+									<p>"Semenjak ada website perpustakaan ini, sangat membantu saya dalam peminjaman buku di perpustakaan SMKN 4 Malang"</p>
 								</div>
 							</div>
 						</div>
@@ -185,8 +201,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<script type="text/javascript" src="<?php echo base_url() ?>asset/js/main.js"></script>=
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 		<script type="text/javascript">
-		
-				var images = ["book.jpg", "book4.jpg", "perpus.jpg", "book2.jpg",];
+				var images = ["buku.jpeg", "book4.jpg", "perpus.jpg", "book2.jpg"];
 				$(function () {
 						var i = 0;
 						$("#image").css("background-image", "url(<?php echo base_url() ?>asset/img/thumbnails/" + images[i] + ")");

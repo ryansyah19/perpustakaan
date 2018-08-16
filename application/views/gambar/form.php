@@ -39,6 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
+            <li><a href="<?php echo site_url('welcome/admin') ?>" class="page-scroll">Home</a></li>
             <li><a href="<?php echo site_url('gambar/') ?>" class="page-scroll">Book</a></li>
             <li><a href="#services" class="page-scroll">Booking</a></li>
             <li><a href="#services" class="page-scroll">Testimonial</a></li>
@@ -74,8 +75,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="card">
               <?php echo form_open("gambar/tambah", array('enctype'=>'multipart/form-data')); ?>
                 <table cellpadding="8" id="customers" class="tabel-admin">
-                    <p class="label-edit-profile">Deskripsi:</p>
+                    <p class="label-edit-profile">Judul:</p>
                     <input type="text" name="input_deskripsi" value="<?php echo set_value('input_deskripsi'); ?>" class="form-group-add" required><br>
+                    <p class="label-edit-profile">Kategori:</p>
+                    <input type="text" name="kategori" value="<?php echo set_value('kategori'); ?>" class="form-group-add" required><br>
                     <p class="label-edit-profile">Gambar :</p>
                     <input type="file" name="input_gambar" class="form-group-add">
                 </table>

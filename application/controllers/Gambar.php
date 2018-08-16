@@ -48,4 +48,26 @@ class Gambar extends CI_Controller {
 
     redirect('gambar','refresh');
   }
+
+  public function preview( $id = NULL )
+  {
+    $this->db->where('id', $id);
+    $data['gambar'] = $this->App_model->view('gambar');
+
+    $this->load->view('gambar/preview', $data);
+  }
+
+  public function preview_user( $id = NULL )
+  {
+    $this->db->where('id', $id);
+    $data['gambar'] = $this->App_model->view('gambar');
+
+    $this->load->view('gambar/preview_user', $data);
+  }
+
+  public function harus()
+  {
+    $this->load->view('harus.php');
+  }
+
 }

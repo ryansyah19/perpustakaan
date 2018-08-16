@@ -39,9 +39,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
+            <li><a href="<?php echo site_url('welcome/admin') ?>" class="page-scroll">Home</a></li>
             <li><a href="<?php echo site_url('gambar/') ?>" class="page-scroll">Book</a></li>
             <li><a href="#services" class="page-scroll">Booking</a></li>
-            <li><a href="#services" class="page-scroll">Testimonial</a></li>
             <li><a href="<?php echo site_url('crud/index') ?>" class="page-scroll active">Profile</a></li>
             <li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
           </ul>
@@ -71,7 +71,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <tr class="title-field">
             <td>Kode</td>
             <td>Gambar</td>
-            <td>Deskripsi</td>
+            <td>Judul</td>
+            <td>Kategori</td>
             <td>Nama File</td>
             <td>Ukuran File</td>
             <td>Tipe File</td>
@@ -84,6 +85,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               echo "<td>".$data->id."</td>";
               echo "<td><img src='".base_url("images/".$data->nama_file)."' width='100' height='auto'></td>";
               echo "<td>".$data->deskripsi."</td>";
+              echo "<td>".$data->kategori."</td>";
               echo "<td>".$data->nama_file."</td>";
               echo "<td>".$data->ukuran_file." kB</td>";
               echo "<td>".$data->tipe_file."</td>";

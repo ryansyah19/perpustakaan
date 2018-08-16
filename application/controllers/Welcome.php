@@ -14,7 +14,8 @@ class Welcome extends CI_Controller {
 	 
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$data['gambar'] = $this->db->get('gambar');
+		$this->load->view('welcome_message',$data);
 	}
 
 	public function ceklogin()
@@ -50,6 +51,7 @@ class Welcome extends CI_Controller {
 	public function beranda()
 	{
 		$data['gambar'] = $this->db->get('gambar');
+		$data['contact']=$this->db->get('contact');
 		$this->load->view('beranda',$data);
 	}
 
@@ -65,6 +67,10 @@ class Welcome extends CI_Controller {
 	{
 		$this->session->sess_destroy();
 		redirect('welcome/index','refresh');
+	}
+
+	public function login(){
+		$this->load->view('login');
 	}
 
 	// Add a new item
@@ -86,4 +92,5 @@ class Welcome extends CI_Controller {
 
 		redirect('welcome/beranda','refresh');
 	}
+
 }

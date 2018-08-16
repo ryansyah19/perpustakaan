@@ -39,10 +39,31 @@ class App_model extends CI_Model {
       'deskripsi'=>$this->input->post('input_deskripsi'),
       'nama_file' => $upload['file']['file_name'],
       'ukuran_file' => $upload['file']['file_size'],
-      'tipe_file' => $upload['file']['file_type']
+      'tipe_file' => $upload['file']['file_type'],
+      'kategori'=>$this->input->post('kategori')
     );
     
     $this->db->insert('gambar', $data);
+  }
+
+  function ambil_data (){
+  	return $this->db->get('gambar')->result();
+  }
+
+  function cari($berdasarkan,$yangdicari){
+  	$this->db->from('gambar');
+
+  		switch ($berdasarkan) {
+  			case "":
+  				$this->db->like('deskripsi', $yangdicari);
+  				$this->db->or_like('kategori', $yangdicari);
+  				break;
+
+  				default:
+  				$this->db->like($berdasarkan,$yangdicari);
+  		}
+  	
+  	return $this->db->get();
   }
 }
 
