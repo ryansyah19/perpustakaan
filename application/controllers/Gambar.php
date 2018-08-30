@@ -65,6 +65,14 @@ class Gambar extends CI_Controller {
     $this->load->view('gambar/preview_user', $data);
   }
 
+  public function preview_guest( $id = NULL )
+  {
+    $this->db->where('id', $id);
+    $data['gambar'] = $this->App_model->view('gambar');
+
+    $this->load->view('gambar/preview_guest', $data);
+  }
+
   public function harus()
   {
     $this->load->view('harus.php');

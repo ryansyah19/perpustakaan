@@ -1067,6 +1067,9 @@ input[type="file"] {
     box-shadow: 0px 0px 20px 0 rgba(0, 0, 0, 0.1);
     outline-color: white;
 }
+.search-top{
+	padding-bottom: 150px;
+}
 
 .search {
     margin: 50px 0;
@@ -1119,4 +1122,25 @@ input[type="file"] {
   margin-top: 17px;
   z-index: 1;
   color: #4f5b66;
+}
+
+/* - Booking System - */
+.booking-book{
+	width: 15%;
+	height: 55px;
+    background-color: aquamarine;
+    float: left;
+    display: block;
+    margin-left: 5%;
+    margin-top: 3%;
+    font-size: 25px;
+    color: white;
+    font-family: unset;
+
+}
+
+/* - Gagal Login - */
+.gagal{
+	text-align: center;
+	font-size: 40px;
 }

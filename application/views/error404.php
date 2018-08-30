@@ -34,7 +34,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 	<div class="error-page">
-    	<h1 class="title-error">Data Tak Ditemukan</h1>
+    	<h1 class="title-error">Halaman Tak Ditemukan</h1>
 		<img src="<?php echo base_url() ?>asset/img/thumbnails/error.jpg" alt="Error" class="img-responsive">
 	</div>
 </body>

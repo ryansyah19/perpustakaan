@@ -9,7 +9,6 @@ class page extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->model('App_model');
 		$this->load->helper('form');
-		
 
 	}
 	 
@@ -25,7 +24,7 @@ class page extends CI_Controller {
 
 		$data['gambar']=$this->app_model->cari($data['cariberdasarkan'],$data['yangdicari']);
 		$data["jumlah"]=count($data['gambar']);
-		$this->load->view('admin',$data);
+		$this->load->view('beranda',$data);
 	}
 
 }

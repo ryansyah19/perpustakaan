@@ -38,7 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div class="card-login zoomIn">
             <div class="body" id="body">
-            <?php echo form_open('welcome/ceklogin'); ?>
+            <?php echo form_open('welcome/auth'); ?>
                     <div class="msg">Sign In</div>
                     <div class="input-group">
                         <span class="input-group-addon">

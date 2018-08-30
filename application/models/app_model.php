@@ -2,13 +2,24 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class App_model extends CI_Model {
-	 
-	public function proseslogin($user,$pass){
-		$this->db->where('username', $user);
-		$this->db->where('password', $pass);
 
-		return $this->db->get('ci')->row();
-	}
+  //cek nip dan password dosen
+  function auth_guru($username,$password){
+    $query=$this->db->query("SELECT * FROM guru WHERE nip='$username' AND password=('$password') LIMIT 1");
+    return $query;
+  }
+
+  //cek nim dan password mahasiswa
+  function auth_siswa($username,$password){
+    $query=$this->db->query("SELECT * FROM siswa WHERE nis='$username' AND password=('$password') LIMIT 1");
+    return $query;
+  }
+
+   //cek nim dan password mahasiswa
+  function auth_admin($username,$password){
+    $query=$this->db->query("SELECT * FROM admin WHERE username='$username' AND password=('$password') LIMIT 1");
+    return $query;
+  }
 	
 	public function view(){
     return $this->db->get('gambar')->result();

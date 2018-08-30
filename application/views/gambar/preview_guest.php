@@ -39,11 +39,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="<?php echo site_url('welcome/about_user') ?>">About</a></li>
-                        <li><a href="<?php echo site_url('welcome/beranda') ?>">Book</a></li>
-                        <li><a href="<?php echo site_url('welcome/testimoni_user') ?>">Testimonial</a></li>
-                        <li><a href="<?php echo site_url('welcome/contact_user') ?>">Contact Us</a></li>
-                        <li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
+            <li><a href="<?php echo site_url('welcome/beranda/#about') ?>" class="page-scroll">About</a></li>
+            <li><a href="<?php echo site_url('welcome/beranda/#portfolio') ?>" class="page-scroll">Book</a></li>
+            <li><a href="<?php echo site_url('welcome/beranda/#testimoni') ?>" class="page-scroll">Testimonial</a></li>
+            <li><a href="<?php echo site_url('welcome/beranda/#contact') ?>" class="page-scroll">Contact Us</a></li>
+            <li><a href="<?php echo site_url('welcome/login') ?>">Login</a></li>
           </ul>
         </div>
         <!-- /.navbar-collapse --> 
@@ -75,7 +75,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               echo "<img src='".base_url("images/".$data->nama_file)."' width='100' height='auto' class='img-preview'>";
               echo "<p class='desc-book'>Nama Buku :  ".$data->deskripsi."</p>";
               echo "<p class='desc-book'>Kategori Buku :  ".$data->kategori."</p>";
-              echo "<div class='hover-bg'> <a class='booking-book w3-btn' name='validation-booking' href='".base_url("images/".$data->nama_file)."'>Pinjam</a></div>";
+              echo "<div class='hover-bg'> <a class='booking-book w3-btn' name='validation-booking' href='".site_url('gambar/harus')."'>Pinjam</a></div>";
             }
           }
           else{ // Jika data tidak ada

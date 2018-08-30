@@ -17,37 +17,58 @@ class Welcome extends CI_Controller {
 		$data['gambar'] = $this->db->get('gambar');
 		$this->load->view('welcome_message',$data);
 	}
+function auth(){
+        $username=htmlspecialchars($this->input->post('username',TRUE),ENT_QUOTES);
+        $password=htmlspecialchars($this->input->post('password',TRUE),ENT_QUOTES);
 
-	public function ceklogin()
-	{
-		if(isset($_POST['login'])){
-			$user = $this->input->post('username',true);
-			$pass = $this->input->post('password',true);
-			$cek = $this->app_model->proseslogin($user,$pass);	
-			$hasil = count($cek);
-			if ($hasil > 0) {
-				$pelogin = $this->db->get_where('ci',array('username' => $user, 'password' => $pass))->row();
-				if($pelogin->level == 'admin'){
-					redirect('welcome/admin');
-				}
-				elseif($pelogin->level == 'user'){
-					$data=array();
-					$data['username']=$cek->username;
-					$data['password']=$cek->password;
-					$this->session->set_userdata($data);
-					redirect('welcome/beranda');
-				}
-				//redirect('welcome/beranda','refresh');
-			} 
-			else {
-				echo 'login gagal';
+        $cek_guru=$this->app_model->auth_guru($username,$password);
+        $cek_siswa=$this->app_model->auth_siswa($username,$password);
+        $cek_admin=$this->app_model->auth_admin($username,$password);
 
+        if($cek_guru->num_rows() > 0){ //jika login sebagai dosen
+				$data=$cek_guru->row_array();
+        		$this->session->set_userdata('masuk',TRUE);
+	            $this->session->set_userdata('akses','1');
+	            $this->session->set_userdata('ses_id',$data['nip']);
+	            $this->session->set_userdata('ses_nama',$data['nama']);
+	            redirect('welcome/beranda');
+        }
+
+        elseif($cek_siswa->num_rows() > 0){ //jika login sebagai mahasiswa
+					if($cek_siswa->num_rows() > 0){
+							$data=$cek_siswa->row_array();
+        			$this->session->set_userdata('masuk',TRUE);
+							$this->session->set_userdata('akses','2');
+							$this->session->set_userdata('ses_id',$data['nis']);
+							$this->session->set_userdata('ses_nama',$data['nama']);
+							redirect('welcome/beranda');
+					}else{  // jika username dan password tidak ditemukan atau salah
+							$url=base_url();
+							echo $this->session->set_flashdata('msg','Username Atau Password Salah');
+							redirect($url);
+					}
+        }
+
+         elseif($cek_admin->num_rows() > 0){ //jika login sebagai admin
+					if($cek_admin->num_rows() > 0){
+							$data=$cek_admin->row_array();
+        			$this->session->set_userdata('masuk',TRUE);
+							$this->session->set_userdata('akses','3');
+							$this->session->set_userdata('ses_id',$data['username']);
+							$this->session->set_userdata('ses_nama',$data['nama']);
+							redirect('welcome/admin');
+					}else{  // jika username dan password tidak ditemukan atau salah
+							$url=base_url();
+							echo $this->session->set_flashdata('msg','Username Atau Password Salah');
+							redirect($url);
+					}
+        }
+        else {
+				echo "<div style='font-size:100px;text-align:center;background:#011627;width:100%;height:100%;margin:0;padding-top:20%;font-weight:900;color:#e40043;font-family: cursive;'> LOGIN GAGAL !!</div>";
 				redirect('welcome/index','refresh');
 			}
-					
-		}
-	}
 
+    }
 	public function beranda()
 	{
 		$data['gambar'] = $this->db->get('gambar');
@@ -91,6 +112,30 @@ class Welcome extends CI_Controller {
 		$this->db->insert('contact', $data);
 
 		redirect('welcome/beranda','refresh');
+	}
+
+	public function about(){
+		$this->load->view('about');
+	}
+
+	public function testimoni(){
+		$this->load->view('testimoni');
+	}
+
+	public function contact(){
+		$this->load->view('contact');
+	}
+
+	public function about_user(){
+		$this->load->view('about_user');
+	}
+
+	public function testimoni_user(){
+		$this->load->view('testimoni_user');
+	}
+
+	public function contact_user(){
+		$this->load->view('contact_user');
 	}
 
 }

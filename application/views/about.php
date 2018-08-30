@@ -39,12 +39,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="<?php echo site_url('welcome/admin') ?>" class="page-scroll">Home</a></li>
-						<li><a href="<?php echo site_url('gambar/') ?>" class="page-scroll">Book</a></li>
-						<li><a href="#services" class="page-scroll">Booking</a></li>
-						<li><a href="#testimoni" class="page-scroll">Testimonial</a></li>
-						<li><a href="<?php echo site_url('crud/index') ?>" class="page-scroll">Profile</a></li>
-						<li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
+						<li><a href="<?php echo site_url('welcome/about') ?>">About</a></li>
+						<li><a href="<?php echo site_url('welcome/index') ?>">Book</a></li>
+						<li><a href="<?php echo site_url('welcome/testimoni') ?>">Testimonial</a></li>
+						<li><a href="<?php echo site_url('welcome/contact') ?>">Contact Us</a></li>
+						<li><a href="<?php echo site_url('welcome/login') ?>">Login</a></li>
 					</ul>
 				</div>
 				<!-- /.navbar-collapse --> 
@@ -61,129 +60,57 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<h1 class="fadeInUp"><strong>GRAFIKA</strong> <span>/</span> Perpustakaan</h1>
 								<p class="zoomIn">"Ayo! ke perpustakaan SMKN 4 Malang"</p>
 							</div>
-							<!-- Search Fitur -->
-                            <?php $atribut = array('class'=>'search-top','id'=>'puser') ; ?>
-							<?php echo form_open('page/cari',$atribut); ?>
-								<div class="demo-1 search">
-					                    <span class="icon"><i class="fa fa-search"></i></span>
-					                    <input type="text" name="yangdicari" class="search-item" placeholder="Cari sesuatu yang anda inginkan" />
-					            </div>
-					            <select name="cariberdasarkan" class="search-item">
-									<option value="">Cari Berdasarkan</option>
-									<option value="deskripsi">Judul</option>
-									<option value="kategori">Kategori</option>
-								</select>
-								<input type="submit" value="cari" class="w3-btn create-admin">
-
-							<?php echo form_close(); ?>
 						</div>
 					</div>
 				</div>
 			</div>
 		</header>
-	<div>
-		<!-- Portfolio Section -->
-		<div id="portfolio">
+			<div>
+				<!-- About Section -->
+		<div id="about">
 			<div class="container">
 				<div class="section-title text-center center">
-					<h2>Buku</h2>
+					<h2>Our Story</h2>
 					<hr>
-					<p>Silahkan Update Buku Terbaru</p>
 				</div>
-				<div class="categories">
-					<ul class="cat">
-						<li>
-							<ol class="type">
-								<li><a href="#" data-filter="*" class="active">All Book</a></li>
-							</ol>
-						</li>
-					</ul>
-					<div class="clearfix"></div>
-				</div>
-
 				<div class="row">
-					<div class="portfolio-items">
-					<?php
-						if( ! empty($gambar)){ // Jika data pada database tidak sama dengan empty (alias ada datanya)
-					    foreach($gambar->result() as $data){
-					?>
-						<div class="col-sm-6 col-md-3 col-lg-3 residential">
-							<div class="portfolio-item">
-								<div class="hover-bg">
-									<div class="hover-text">
-										<h4><?php echo "<td>".$data->deskripsi."</td>";?></h4>	
-										<a href="<?php echo base_url() ?>index.php/gambar/preview/<?php echo $data->id ?>" class="w3-btn read-more">Read More >></a> 	
-									</div> 
-									<?php
-						              echo "<img src='".base_url("images/".$data->nama_file)."' width='401' height='565' class='img-responsive img-book' alt='Buku Pelajaran'>";
-						          	?>
-								</div>
-							</div>
+					<div class="col-xs-12 col-md-6 text-center"> <img src="<?php echo base_url() ?>asset/img/thumbnails/perpus.jpg" class="img-responsive" alt=""> </div>
+					<div class="col-xs-12 col-md-6">
+						<div class="about-text">
+							<h3>Peresmian Perpustakaan</h3>
+							<p>Pembangunan perpustakaan SMKN 4 Malang telah sampai ke tahap akhir, yaitu peresmian. Menteri Pendidikan dan Kebudayaan Indonesia, Prof. Dr. Muhadjir Effendy M.Ap. diundang ke SMKN 4 Malang untuk 
+							meresmikan perpustakaan. Buku merupakan salah satu sumber ilmu pengetahuan terbanyak, oleh karena itu SMKN 4 Malang berusaha sebaik mungkin untuk membuat 
+							perpustakaan yang nyaman bagi para siswa.</p>
+							<h3>Prestasi Perpustakaan SMKN 4 Malang</h3>
+							<p>Beberapa Prestasi yang pernah diraih adalah sebagai Juara 1 Kategori Pustakawan terbaik se-Jawa Timur tahun 2016 , Juara 2 Lomba Kreasi jinggle perpustakaan tahun 2016 , Juara 2 Pustakawan terbaik Tingkat Nasional</p>
 						</div>
-						<?php
-					            }
-					          }
-					          else{ // Jika data tidak ada
-					            echo "<tr><td colspan='5'>Data tidak ada</td></tr>";
-					          } 
-						?>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-md-6 text-center img-library"> <img src="<?php echo base_url() ?>asset/img/thumbnails/perpus1.jpg" class="img-responsive" alt=""> </div>
+					<div class="col-xs-12 col-md-6 img-library">
+						<div class="about-text">
+							<h3>Fungsi Perpustakaan SMKN 4 Malang</h3>
+							<p>Sebagai sarana siswa untuk terus menigkatkan wawasannya, salah satunya dengan membaca buku. Juga sebagai tempat bagi guru yang ingin mengisi jam pelajarannya di luar kelas.</p>
+							<h3>Fasilitas Perpustakaan</h3>
+							<p>Selain menyediakan bermacam buku , Perpustakaan SMKN 4 Malang juga memfalitiasi beberapa kebutuhan siswa. Seperti Wifi, Home Theater, sofa dan lainnya.</p>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+			</div>
 		
-		<!-- Testimoni Section -->
-		<div id="testimoni" class="text-center">
-			<div class="overlay">
-				<div class="container">
-					<div class="col-md-8 col-md-offset-2 section-title">
-						<h2>Testimonial Siswa</h2>
-						<hr>
-						<p>Apresiasi siswa SMKN 4 Malang terhadap websites ini.</p>
-					</div>
-					<div id="row">
-						<div class="col-md-4 col-sm-8 team">
-							<div class="thumbnail"> <img src="<?php echo base_url() ?>asset/img/thumbnails/afe.jpg" alt="Siswa SMKN 4 Malang" width="684" height="720" class="team-img">
-								<div class="caption">
-									<h3>Afi Lintang C</h3>
-									<p>Siswa Kelas XII RPL A</p>
-									<p>"Webnya sangat bagus & bermanfaat"</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 col-sm-8 team">
-							<div class="thumbnail"> <img src="<?php echo base_url() ?>asset/img/thumbnails/kiki.jpg" alt="Siswa SMKN 4 Malang" width="684" height="720" class="img-circle team-img">
-								<div class="caption">
-									<h3>M Rizqi A</h3>
-									<p>Siswa Kelas XII PD F</p>
-									<p>"Sangat memudahkan Siswa & maupun Guru"</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 col-sm-8 team">
-							<div class="thumbnail"> <img src="<?php echo base_url() ?>asset/img/thumbnails/azalai.jpg" alt="Siswa SMKN 4 Malang" width="837" height="853S" class="img-circle team-img">
-								<div class="caption">
-									<h3>Azalia PB</h3>
-									<p>Siswa Kelas X MM A</p>
-									<p>"Semenjak ada website perpustakaan ini, sangat membantu saya dalam peminjaman buku di perpustakaan SMKN 4 Malang"</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
 		<div id="footer">
 			<div class="container text-center">
 				<div class="social">
 					<ul>
-						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-						<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-						<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-						<li><a href="#"><i class="fa fa-youtube"></i></a></li>
+						<li><a href="https://www.facebook.com/muhammad.r.firmansyah.9028"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="https://www.instagram.com/ryan_syah19/"><i class="fa fa-instagram"></i></a></li>
+						<li><a href="https://mail.google.com/mail/u/0/#inbox"><i class="fa fa-envelope-o"></i></a></li>
+						<li><a href="https://id.pinterest.com/mryanfirmansyah88/"><i class="fa fa-pinterest"></i></a></li>
+						<li><a href="https://www.youtube.com/channel/UCbuLABCTkMZChBTpvaqkHGA?view_as=subscriber"><i class="fa fa-youtube"></i></a></li>
 					</ul>
 				</div>
 				<div>
@@ -202,6 +129,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<script type="text/javascript" src="<?php echo base_url() ?>asset/js/main.js"></script>=
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 		<script type="text/javascript">
+		
 				var images = ["buku.jpeg", "book4.jpg", "perpus.jpg", "book2.jpg"];
 				$(function () {
 						var i = 0;
@@ -222,3 +150,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </body>
 </html>
+

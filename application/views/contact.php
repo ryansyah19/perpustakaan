@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="<?php echo site_url('welcome/about') ?>">About</a></li>
-                        <li><a href="#portfolio" class="page-scroll">Book</a></li>
+                        <li><a href="<?php echo site_url('welcome/index') ?>">Book</a></li>
                         <li><a href="<?php echo site_url('welcome/testimoni') ?>">Testimonial</a></li>
                         <li><a href="<?php echo site_url('welcome/contact') ?>">Contact Us</a></li>
                         <li><a href="<?php echo site_url('welcome/login') ?>">Login</a></li>
@@ -60,75 +60,62 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <h1 class="fadeInUp"><strong>GRAFIKA</strong> <span>/</span> Perpustakaan</h1>
                                 <p class="zoomIn">"Ayo! ke perpustakaan SMKN 4 Malang"</p>
                             </div>
-                           <!-- Search Fitur -->
-                            <?php $atribut = array('class'=>'search-top','id'=>'puser') ; ?>
-                            <?php echo form_open('page/cari',$atribut); ?>
-                                <div class="demo-1 search">
-                                        <span class="icon"><i class="fa fa-search"></i></span>
-                                        <input type="text" name="yangdicari" class="search-item" placeholder="Cari sesuatu yang anda inginkan" />
-                                </div>
-                                <select name="cariberdasarkan" class="search-item">
-                                    <option value="">Cari Berdasarkan</option>
-                                    <option value="deskripsi">Judul</option>
-                                    <option value="kategori">Kategori</option>
-                                </select>
-                                <input type="submit" value="cari" class="w3-btn create-admin">
-
-                            <?php echo form_close(); ?>
                         </div>
                     </div>
                 </div>
             </div>
         </header>
     <div>
-        <!-- Portfolio Section -->
-        <div id="portfolio">
+        
+        <!-- Contact Section -->
+        <div id="contact">
             <div class="container">
-                <div class="section-title text-center center">
-                    <h2>Book</h2>
+                <div class="section-title text-center">
+                    <h2>Contact Us</h2>
                     <hr>
-                    <p>Buku di Perpustakaan SMKN 4 Malang kini tersedia secara online !</p>
+                    <p>Silahkan Hubungi Admin jika ada sesuatu hal yang perlu ditanyakan</p>
                 </div>
-                <div class="categories">
-                    <ul class="cat">
-                        <li>
-                            <ol class="type">
-                                <li><a href="#" data-filter="*" class="active">All Projects</a></li>
-                            </ol>
-                        </li>
-                    </ul>
-                    <div class="clearfix"></div>
+                <div class="col-md-4">
+                    <h3>Contact Info</h3>
+                    <div class="contact-item"> <span>Address</span>
+                        <p>22 Tanimbar St,<br>
+                            kasin, klojen, Malang city 65117</p>
+                    </div>
+                    <div class="contact-item"> <span>Email</span>
+                        <p>mryanfirmansyah88@gmail.com</p>
+                    </div>
+                    <div class="contact-item"> <span>Phone</span>
+                        <p> +62 8123 456 1234</p>
+                    </div>
                 </div>
-                <div class="row">
-                    <div class="portfolio-items">
-                    <?php
-                        if( ! empty($gambar)){ // Jika data pada database tidak sama dengan empty (alias ada datanya)
-                        foreach($gambar->result() as $data){
-                    ?>
-                        <div class="col-sm-6 col-md-3 col-lg-3 residential">
-                            <div class="portfolio-item">
-                                <div class="hover-bg"> 
-                                    <div class="hover-text">
-                                        <h4><?php echo "<td>".$data->deskripsi."</td>";?></h4>  
-                                        <a href="<?php echo base_url() ?>index.php/gambar/preview_guest/<?php echo $data->id ?>" class="w3-btn read-more">Read More >></a>    
-                                    </div> 
-                                    <?php
-                                      echo "<img src='".base_url("images/".$data->nama_file)."' width='401' height='565' class='img-responsive img-book' alt='Buku Pelajaran'>";
-                                    ?>
+                <div class="col-md-8">
+                    <h3>Leave us a message</h3>
+                    <form name="sentMessage" id="contactForm" action="<?php echo base_url(); ?>index.php/welcome/action_add" method="post" role="form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" id="username" class="form-control" required="required" name="username" disabled="disabled" placeholder="Anda harus Login terlebih dahulu">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="email" id="email" class="form-control" disabled="disabled" placeholder="Anda harus Login terlebih dahulu" name="email">
+                                    <p class="help-block text-danger"></p>
                                 </div>
                             </div>
                         </div>
-                        <?php
-                                }
-                              }
-                              else{ // Jika data tidak ada
-                                echo "<tr><td colspan='5'>Data tidak ada</td></tr>";
-                              } 
-                        ?>
-                    </div>
+                        <div class="form-group">
+                            <textarea name="pesan" id="message" class="form-control" rows="4" disabled="disabled" placeholder="Anda harus Login terlebih dahulu"></textarea>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div id="success"></div>
+                        <button type="submit" class="btn btn-custom btn-lg" disabled="disabled" >Send Message</button>
+                    </form>
                 </div>
             </div>
         </div>
+
         <div id="footer">
             <div class="container text-center">
                 <div class="social">
