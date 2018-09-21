@@ -18,6 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <!-- Bootstrap Core Css -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/css/bootstrap.css">
@@ -35,6 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 	<div class="error-page-2">
     	<h1 class="title-error">Maaf ! Silahkan Login terlebih dahulu</h1>
+        <li class="must-login w3-btn"><a href="<?php echo site_url('welcome/login_pinjam') ?>">LOGIN sekarang!</a></li>
 		<img src="<?php echo base_url() ?>asset/img/thumbnails/oops.jpg" alt="Error" class="img-responsive">
 	</div>
 </body>

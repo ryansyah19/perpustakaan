@@ -41,8 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="<?php echo site_url('welcome/admin') ?>" class="page-scroll">Home</a></li>
 						<li><a href="<?php echo site_url('gambar/') ?>" class="page-scroll">Book</a></li>
-						<li><a href="#services" class="page-scroll">Booking</a></li>
-						<li><a href="#services" class="page-scroll">Testimonial</a></li>
+						<li><a href="#services" class="page-scroll">Peminjaman</a></li>
 						<li><a href="<?php echo site_url('crud/index') ?>" class="page-scroll active">Profile</a></li>
 						<li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
 					</ul>
@@ -72,34 +71,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<h1>Edit Data</h1>
 						<?php foreach ($content->result() as $key): ?>
 							<form action="<?php echo base_url(); ?>index.php/crud/action_update/<?php echo $key->id ?>" method="post" class="card">
+								<p class="label-edit-profile">NIS :</p>
+								<input type="text" name="nis" placeholder="Masukkan NIS" value="<?php echo $key->nis ?>" class="form-group-add"><br>
 								<p class="label-edit-profile">Nama :</p>
-								<input type="text" name="nama" placeholder="Masukkan Nama Anda" value="<?php echo $key->nama ?>" class="form-group-add"><br>
-								<p class="label-edit-profile">Status :</p>
-								<select name="status" placeholder="Masukkan Status Anda" value="<?php echo $key->status ?>" class="form-group-add">
-								  <option value="Siswa">Siswa</option>
-								  <option value="Guru">Guru</option>
-								</select><br>
+								<input type="text" name="nama" placeholder="Masukkan Nama" value="<?php echo $key->nama ?>" class="form-group-add"><br>
+								<p class="label-edit-profile">Kelas :</p>
+								<input type="text" name="kelas" placeholder="Masukkan Kelas" value="<?php echo $key->kelas ?>" class="form-group-add"><br>
 								<p class="label-edit-profile">Jurusan :</p>
-								<select name="jurusan" placeholder="Masukkan Jurusan Anda" value="<?php echo $key->jurusan ?>" class="form-group-add">
-									<option value="Rekayasa Perangkat Lunak">Rekayasa Perangkat Lunak</option>
-									<option value="Multimedia">Multimedia</option>
-									<option value="Teknik Komputer & Jaringan">Teknik Komputer & Jaringan</option>
-									<option value="Persiapan Grafika">Persiapan Grafika</option>
-									<option value="Produksi Grafika">Produksi Grafika</option>
-									<option value="Animasi">Animasi</option>
-									<option value="Mekatronika">Mekatronika</option>
-									<option value="Logistik">Logistik</option>
-								</select><br>	
-								<p class="label-edit-profile">Kelas :</p>		
-								<select name="kelas" placeholder="Masukkan kelas Anda" value="<?php echo $key->kelas ?>" class="form-group-add">
+								<select name="jurusan" placeholder="Masukkan Jurusan" value="<?php echo $key->jurusan ?>" class="form-group-add">
+								    <?php foreach($content2->result() as $data) : ?>
+				                		<option value="<?php echo $data->jurusan;?>"><?php echo $data->jurusan;?></option>
+				            		<?php endforeach ?>
+								</select><br>
+								<p class="label-edit-profile">Tingkatan :</p>		
+								<select name="tingkatan" placeholder="Masukkan Tingkatan" value="<?php echo $key->tingkatan ?>" class="form-group-add">
 								  <option value="X">X</option>
 								  <option value="XI">XI</option>
 								  <option value="XII">XII</option>
 								</select><br>
-								<p class="label-edit-profile">No Induk / No Guru :</p>
-								<input type="text" name="noinduk" placeholder="Masukkan No Induk / No Guru Anda" value="<?php echo $key->noinduk ?>" class="form-group-add"><br>
-								<p class="label-edit-profile">No Telepon :</p>
-								<input type="text" name="notelp" placeholder="Masukkan No Telepon Anda" value="<?php echo $key->notelp ?>" class="form-group-add"><br>
+								<p class="label-edit-profile">Password :</p>
+								<input type="text" name="password" placeholder="Masukkan Password" value="<?php echo $key->password ?>" class="form-group-add"><br>
 								<input type="submit" value="Save" class=" w3-btn link-action-delete">
 								<input type="button" value="Cancel" class=" w3-btn link-action-delete" onclick="javascript:window.location='<?php echo site_url('crud/index') ?>';">
 							</form>

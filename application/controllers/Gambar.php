@@ -41,6 +41,54 @@ class Gambar extends CI_Controller {
     $this->load->view('gambar/view', $data);
   }
 
+  //Update one item
+  public function update( $id = NULL )
+  {
+    $this->db->where('id', $id);
+    $data['gambar'] = $this->db->get('gambar');
+
+    $this->load->view('gambar/update', $data);
+  }
+
+  public function action_update($id= '')
+  {
+    $upload=1;
+    $data = array(
+      'judul'=>$this->input->post('input_judul'),
+      'deskripsi'=>$this->input->post('input_deskripsi'),
+      'nama_file' => $upload['file']['file_name'],
+      'nama_file'=>$this->input->post('nama_file'),
+      'kategori'=>$this->input->post('input_kategori'),
+      'pengarang'=>$this->input->post('input_pengarang'),
+      'penerbit'=>$this->input->post('input_penerbit'),
+      'tahunterbit'=>$this->input->post('input_tahunterbit'),
+      'stok'=>$this->input->post('input_stok'),
+      'jml_hal'=>$this->input->post('input_jml_hal')
+     );
+
+    $data2 = array(
+      'judul'=>$this->input->post('input_judul'),
+      'deskripsi'=>$this->input->post('input_deskripsi'),
+      'kategori'=>$this->input->post('input_kategori'),
+      'pengarang'=>$this->input->post('input_pengarang'),
+      'penerbit'=>$this->input->post('input_penerbit'),
+      'tahunterbit'=>$this->input->post('input_tahunterbit'),
+      'stok'=>$this->input->post('input_stok'),
+      'jml_hal'=>$this->input->post('input_jml_hal')
+     );
+
+    if(!$data['nama_file']==''){
+      $this->db->where('id', $id);
+      $this->db->update('gambar', $data);
+      redirect('gambar','refresh');
+    }
+    else{
+      $this->db->where('id', $id);
+      $this->db->update('gambar', $data2);
+      redirect('gambar','refresh');
+    }
+  }
+
   public function delete( $id = NULL )
   {
     $this->db->where('id', $id);
@@ -76,6 +124,12 @@ class Gambar extends CI_Controller {
   public function harus()
   {
     $this->load->view('harus.php');
+  }
+
+  function peminjaman()
+  {
+    $id_anggota = addslashes($this->input->post('id'));
+    
   }
 
 }

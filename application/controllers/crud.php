@@ -13,7 +13,8 @@ class Crud extends CI_Controller {
 	// List all your items
 	public function index()
 	{
-		$data['content'] = $this->db->get('ci');
+		$data['content'] = $this->db->get('siswa');
+		$data['isi'] = $this->db->get('guru');
 
 		$this->load->view('crud/index', $data);
 	}
@@ -21,24 +22,46 @@ class Crud extends CI_Controller {
 	// Add a new item
 	public function add()
 	{
-		$this->load->view('crud/add');
+		$data['content2'] = $this->db->get('jurusan');
+		$data['mapel'] = $this->db->get('mapel');
+		
+		$this->load->view('crud/add',$data);
+	}
+
+	public function add_guru()
+	{
+		$data['content2'] = $this->db->get('jurusan');
+		$data['mapel'] = $this->db->get('mapel');
+		
+		$this->load->view('crud/add_guru',$data);
 	}
 
 	public function action_add()
 	{
 		$data = array(
+			'nis' => $this->input->post('nis'),
 			'nama' => $this->input->post('nama'),
-			'status' => $this->input->post('status'),
-			'jurusan' => $this->input->post('jurusan'),
 			'kelas' => $this->input->post('kelas'),
-			'noinduk' => $this->input->post('noinduk'),
-			'notelp' => $this->input->post('notelp'),
-			'username' => $this->input->post('username'),
-			'password' => $this->input->post('password'),
-			'level' => $this->input->post('level')
+			'jurusan' => $this->input->post('jurusan'),
+			'tingkatan' => $this->input->post('tingkatan'),
+			'password' => $this->input->post('password')
 		 );
 
-		$this->db->insert('ci', $data);
+		$this->db->insert('siswa', $data);
+
+		redirect('crud/index','refresh');
+	}
+
+	public function action_add_guru()
+	{
+		$data = array(
+			'nip' => $this->input->post('nip'),
+			'nama' => $this->input->post('nama'),
+			'mapel' => $this->input->post('mapel'),
+			'password' => $this->input->post('password')
+		 );
+
+		$this->db->insert('guru', $data);
 
 		redirect('crud/index','refresh');
 	}
@@ -47,27 +70,49 @@ class Crud extends CI_Controller {
 	public function update( $id = NULL )
 	{
 		$this->db->where('id', $id);
-		$data['content'] = $this->db->get('ci');
+		$data['content'] = $this->db->get('siswa');
+		$data['content2'] = $this->db->get('jurusan');
 
 		$this->load->view('crud/update', $data);
+	}
+
+	public function update_guru( $id = NULL )
+	{
+		$this->db->where('id', $id);
+		$data['isi'] = $this->db->get('guru');
+		$data['mapel'] = $this->db->get('mapel');
+
+		$this->load->view('crud/update_guru', $data);
 	}
 
 	public function action_update($id= '')
 	{
 		$data = array(
+			'nis' => $this->input->post('nis'),
 			'nama' => $this->input->post('nama'),
-			'status' => $this->input->post('status'),
-			'jurusan' => $this->input->post('jurusan'),
 			'kelas' => $this->input->post('kelas'),
-			'noinduk' => $this->input->post('noinduk'),
-			'notelp' => $this->input->post('notelp'),
-			'username' => $this->input->post('username'),
-			'password' => $this->input->post('password'),
-			'level' => $this->input->post('level')
+			'jurusan' => $this->input->post('jurusan'),
+			'tingkatan' => $this->input->post('tingkatan'),
+			'password' => $this->input->post('password')
 		 );
 
 		$this->db->where('id', $id);
-		$this->db->update('ci', $data);
+		$this->db->update('siswa', $data);
+
+		redirect('crud','refresh');
+	}
+
+	public function action_update_guru($id= '')
+	{
+		$data = array(
+			'nip' => $this->input->post('nip'),
+			'nama' => $this->input->post('nama'),
+			'mapel' => $this->input->post('mapel'),
+			'password' => $this->input->post('password')
+		 );
+
+		$this->db->where('id', $id);
+		$this->db->update('guru', $data);
 
 		redirect('crud','refresh');
 	}
@@ -76,7 +121,15 @@ class Crud extends CI_Controller {
 	public function delete( $id = NULL )
 	{
 		$this->db->where('id', $id);
-		$this->db->delete('ci');
+		$this->db->delete('siswa');
+
+		redirect('crud','refresh');
+	}
+
+	public function delete_guru( $id = NULL )
+	{
+		$this->db->where('id', $id);
+		$this->db->delete('guru');
 
 		redirect('crud','refresh');
 	}
@@ -85,9 +138,17 @@ class Crud extends CI_Controller {
 	public function read( $id = NULL )
 	{
 		$this->db->where('id', $id);
-		$data['content'] = $this->db->get('ci');
+		$data['content'] = $this->db->get('siswa');
 
 		$this->load->view('crud/index', $data);
+	}
+
+	public function read_guru( $id = NULL )
+	{
+		$this->db->where('id', $id);
+		$data['isi'] = $this->db->get('guru');
+
+		$this->load->view('crud/index_guru', $data);
 	}
 }
 

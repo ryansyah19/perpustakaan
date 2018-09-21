@@ -198,7 +198,7 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 	margin-bottom: 40px;
 }
 header .intro-text {
-	padding-top: 300px;
+	padding-top: 300px; 
 	padding-bottom: 200px;
 	text-align: center;
 }
@@ -646,6 +646,18 @@ color: #777;
 	-ms-border-radius: 2px;
 	border-radius: 2px;
 }
+.must-login{
+	font-size: 60px;
+    list-style: none;
+    display: block;
+    width: 35%;
+    background-color: #44a699;
+    border-radius: 20px;
+    color: #fff;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
 .card-login .body {
 	font-size: 14px;
 	color: #555;
@@ -869,12 +881,22 @@ color: #777;
 	width: 230px;
     text-align: right;
 }
+.label-edit-profile-thumbnail{
+	color:#fff; 
+	font-size:20px; 
+	padding:10px; 
+	display:inline-block;
+	width: 230px;
+    text-align: right;
+    margin-left: -355px;
+}
 .label-profile{
 	color:white;
 	display:inline-block;
 	float:left;
 	font-size: 18px;
 }
+
 .card {
 	background: url(../img/background/blue.jpg);
 	position: relative;
@@ -956,13 +978,13 @@ color: #777;
 }
 .title-field{
 	font-weight: 900;
-	font-size: 20px;
+	font-size: 18px;
 	background-color: #c1ff03cc;
 }
 .tabel-admin td{
-	padding: 0;
-    padding: 10px;
+	padding: 10px;
     color: #776b6b;
+    width: 5%;
 }
 .link-action-read{
 	background-color: #ffc903;
@@ -1043,6 +1065,15 @@ input[type="file"] {
 	color: #fff;
     border-bottom: 2px solid yellowgreen;
 }
+.action-button{
+	display: block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
 
 /* Preview Book */
 .desc-book{
@@ -1056,7 +1087,7 @@ input[type="file"] {
 
 /* Search-Fitur*/
 .search-item{
-	width: 40%;
+	width: 100%;
     margin-bottom: 30px;
     height: 60px;
     margin-right: 30px;
@@ -1069,6 +1100,7 @@ input[type="file"] {
 }
 .search-top{
 	padding-bottom: 150px;
+	margin-top: -190px;
 }
 
 .search {
@@ -1139,8 +1171,6 @@ input[type="file"] {
 
 }
 
-/* - Gagal Login - */
-.gagal{
-	text-align: center;
-	font-size: 40px;
+.edit-book{
+	display: inline-block;
 }

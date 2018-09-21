@@ -94,7 +94,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" id="username" class="form-control" required="required" name="username" value="<?php echo $this->session->userdata('nama');?>" disabled>
+                                    <input type="text" id="nis" class="form-control" required="required" name="nis" value="<?php echo $this->session->userdata('ses_id');?>" disabled>
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>

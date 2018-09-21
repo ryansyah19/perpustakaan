@@ -41,8 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="<?php echo site_url('welcome/admin') ?>" class="page-scroll">Home</a></li>
 						<li><a href="<?php echo site_url('gambar/') ?>" class="page-scroll">Book</a></li>
-						<li><a href="#services" class="page-scroll">Booking</a></li>
-						<li><a href="#testimoni" class="page-scroll">Testimonial</a></li>
+						<li><a href="#services" class="page-scroll">Peminjaman</a></li>
 						<li><a href="<?php echo site_url('crud/index') ?>" class="page-scroll">Profile</a></li>
 						<li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
 					</ul>
@@ -63,19 +62,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</div>
 							<!-- Search Fitur -->
                             <?php $atribut = array('class'=>'search-top','id'=>'puser') ; ?>
-							<?php echo form_open('page/cari',$atribut); ?>
-								<div class="demo-1 search">
-					                    <span class="icon"><i class="fa fa-search"></i></span>
-					                    <input type="text" name="yangdicari" class="search-item" placeholder="Cari sesuatu yang anda inginkan" />
-					            </div>
-					            <select name="cariberdasarkan" class="search-item">
-									<option value="">Cari Berdasarkan</option>
-									<option value="deskripsi">Judul</option>
-									<option value="kategori">Kategori</option>
-								</select>
-								<input type="submit" value="cari" class="w3-btn create-admin">
+                            <?php echo form_open('page/cari',$atribut); ?>
+                                <div class="col-md-8">
+                                    <div class="demo-1 search">
+                                            <span class="icon"><i class="fa fa-search"></i></span>
+                                            <input type="text" name="yangdicari" class="search-item" placeholder="Cari sesuatu yang anda inginkan" />
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <select name="cariberdasarkan" class="search-item">
+                                        <option value="">Cari Berdasarkan</option>
+                                        <option value="deskripsi">Judul</option>
+                                        <option value="kategori">Kategori</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-1">
+                                    <input type="submit" value="cari" class="w3-btn create-admin">
+                                </div>
 
-							<?php echo form_close(); ?>
+                            <?php echo form_close(); ?>
 						</div>
 					</div>
 				</div>

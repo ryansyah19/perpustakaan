@@ -41,8 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="<?php echo site_url('welcome/admin') ?>" class="page-scroll">Home</a></li>
 						<li><a href="<?php echo site_url('gambar/') ?>" class="page-scroll">Book</a></li>
-						<li><a href="#services" class="page-scroll">Booking</a></li>
-						<li><a href="#services" class="page-scroll">Testimonial</a></li>
+						<li><a href="#services" class="page-scroll">Peminjaman</a></li>
 						<li><a href="<?php echo site_url('crud/index') ?>" class="page-scroll active">Profile</a></li>
 						<li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
 					</ul>
@@ -66,32 +65,62 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</div>
 		</header>
 		<div class="profile-admin">
-			<h1>Data Profil</h1><hr>
+			<h1>Data Profil Siswa</h1><hr>
 			<a href="<?php echo base_url(); ?>index.php/crud/add" class="w3-btn create-admin">Create</a>
 			<table border="1" class="tabel-admin" id="customers">
 				<tr class="title-field">
 					<td>ID :</td>
+					<td>NIS :</td>
 					<td>Nama :</td>
-					<td>Status :</td>
-					<td>Jurusan :</td>
 					<td>Kelas :</td>
-					<td>No Induk:</td>
-					<td>No Telepon:</td>
+					<td>Jurusan :</td>
+					<td>Tingkatan :</td>
+					<td>Password :</td>
 					<td>Action</td>
 				</tr>
 				<?php foreach ($content->result() as $key): ?>
 					<tr>
 						<td><?php echo $key->id ?></td>
+						<td><?php echo $key->nis ?></td>
 						<td><?php echo $key->nama ?></td>
-						<td><?php echo $key->status ?></td>
-						<td><?php echo $key->jurusan ?></td>
 						<td><?php echo $key->kelas ?></td>
-						<td><?php echo $key->noinduk ?></td>
-						<td><?php echo $key->notelp ?></td>
+						<td><?php echo $key->jurusan ?></td>
+						<td><?php echo $key->tingkatan ?></td>
+						<td><?php echo $key->password ?></td>
 						<td>
-							<a href="<?php echo base_url() ?>index.php/crud/read/<?php echo $key->id ?>" class="w3-btn  link-action-read">Detail</a>
-							<a href="<?php echo base_url() ?>index.php/crud/update/<?php echo $key->id ?>" class=" w3-btn link-action-update">Edit</a>
-							<a href="<?php echo base_url() ?>index.php/crud/delete/<?php echo $key->id ?>" class=" w3-btn link-action-delete">Delete</a>
+							<a href="<?php echo base_url() ?>index.php/crud/read/<?php echo $key->id ?>" class="w3-btn  link-action-read action-button">Detail</a>
+							<a href="<?php echo base_url() ?>index.php/crud/update/<?php echo $key->id ?>" class=" w3-btn link-action-update action-button">Edit</a>
+							<a href="<?php echo base_url() ?>index.php/crud/delete/<?php echo $key->id ?>" class=" w3-btn link-action-delete action-button">Delete</a>
+						</td>
+					</tr>	
+				<?php endforeach ?>	
+			</table>
+			<a href="<?php echo base_url(); ?>index.php/jurusan/add" class="w3-btn create-admin">Create Jurusan</a>
+			<a href="<?php echo base_url(); ?>index.php/mapel/add" class="w3-btn create-admin">Create Mapel</a>
+		</div>
+		<div class="profile-admin">
+			<h1>Data Profil Guru</h1><hr>
+			<a href="<?php echo base_url(); ?>index.php/crud/add_guru" class="w3-btn create-admin">Create</a>
+			<table border="1" class="tabel-admin" id="customers">
+				<tr class="title-field">
+					<td>ID :</td>
+					<td>NIP :</td>
+					<td>Nama :</td>
+					<td>Mapel :</td>
+					<td>Password :</td>
+					<td>Action</td>
+				</tr>
+				<?php foreach ($isi->result() as $key2): ?>
+					<tr>
+						<td><?php echo $key2->id ?></td>
+						<td><?php echo $key2->nip ?></td>
+						<td><?php echo $key2->nama ?></td>
+						<td><?php echo $key2->mapel ?></td>
+						<td><?php echo $key2->password ?></td>
+						<td>
+							<a href="<?php echo base_url() ?>index.php/crud/read_guru/<?php echo $key2->id ?>" class="w3-btn  link-action-read action-button">Detail</a>
+							<a href="<?php echo base_url() ?>index.php/crud/update_guru/<?php echo $key2->id ?>" class=" w3-btn link-action-update action-button">Edit</a>
+							<a href="<?php echo base_url() ?>index.php/crud/delete_guru/<?php echo $key2->id ?>" class=" w3-btn link-action-delete action-button">Delete</a>
 						</td>
 					</tr>	
 				<?php endforeach ?>	

@@ -45,13 +45,18 @@ class App_model extends CI_Model {
   }
   
   // Fungsi untuk menyimpan data ke database
-  public function save($upload){
+  public function save($data){
     $data = array(
+      'judul'=>$this->input->post('input_judul'),
       'deskripsi'=>$this->input->post('input_deskripsi'),
       'nama_file' => $upload['file']['file_name'],
-      'ukuran_file' => $upload['file']['file_size'],
-      'tipe_file' => $upload['file']['file_type'],
-      'kategori'=>$this->input->post('kategori')
+      'kategori'=>$this->input->post('input_kategori'),
+      'pengarang'=>$this->input->post('input_pengarang'),
+      'penerbit'=>$this->input->post('input_penerbit'),
+      'tahunterbit'=>$this->input->post('input_tahunterbit'),
+      'stok'=>$this->input->post('input_stok'),
+      'jml_hal'=>$this->input->post('input_jml_hal')
+
     );
     
     $this->db->insert('gambar', $data);
@@ -66,7 +71,7 @@ class App_model extends CI_Model {
 
   		switch ($berdasarkan) {
   			case "":
-  				$this->db->like('deskripsi', $yangdicari);
+  				$this->db->like('judul', $yangdicari);
   				$this->db->or_like('kategori', $yangdicari);
   				break;
 

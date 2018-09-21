@@ -17,7 +17,7 @@ class Welcome extends CI_Controller {
 		$data['gambar'] = $this->db->get('gambar');
 		$this->load->view('welcome_message',$data);
 	}
-function auth(){
+		function auth(){
         $username=htmlspecialchars($this->input->post('username',TRUE),ENT_QUOTES);
         $password=htmlspecialchars($this->input->post('password',TRUE),ENT_QUOTES);
 
@@ -36,16 +36,16 @@ function auth(){
 
         elseif($cek_siswa->num_rows() > 0){ //jika login sebagai mahasiswa
 					if($cek_siswa->num_rows() > 0){
-							$data=$cek_siswa->row_array();
-        			$this->session->set_userdata('masuk',TRUE);
-							$this->session->set_userdata('akses','2');
-							$this->session->set_userdata('ses_id',$data['nis']);
-							$this->session->set_userdata('ses_nama',$data['nama']);
-							redirect('welcome/beranda');
+						$data=$cek_siswa->row_array();
+    					$this->session->set_userdata('masuk',TRUE);
+						$this->session->set_userdata('akses','2');
+						$this->session->set_userdata('ses_id',$data['nis']);
+						$this->session->set_userdata('ses_nama',$data['nama']);
+						redirect('welcome/beranda');
 					}else{  // jika username dan password tidak ditemukan atau salah
-							$url=base_url();
-							echo $this->session->set_flashdata('msg','Username Atau Password Salah');
-							redirect($url);
+						$url=base_url();
+						echo $this->session->set_flashdata('msg','Username Atau Password Salah');
+						redirect($url);
 					}
         }
 
@@ -69,6 +69,61 @@ function auth(){
 			}
 
     }
+
+    function auth_pinjam(){
+        $username=htmlspecialchars($this->input->post('username',TRUE),ENT_QUOTES);
+        $password=htmlspecialchars($this->input->post('password',TRUE),ENT_QUOTES);
+
+        $cek_guru=$this->app_model->auth_guru($username,$password);
+        $cek_siswa=$this->app_model->auth_siswa($username,$password);
+        $cek_admin=$this->app_model->auth_admin($username,$password);
+
+        if($cek_guru->num_rows() > 0){ //jika login sebagai dosen
+				$data=$cek_guru->row_array();
+        		$this->session->set_userdata('masuk',TRUE);
+	            $this->session->set_userdata('akses','1');
+	            $this->session->set_userdata('ses_id',$data['nip']);
+	            $this->session->set_userdata('ses_nama',$data['nama']);
+	            redirect('welcome/pinjam');
+        }
+
+        elseif($cek_siswa->num_rows() > 0){ //jika login sebagai mahasiswa
+					if($cek_siswa->num_rows() > 0){
+						$data=$cek_siswa->row_array();
+    					$this->session->set_userdata('masuk',TRUE);
+						$this->session->set_userdata('akses','2');
+						$this->session->set_userdata('ses_id',$data['nis']);
+						$this->session->set_userdata('ses_nama',$data['nama']);
+						redirect('welcome/beranda');
+						
+					}else{  // jika username dan password tidak ditemukan atau salah
+						$url=base_url();
+						echo $this->session->set_flashdata('msg','Username Atau Password Salah');
+						redirect($url);
+					}
+        }
+
+         elseif($cek_admin->num_rows() > 0){ //jika login sebagai admin
+					if($cek_admin->num_rows() > 0){
+							$data=$cek_admin->row_array();
+        			$this->session->set_userdata('masuk',TRUE);
+							$this->session->set_userdata('akses','3');
+							$this->session->set_userdata('ses_id',$data['username']);
+							$this->session->set_userdata('ses_nama',$data['nama']);
+							redirect('gambar/preview_user');
+					}else{  // jika username dan password tidak ditemukan atau salah
+							$url=base_url();
+							echo $this->session->set_flashdata('msg','Username Atau Password Salah');
+							redirect($url);
+					}
+        }
+        else {
+				echo "<div style='font-size:100px;text-align:center;background:#011627;width:100%;height:100%;margin:0;padding-top:20%;font-weight:900;color:#e40043;font-family: cursive;'> LOGIN GAGAL !!</div>";
+				redirect('welcome/index','refresh');
+			}
+
+    }
+
 	public function beranda()
 	{
 		$data['gambar'] = $this->db->get('gambar');
@@ -94,6 +149,17 @@ function auth(){
 		$this->load->view('login');
 	}
 
+	public function login_pinjam(){
+		$this->load->view('login_pinjam');
+	}
+
+	public function pinjam(){
+		$this->db->where('id', $id);
+    	$data['gambar'] = $this->App_model->view('gambar');
+
+		$this->load->view('pinjam', $data);
+	}
+
 	// Add a new item
 	public function add()
 	{
@@ -103,8 +169,7 @@ function auth(){
 	public function action_add()
 	{
 		$data = array(
-
-			'username'=> $this->session->userdata('username'),
+			'nis'=> $this->session->userdata('ses_id'),
 			'email' => $this->input->post('email'),
 			'pesan' => $this->input->post('pesan')
 		 );

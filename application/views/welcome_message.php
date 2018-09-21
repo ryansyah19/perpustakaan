@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="<?php echo site_url('welcome/about') ?>">About</a></li>
-                        <li><a href="#portfolio" class="page-scroll">Book</a></li>
+                        <li><a href="<?php echo site_url('welcome/index') ?>">Book</a></li>
                         <li><a href="<?php echo site_url('welcome/testimoni') ?>">Testimonial</a></li>
                         <li><a href="<?php echo site_url('welcome/contact') ?>">Contact Us</a></li>
                         <li><a href="<?php echo site_url('welcome/login') ?>">Login</a></li>
@@ -62,17 +62,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                            <!-- Search Fitur -->
                             <?php $atribut = array('class'=>'search-top','id'=>'puser') ; ?>
-                            <?php echo form_open('page/cari',$atribut); ?>
-                                <div class="demo-1 search">
-                                        <span class="icon"><i class="fa fa-search"></i></span>
-                                        <input type="text" name="yangdicari" class="search-item" placeholder="Cari sesuatu yang anda inginkan" />
+                            <?php echo form_open('page/cari_guest',$atribut); ?>
+                                <div class="col-md-8">
+                                    <div class="demo-1 search">
+                                            <span class="icon"><i class="fa fa-search"></i></span>
+                                            <input type="text" name="yangdicari" class="search-item" placeholder="Cari sesuatu yang anda inginkan" />
+                                    </div>
                                 </div>
-                                <select name="cariberdasarkan" class="search-item">
-                                    <option value="">Cari Berdasarkan</option>
-                                    <option value="deskripsi">Judul</option>
-                                    <option value="kategori">Kategori</option>
-                                </select>
-                                <input type="submit" value="cari" class="w3-btn create-admin">
+                                <div class="col-md-3">
+                                    <select name="cariberdasarkan" class="search-item">
+                                        <option value="">Cari Berdasarkan</option>
+                                        <option value="deskripsi">Judul</option>
+                                        <option value="kategori">Kategori</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-1">
+                                    <input type="submit" value="cari" class="w3-btn create-admin">
+                                </div>
 
                             <?php echo form_close(); ?>
                         </div>
@@ -109,7 +115,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="portfolio-item">
                                 <div class="hover-bg"> 
                                     <div class="hover-text">
-                                        <h4><?php echo "<td>".$data->deskripsi."</td>";?></h4>  
+                                        <h4><?php echo "<td>".$data->judul."</td>";?></h4>  
                                         <a href="<?php echo base_url() ?>index.php/gambar/preview_guest/<?php echo $data->id ?>" class="w3-btn read-more">Read More >></a>    
                                     </div> 
                                     <?php

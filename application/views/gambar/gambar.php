@@ -2,12 +2,18 @@
 <a href="<?php echo base_url("index.php/gambar/tambah"); ?>">Tambah Gambar</a><br><br>
 <table border="1" cellpadding="8">
 <tr>
-  <th>Gambar</th>
-  <th>Judul</th>
-  <th>Kategori</th>
-  <th>Nama File</th>
-  <th>Ukuran File</th>
-  <th>Tipe File</th>
+  <td>Kode</td>
+  <td>Gambar</td>
+  <td>Judul</td>
+  <td>Deskripsi</td>
+  <td>Kategori</td>
+  <td>Nama File</td>
+  <td>Pengarang</td>
+  <td>Penerbit</td>
+  <td>Tahun Terbit</td>
+  <td>Stok</td>
+  <td>Jumlah Halaman</td>
+  <td>Action</td>
 </tr>
 <?php
 if( ! empty($gambar)){ // Jika data pada database tidak sama dengan empty (alias ada datanya)
@@ -17,8 +23,6 @@ if( ! empty($gambar)){ // Jika data pada database tidak sama dengan empty (alias
     echo "<td>".$data->deskripsi."</td>";
     echo "<td>".$data->kategori."</td>";
     echo "<td>".$data->nama_file."</td>";
-    echo "<td>".$data->ukuran_file." kB</td>";
-    echo "<td>".$data->tipe_file."</td>";
     echo "</tr>";
   }
 }else{ // Jika data tidak ada

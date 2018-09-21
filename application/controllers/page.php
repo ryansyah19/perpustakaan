@@ -27,4 +27,13 @@ class page extends CI_Controller {
 		$this->load->view('beranda',$data);
 	}
 
+	function cari_guest(){
+		$data['cariberdasarkan']=$this->input->post("cariberdasarkan");
+		$data['yangdicari']=$this->input->post("yangdicari");
+
+		$data['gambar']=$this->app_model->cari($data['cariberdasarkan'],$data['yangdicari']);
+		$data["jumlah"]=count($data['gambar']);
+		$this->load->view('welcome_message',$data);
+	}
+
 }

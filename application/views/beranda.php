@@ -57,24 +57,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="container">
                         <div class="row">
                             <div class="intro-text">
+                                <div class="date fadeInUp" style=" width: 300px;color:#fff; background-repeat: no-repeat;margin-left: auto;margin-right: auto;font-size: 20px;"><?php
+                                    $array_hr= array(1=>"Senin","Selasa","Rabu","Kamis","Jumat","Sabtu","Minggu");
+                                    $hr = $array_hr[date('N')];
+                                    $tgl= date('j');
+                                    $array_bln = array(1=>"Januari","Februari","Maret", "April", "Mei","Juni","Juli","Agustus","September","Oktober", "November","Desember");
+                                    $bln = $array_bln[date('n')];
+                                    $thn = date('Y');
+                                    echo $hr . ", " . $tgl . " " . $bln . " " . $thn . " ";
+                                ?>
+                                </div>
                                 <h1 class="fadeInUp"><strong>GRAFIKA</strong> <span>/</span> Perpustakaan</h1>
                                 <p class="zoomIn">"Ayo! ke perpustakaan SMKN 4 Malang"</p>
                             </div>
                             <!-- Search Fitur -->
                             <?php $atribut = array('class'=>'search-top','id'=>'puser') ; ?>
-							<?php echo form_open('page/cari',$atribut); ?>
-								<div class="demo-1 search">
-					                    <span class="icon"><i class="fa fa-search"></i></span>
-					                    <input type="text" name="yangdicari" class="search-item" placeholder="Cari sesuatu yang anda inginkan" />
-					            </div>
-					            <select name="cariberdasarkan" class="search-item">
-									<option value="">Cari Berdasarkan</option>
-									<option value="deskripsi">Judul</option>
-									<option value="kategori">Kategori</option>
-								</select>
-								<input type="submit" value="cari" class="w3-btn create-admin">
+                            <?php echo form_open('page/cari',$atribut); ?>
+                                <div class="col-md-8">
+                                    <div class="demo-1 search">
+                                            <span class="icon"><i class="fa fa-search"></i></span>
+                                            <input type="text" name="yangdicari" class="search-item" placeholder="Cari sesuatu yang anda inginkan" />
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <select name="cariberdasarkan" class="search-item">
+                                        <option value="">Cari Berdasarkan</option>
+                                        <option value="deskripsi">Judul</option>
+                                        <option value="kategori">Kategori</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-1">
+                                    <input type="submit" value="cari" class="w3-btn create-admin">
+                                </div>
 
-							<?php echo form_close(); ?>
+                            <?php echo form_close(); ?>
                         </div>
                     </div>
                 </div>
@@ -111,7 +127,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="portfolio-item">
                                 <div class="hover-bg"> 
                                     <div class="hover-text">
-                                        <h4><?php echo "<td>".$data->deskripsi."</td>";?></h4>  
+                                        <h4><?php echo "<td>".$data->judul."</td>";?></h4>  
                                         <a href="<?php echo base_url() ?>index.php/gambar/preview_user/<?php echo $data->id ?>" class="w3-btn read-more">Read More >></a>    
                                     </div> 
                                     <?php

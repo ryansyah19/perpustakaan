@@ -73,7 +73,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           if( ! empty($gambar)){ // Jika data pada database tidak sama dengan empty (alias ada datanya)
             foreach($gambar as $data){//Lakukan looping pada variabel gambar dari controller
               echo "<img src='".base_url("images/".$data->nama_file)."' width='100' height='auto' class='img-preview'>";
-              echo "<p class='desc-book'>Nama Buku :  ".$data->deskripsi."</p>";
+              echo "<p class='desc-book'>Judul Buku :  ".$data->judul."</p>";
+              echo "<p class='desc-book'>Deskripsi Buku :  ".$data->deskripsi."</p>";
               echo "<p class='desc-book'>Kategori Buku :  ".$data->kategori."</p>";
               echo "<div class='hover-bg'> <a class='booking-book w3-btn' name='validation-booking' href='".site_url('gambar/harus')."'>Pinjam</a></div>";
             }

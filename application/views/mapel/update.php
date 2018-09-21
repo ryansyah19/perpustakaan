@@ -41,8 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="<?php echo site_url('welcome/admin') ?>" class="page-scroll">Home</a></li>
 						<li><a href="<?php echo site_url('gambar/') ?>" class="page-scroll">Book</a></li>
-						<li><a href="#services" class="page-scroll">Booking</a></li>
-						<li><a href="#services" class="page-scroll">Testimonial</a></li>
+						<li><a href="#services" class="page-scroll">Peminjaman</a></li>
 						<li><a href="<?php echo site_url('crud/index') ?>" class="page-scroll active">Profile</a></li>
 						<li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
 					</ul>
@@ -58,7 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div class="container">
 						<div class="row">
 							<div class="intro-text">
-								<h1 class="label-admin">Halaman Admin | Input Data Profile</h1>
+								<h1 class="label-admin">Halaman Admin | Edit Data Mapel</h1>
 							</div>
 						</div>
 					</div>
@@ -69,31 +68,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="row">
 				<div class="col-md-12">
 					<div class="profile-admin">
-						<h1>Input Data</h1>
-						<form action="<?php echo base_url(); ?>index.php/crud/action_add" method="post" class="card">
-							<p class="label-edit-profile">NIS :</p>
-							<input type="text" name="nis" placeholder="Masukkan NIS" class="form-group-add" required><br>
-							<p class="label-edit-profile">Nama :</p>
-							<input type="text" name="nama" placeholder="Masukkan Nama" class="form-group-add" required><br>
-							<p class="label-edit-profile">Kelas :</p>
-							<input type="text" name="kelas" placeholder="Masukkan kelas" class="form-group-add" required><br>
-							<p class="label-edit-profile">Jurusan :</p>
-							<select name="jurusan" placeholder="Masukkan Jurusan" class="form-group-add" required>
-							    <?php foreach($content2->result() as $data) : ?>
-			                		<option value="<?php echo $data->jurusan;?>"><?php echo $data->jurusan;?></option>
-			            		<?php endforeach ?>
-							</select><br>
-							<p class="label-edit-profile">Tingkatan :</p>
-							<select name="tingkatan" placeholder="Masukkan Tingkatan" class="form-group-add" required>
-								<option value="X">X</option>
-								<option value="XI">XI</option>
-								<option value="XII">XII</option>
-							</select><br>
-							<p class="label-edit-profile">Password :</p>
-							<input type="text" name="password" placeholder="Masukkan password" class="form-group-add" required><br>
-							<input type="submit" value="Save" class=" w3-btn link-action-delete">
-							<input type="button" value="Cancel" class=" w3-btn link-action-delete" onclick="javascript:window.location='<?php echo site_url('crud/index') ?>';">
-						</form>
+						<h1>Edit Data</h1>
+						<?php foreach ($isi->result() as $key2): ?>
+							<form action="<?php echo base_url(); ?>index.php/mapel/action_update/<?php echo $key2->id ?>" method="post" class="card">
+								<p class="label-edit-profile">Mapel :</p>
+								<input type="text" name="mapel" placeholder="Masukkan Mapel" class="form-group-add" required value="<?php echo $key2->mapel ?>"><br>
+								<input type="submit" value="Save" class=" w3-btn link-action-delete">
+								<input type="button" value="Cancel" class=" w3-btn link-action-delete" onclick="javascript:window.location='<?php echo site_url('mapel/index') ?>';">
+							</form>
+						<?php endforeach ?>
 					</div>
 				</div>
 			</div>
@@ -116,5 +99,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<script type="text/javascript" src="<?php echo base_url() ?>asset/js/contact_me.js"></script> 
 		<script type="text/javascript" src="<?php echo base_url() ?>asset/js/main.js"></script>=
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
 </body>
 </html>

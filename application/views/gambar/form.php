@@ -76,11 +76,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <?php echo form_open("gambar/tambah", array('enctype'=>'multipart/form-data')); ?>
                 <table cellpadding="8" id="customers" class="tabel-admin">
                     <p class="label-edit-profile">Judul:</p>
+                    <input type="text" name="input_judul" value="<?php echo set_value('input_judul'); ?>" class="form-group-add" required><br>
+                    <p class="label-edit-profile">Deskripsi:</p>
                     <input type="text" name="input_deskripsi" value="<?php echo set_value('input_deskripsi'); ?>" class="form-group-add" required><br>
                     <p class="label-edit-profile">Kategori:</p>
-                    <input type="text" name="kategori" value="<?php echo set_value('kategori'); ?>" class="form-group-add" required><br>
+                    <input type="text" name="input_kategori" value="<?php echo set_value('input_kategori'); ?>" class="form-group-add" required><br>
                     <p class="label-edit-profile">Gambar :</p>
-                    <input type="file" name="input_gambar" class="form-group-add">
+                    <input type="file" name="input_gambar" class="form-group-add"><br>
+                    <p class="label-edit-profile">Pengarang:</p>
+                    <input type="text" name="input_pengarang" value="<?php echo set_value('input_pengarang'); ?>" class="form-group-add" required><br>
+                    <p class="label-edit-profile">Penerbit:</p>
+                    <input type="text" name="input_penerbit" value="<?php echo set_value('input_penerbit'); ?>" class="form-group-add" required><br>
+                    <p class="label-edit-profile">Tahun Terbit:</p>
+                    <input type="text" name="input_tahunterbit" value="<?php echo set_value('input_tahunterbit'); ?>" class="form-group-add" required><br>
+                    <p class="label-edit-profile">Stok:</p>
+                    <input type="text" name="input_stok" value="<?php echo set_value('input_stok'); ?>" class="form-group-add" required><br>
+                    <p class="label-edit-profile">Jumlah Halaman:</p>
+                    <input type="text" name="input_jml_hal" value="<?php echo set_value('input_jml_hal'); ?>" class="form-group-add" required><br>
                 </table>
                 <input type="submit" name="submit" value="Simpan" class="w3-btn link-action-delete">
                 <a href="<?php echo site_url('gambar/') ?>">
