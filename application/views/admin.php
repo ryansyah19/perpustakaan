@@ -41,7 +41,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="<?php echo site_url('welcome/admin') ?>" class="page-scroll">Home</a></li>
 						<li><a href="<?php echo site_url('gambar/') ?>" class="page-scroll">Book</a></li>
-						<li><a href="#services" class="page-scroll">Peminjaman</a></li>
+						<li><a href="<?php echo site_url('peminjaman/') ?>" class="page-scroll">Peminjaman</a></li>
+						<li><a href="<?php echo site_url('welcome/contact_admin') ?>" class="page-scroll">Contact</a></li>
 						<li><a href="<?php echo site_url('crud/index') ?>" class="page-scroll">Profile</a></li>
 						<li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
 					</ul>
@@ -57,6 +58,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div class="container">
 						<div class="row">
 							<div class="intro-text">
+								 <div class="date fadeInUp" style=" width: 300px;color:#fff; background-repeat: no-repeat;margin-left: auto;margin-right: auto;font-size: 20px;"><?php
+                                    $array_hr= array(1=>"Senin","Selasa","Rabu","Kamis","Jumat","Sabtu","Minggu");
+                                    $hr = $array_hr[date('N')];
+                                    $tgl= date('j');
+                                    $array_bln = array(1=>"Januari","Februari","Maret", "April", "Mei","Juni","Juli","Agustus","September","Oktober", "November","Desember");
+                                    $bln = $array_bln[date('n')];
+                                    $thn = date('Y');
+                                    echo $hr . ", " . $tgl . " " . $bln . " " . $thn . " ";
+                                ?>
+                                </div>
 								<h1 class="fadeInUp"><strong>GRAFIKA</strong> <span>/</span> Perpustakaan</h1>
 								<p class="zoomIn">"Ayo! ke perpustakaan SMKN 4 Malang"</p>
 							</div>
@@ -116,8 +127,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<div class="portfolio-item">
 								<div class="hover-bg">
 									<div class="hover-text">
-										<h4><?php echo "<td>".$data->deskripsi."</td>";?></h4>	
-										<a href="<?php echo base_url() ?>index.php/gambar/preview/<?php echo $data->id ?>" class="w3-btn read-more">Read More >></a> 	
+										<h4><?php echo "<td>".$data->judul."</td>";?></h4>	
+										<a href="<?php echo base_url() ?>index.php/gambar/preview/<?php echo $data->id_buku ?>" class="w3-btn read-more">Read More >></a> 	
 									</div> 
 									<?php
 						              echo "<img src='".base_url("images/".$data->nama_file)."' width='401' height='565' class='img-responsive img-book' alt='Buku Pelajaran'>";

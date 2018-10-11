@@ -41,7 +41,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="<?php echo site_url('welcome/admin') ?>" class="page-scroll">Home</a></li>
 						<li><a href="<?php echo site_url('gambar/') ?>" class="page-scroll">Book</a></li>
-						<li><a href="#services" class="page-scroll">Peminjaman</a></li>
+						<li><a href="<?php echo site_url('peminjaman/') ?>" class="page-scroll">Peminjaman</a></li>
+						<li><a href="<?php echo site_url('welcome/contact_admin') ?>" class="page-scroll">Contact</a></li>
 						<li><a href="<?php echo site_url('crud/index') ?>" class="page-scroll active">Profile</a></li>
 						<li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
 					</ul>
@@ -70,7 +71,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div class="profile-admin">
 						<h1>Edit Data</h1>
 						<?php foreach ($gambar->result() as $data): ?>
-							<form action="<?php echo base_url(); ?>index.php/gambar/action_update/<?php echo $data->id ?>" method="post" class="card">
+							<form action="<?php echo base_url(); ?>index.php/gambar/action_update/<?php echo $data->id_buku ?>" method="post" class="card">
 								<p class="label-edit-profile">Judul:</p>
 			                    <input type="text" name="input_judul" value="<?php echo $data->judul ?>"class="form-group-add" required><br>
 			                    <p class="label-edit-profile">Deskripsi:</p>

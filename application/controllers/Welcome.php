@@ -70,7 +70,7 @@ class Welcome extends CI_Controller {
 
     }
 
-    function auth_pinjam(){
+    function auth_pinjam($id = null){
         $username=htmlspecialchars($this->input->post('username',TRUE),ENT_QUOTES);
         $password=htmlspecialchars($this->input->post('password',TRUE),ENT_QUOTES);
 
@@ -84,7 +84,9 @@ class Welcome extends CI_Controller {
 	            $this->session->set_userdata('akses','1');
 	            $this->session->set_userdata('ses_id',$data['nip']);
 	            $this->session->set_userdata('ses_nama',$data['nama']);
-	            redirect('welcome/pinjam');
+	            $this->db->where('id_buku',$id);
+				$data['gambar'] = $this->app_model->view('gambar');
+				$this->load->view('gambar/preview_user', $data);
         }
 
         elseif($cek_siswa->num_rows() > 0){ //jika login sebagai mahasiswa
@@ -94,7 +96,9 @@ class Welcome extends CI_Controller {
 						$this->session->set_userdata('akses','2');
 						$this->session->set_userdata('ses_id',$data['nis']);
 						$this->session->set_userdata('ses_nama',$data['nama']);
-						redirect('welcome/beranda');
+						$this->db->where('id_buku',$id);
+						$data['gambar'] = $this->app_model->view('gambar');
+						$this->load->view('gambar/preview_user', $data);
 						
 					}else{  // jika username dan password tidak ditemukan atau salah
 						$url=base_url();
@@ -110,7 +114,9 @@ class Welcome extends CI_Controller {
 							$this->session->set_userdata('akses','3');
 							$this->session->set_userdata('ses_id',$data['username']);
 							$this->session->set_userdata('ses_nama',$data['nama']);
-							redirect('gambar/preview_user');
+							$this->db->where('id_buku',$id);
+							$data['gambar'] = $this->app_model->view('gambar');
+						$this->load->view('gambar/preview_user', $data);
 					}else{  // jika username dan password tidak ditemukan atau salah
 							$url=base_url();
 							echo $this->session->set_flashdata('msg','Username Atau Password Salah');
@@ -149,17 +155,6 @@ class Welcome extends CI_Controller {
 		$this->load->view('login');
 	}
 
-	public function login_pinjam(){
-		$this->load->view('login_pinjam');
-	}
-
-	public function pinjam(){
-		$this->db->where('id', $id);
-    	$data['gambar'] = $this->App_model->view('gambar');
-
-		$this->load->view('pinjam', $data);
-	}
-
 	// Add a new item
 	public function add()
 	{
@@ -177,6 +172,21 @@ class Welcome extends CI_Controller {
 		$this->db->insert('contact', $data);
 
 		redirect('welcome/beranda','refresh');
+	}
+
+	public function contact_admin()
+	{
+		$data['contact'] = $this->db->get('contact');
+
+		$this->load->view('contact_admin', $data);
+	}
+
+	public function delete_contact( $id = NULL )
+	{
+		$this->db->where('id', $id);
+		$this->db->delete('contact');
+
+		redirect('welcome/contact_admin','refresh');
 	}
 
 	public function about(){
@@ -202,5 +212,4 @@ class Welcome extends CI_Controller {
 	public function contact_user(){
 		$this->load->view('contact_user');
 	}
-
 }

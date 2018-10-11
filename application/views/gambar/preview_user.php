@@ -69,6 +69,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="profile-admin">
       <h1>Preview Book</h1><hr>
         <table border="1" class="tabel-admin">
+        <div style="padding-top: 3%;">
           <?php
           if( ! empty($gambar)){ // Jika data pada database tidak sama dengan empty (alias ada datanya)
             foreach($gambar as $data){//Lakukan looping pada variabel gambar dari controller
@@ -76,13 +77,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               echo "<p class='desc-book'>Judul Buku :  ".$data->judul."</p>";
               echo "<p class='desc-book'>Deskripsi Buku :  ".$data->deskripsi."</p>";
               echo "<p class='desc-book'>Kategori Buku :  ".$data->kategori."</p>";
-              echo "<div class='hover-bg'> <a class='booking-book w3-btn' name='validation-booking' href='".site_url('gambar/peminjaman')."'>Pinjam</a></div>";
+              echo "<p class='desc-book'>Pengarang Buku :  ".$data->pengarang."</p>";
+              echo "<p class='desc-book'>Penerbit Buku :  ".$data->penerbit."</p>";
+              echo "<p class='desc-book'>Tahun Terbit :  ".$data->tahunterbit."</p>";
+              echo "<p class='desc-book'>Jumlah Halaman :  ".$data->jml_hal."</p>";
+              if ($data->stok>0){
+                echo "<div class='hover-bg'> <a class='booking-book w3-btn' name='validation-booking' href='".site_url('gambar/peminjaman/'.$data->id_buku)."'>Pinjam</a></div>";
+              }
+              else{
+                echo "<p class='desc-book' style='text-transform:uppercase;font-size:30px;color:#ff0059;font-weight:400;'>Maaf stok sudah habis</p>";
+              }
             }
           }
           else{ // Jika data tidak ada
             echo "<tr><td colspan='5'>Data tidak ada</td></tr>";
           } 
           ?>
+          </div>
         </table>
     </div>
 

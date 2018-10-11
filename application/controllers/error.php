@@ -16,4 +16,8 @@ class error extends CI_Controller {
 		$this->load->view('error404.php');
 	}
 
+	function error2(){
+		$this->load->view('error2.php');
+	}
+
 }

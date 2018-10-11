@@ -76,7 +76,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               echo "<p class='desc-book'>Judul Buku :  ".$data->judul."</p>";
               echo "<p class='desc-book'>Deskripsi Buku :  ".$data->deskripsi."</p>";
               echo "<p class='desc-book'>Kategori Buku :  ".$data->kategori."</p>";
-              echo "<div class='hover-bg'> <a class='booking-book w3-btn' name='validation-booking' href='".site_url('gambar/harus')."'>Pinjam</a></div>";
+              echo "<div class='hover-bg'> <a class='booking-book w3-btn' name='validation-booking' href='".site_url('gambar/harus/'.$data->id_buku)."'>Pinjam</a></div>";
             }
           }
           else{ // Jika data tidak ada

@@ -39,10 +39,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="<?php echo site_url('welcome/about_user') ?>">About</a></li>
-                        <li><a href="<?php echo site_url('welcome/beranda') ?>">Book</a></li>
-                        <li><a href="<?php echo site_url('welcome/testimoni_user') ?>">Testimonial</a></li>
-                        <li><a href="<?php echo site_url('welcome/contact_user') ?>">Contact Us</a></li>
+                        <li><a href="<?php echo site_url('welcome/admin') ?>" class="page-scroll">Home</a></li>
+                        <li><a href="<?php echo site_url('gambar/') ?>" class="page-scroll">Book</a></li>
+                        <li><a href="<?php echo site_url('peminjaman/') ?>" class="page-scroll">Peminjaman</a></li>
+                        <li><a href="<?php echo site_url('welcome/contact_admin') ?>" class="page-scroll">Contact</a></li>
+                        <li><a href="<?php echo site_url('crud/index') ?>" class="page-scroll">Profile</a></li>
                         <li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
                     </ul>
                 </div>
@@ -57,96 +58,75 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="container">
                         <div class="row">
                             <div class="intro-text">
-                                <div class="date fadeInUp" style=" width: 300px;color:#fff; background-repeat: no-repeat;margin-left: auto;margin-right: auto;font-size: 20px;"><?php
-                                    $array_hr= array(1=>"Senin","Selasa","Rabu","Kamis","Jumat","Sabtu","Minggu");
-                                    $hr = $array_hr[date('N')];
-                                    $tgl= date('j');
-                                    $array_bln = array(1=>"Januari","Februari","Maret", "April", "Mei","Juni","Juli","Agustus","September","Oktober", "November","Desember");
-                                    $bln = $array_bln[date('n')];
-                                    $thn = date('Y');
-                                    echo $hr . ", " . $tgl . " " . $bln . " " . $thn . " ";
-                                ?>
-                                </div>
                                 <h1 class="fadeInUp"><strong>GRAFIKA</strong> <span>/</span> Perpustakaan</h1>
                                 <p class="zoomIn">"Ayo! ke perpustakaan SMKN 4 Malang"</p>
                             </div>
-                            <!-- Search Fitur -->
-                            <?php $atribut = array('class'=>'search-top','id'=>'puser') ; ?>
-                            <?php echo form_open('page/cari',$atribut); ?>
-                                <div class="col-md-8">
-                                    <div class="demo-1 search">
-                                            <span class="icon"><i class="fa fa-search"></i></span>
-                                            <input type="text" name="yangdicari" class="search-item" placeholder="Cari sesuatu yang anda inginkan" />
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <select name="cariberdasarkan" class="search-item">
-                                        <option value="">Cari Berdasarkan</option>
-                                        <option value="deskripsi">Judul</option>
-                                        <option value="kategori">Kategori</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-1">
-                                    <input type="submit" value="cari" class="w3-btn create-admin">
-                                </div>
-
-                            <?php echo form_close(); ?>
                         </div>
                     </div>
                 </div>
             </div>
         </header>
     <div>
-        <!-- Portfolio Section -->
-        <div id="portfolio">
+        
+        <!-- Contact Section -->
+        <div id="contact">
             <div class="container">
-                <div class="section-title text-center center">
-                    <h2>Book</h2>
+                <div class="section-title text-center">
+                    <h2>Peminjaman</h2>
                     <hr>
-                    <p>Buku di Perpustakaan SMKN 4 Malang kini tersedia secara online !</p>
                 </div>
-                <div class="categories">
-                    <ul class="cat">
-                        <li>
-                            <ol class="type">
-                                <li><a href="#" data-filter="*" class="active">All Projects</a></li>
-                            </ol>
-                        </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-
-                
-                <div class="row">
-                    <div class="portfolio-items">
-                    <?php
-                        if( ! empty($gambar)){ // Jika data pada database tidak sama dengan empty (alias ada datanya)
-                        foreach($gambar->result() as $data){
-                    ?>
-                        <div class="col-sm-6 col-md-3 col-lg-3 residential">
-                            <div class="portfolio-item">
-                                <div class="hover-bg"> 
-                                    <div class="hover-text">
-                                        <h4><?php echo "<td>".$data->judul."</td>";?></h4>  
-                                        <a href="<?php echo base_url() ?>index.php/gambar/preview_user/<?php echo $data->id_buku ?>" class="w3-btn read-more">Read More >></a>    
-                                    </div> 
-                                    <?php
-                                      echo "<img src='".base_url("images/".$data->nama_file)."' width='401' height='565' class='img-responsive img-book' alt='Buku Pelajaran'>";
-                                    ?>
-                                </div>
-                            </div>
-                        </div>
-                        <?php
+                <div class="profile-admin">
+            <table border="1" class="tabel-admin" id="customers">
+                <tr class="title-field">
+                    <td>NIS/NIP</td>
+                    <td>Kode Buku</td>
+                    <td>Judul Buku</td>
+                    <td>Tanggal Pinjam</td>
+                    <td>Jatuh Tempo</td>
+                    <td>Tanggal Kembali</td>
+                    <td>Denda</td>
+                    <td>Action</td>
+                </tr>
+                <?php foreach ($peminjaman->result() as $data): ?>
+                    <tr>
+                        <td><?php echo $data->id_anggota ?></td>
+                        <td><?php echo $data->id_buku ?></td>
+                        <td><?php echo $data->judul ?></td>
+                        <td><?php echo $data->tgl_pinjam ?></td>
+                        <td><?php echo $data->tgl_kembali ?></td>
+                        <td><?php $data->sebenarnya=date('d-m-Y');
+                                if($data->sebenarnya<=$data->tgl_kembali){
+                                    echo $data->sebenarnya;
                                 }
-                              }
-                              else{ // Jika data tidak ada
-                                echo "<tr><td colspan='5'>Data tidak ada</td></tr>";
-                              } 
-                        ?>
-                    </div>
-                </div>
+                                else{
+                                    echo"0";
+                                }
+                        ?></td>
+                        <td><?php $data->denda;
+                                if($data->tgl_kembali>$data->sebenarnya){
+                                $data->denda=$data->sebenarnya-$data->tgl_kembali;
+                                $data->denda;
+                                    if($data->denda<=0){
+                                        echo $data->denda=0;
+                                    }
+                                    elseif($data->denda>0){
+                                        echo "Rp" . $data->denda*1000;
+                                    }
+                            }
+                            elseif($data->tgl_kembali<$data->sebenarnya){
+                                    echo "0";
+                                }
+                         ?></td>
+                        <td>
+                            <a href="<?php echo base_url() ?>index.php/gambar/delete_pinjam/<?php echo $data->id_pinjam ?>" class=" w3-btn link-action-delete action-button" onclick="myFunction()">Sudah Kembali</a>
+                        </td>
+                    </tr>   
+                <?php endforeach ?> 
+            </table>
+        </div>
             </div>
         </div>
+
         <div id="footer">
             <div class="container text-center">
                 <div class="social">
@@ -191,6 +171,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         }, 5000);
                         
                 });
+
+                function myFunction() {
+                    alert("Anda yakin ? ingin menghapus data ?");
+                }
         </script>
 
 </body>

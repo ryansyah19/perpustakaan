@@ -58,47 +58,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div class="container">
 						<div class="row">
 							<div class="intro-text">
-								<h1 class="label-admin">Halaman Admin | Edit Data Profile</h1>
+								<h1 class="label-admin">Halaman Admin | Contact</h1>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</header>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="profile-admin">
-						<h1>Edit Data</h1>
-						<?php foreach ($content->result() as $key): ?>
-							<form action="<?php echo base_url(); ?>index.php/crud/action_update/<?php echo $key->id ?>" method="post" class="card">
-								<p class="label-edit-profile">NIS :</p>
-								<input type="text" name="nis" placeholder="Masukkan NIS" value="<?php echo $key->nis ?>" class="form-group-add"><br>
-								<p class="label-edit-profile">Nama :</p>
-								<input type="text" name="nama" placeholder="Masukkan Nama" value="<?php echo $key->nama ?>" class="form-group-add"><br>
-								<p class="label-edit-profile">Kelas :</p>
-								<input type="text" name="kelas" placeholder="Masukkan Kelas" value="<?php echo $key->kelas ?>" class="form-group-add"><br>
-								<p class="label-edit-profile">Jurusan :</p>
-								<select name="jurusan" placeholder="Masukkan Jurusan" value="<?php echo $key->jurusan ?>" class="form-group-add">
-								    <?php foreach($content2->result() as $data) : ?>
-				                		<option value="<?php echo $data->jurusan;?>"><?php echo $data->jurusan;?></option>
-				            		<?php endforeach ?>
-								</select><br>
-								<p class="label-edit-profile">Tingkatan :</p>		
-								<select name="tingkatan" placeholder="Masukkan Tingkatan" value="<?php echo $key->tingkatan ?>" class="form-group-add">
-								  <option value="X">X</option>
-								  <option value="XI">XI</option>
-								  <option value="XII">XII</option>
-								</select><br>
-								<p class="label-edit-profile">Password :</p>
-								<input type="text" name="password" placeholder="Masukkan Password" value="<?php echo $key->password ?>" class="form-group-add"><br>
-								<input type="submit" value="Save" class=" w3-btn link-action-delete">
-								<input type="button" value="Cancel" class=" w3-btn link-action-delete" onclick="javascript:window.location='<?php echo site_url('crud/index') ?>';">
-							</form>
-						<?php endforeach ?>
-					</div>
-				</div>
-			</div>
+		<div class="profile-admin">
+			<h1>Data Contact Admin</h1><hr>
+			<table border="1" class="tabel-admin" id="customers">
+				<tr class="title-field">
+					<td>ID :</td>
+					<td>NIS :</td>
+					<td>Email :</td>
+					<td>Pesan :</td>
+					<td>Action</td>
+				</tr>
+				<?php foreach ($contact->result() as $data): ?>
+					<tr>
+						<td><?php echo $data->id ?></td>
+						<td><?php echo $data->nis ?></td>
+						<td><?php echo $data->email ?></td>
+						<td><?php echo $data->pesan ?></td>
+						<td>
+							<a href="<?php echo base_url() ?>index.php/welcome/delete_contact/<?php echo $data->id ?>" class=" w3-btn link-action-delete action-button">Selesai</a>
+						</td>
+					</tr>	
+				<?php endforeach ?>	
+			</table>
 		</div>
 
 		<div id="footer">

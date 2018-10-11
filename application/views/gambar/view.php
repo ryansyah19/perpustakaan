@@ -41,7 +41,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <ul class="nav navbar-nav navbar-right">
             <li><a href="<?php echo site_url('welcome/admin') ?>" class="page-scroll">Home</a></li>
             <li><a href="<?php echo site_url('gambar/') ?>" class="page-scroll">Book</a></li>
-            <li><a href="#services" class="page-scroll">Peminjaman</a></li>
+            <li><a href="<?php echo site_url('peminjaman/') ?>" class="page-scroll">Peminjaman</a></li>
+            <li><a href="<?php echo site_url('welcome/contact_admin') ?>" class="page-scroll">Contact</a></li>
             <li><a href="<?php echo site_url('crud/index') ?>" class="page-scroll">Profile</a></li>
             <li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
           </ul>
@@ -86,7 +87,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           if( ! empty($gambar)){ // Jika data pada database tidak sama dengan empty (alias ada datanya)
             foreach($gambar as $key){//Lakukan looping pada variabel gambar dari controller
               echo "<tr>";
-              echo "<td>".$key->id."</td>";
+              echo "<td>".$key->id_buku."</td>";
               echo "<td><img src='".base_url("images/".$key->nama_file)."' width='100' height='138'></td>";
               echo "<td>".$key->judul."</td>";
               echo "<td>".$key->deskripsi."</td>";
@@ -98,9 +99,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               echo "<td>".$key->stok."</td>";
               echo "<td>".$key->jml_hal."</td>";
               echo "<td>
-                      <a class='w3-btn  link-action-read action-button' href='".base_url("index.php/gambar/read/".$key->id)."'>Detail</a>
-                      <a class='w3-btn  link-action-update action-button' href='".base_url("index.php/gambar/update/".$key->id)."'>Edit</a>
-                      <a class='w3-btn  link-action-delete action-button' href='".base_url("index.php/gambar/delete/".$key->id)."'>Delete</a>
+                      <a class='w3-btn  link-action-read action-button' href='".base_url("index.php/gambar/read/".$key->id_buku)."'>Detail</a>
+                      <a class='w3-btn  link-action-update action-button' href='".base_url("index.php/gambar/update/".$key->id_buku)."'>Edit</a>
+                      <a class='w3-btn  link-action-delete action-button' href='".base_url("index.php/gambar/delete/".$key->id_buku)."'>Delete</a>
                     </td>";
               echo "</tr>";
             }

@@ -57,96 +57,64 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="container">
                         <div class="row">
                             <div class="intro-text">
-                                <div class="date fadeInUp" style=" width: 300px;color:#fff; background-repeat: no-repeat;margin-left: auto;margin-right: auto;font-size: 20px;"><?php
-                                    $array_hr= array(1=>"Senin","Selasa","Rabu","Kamis","Jumat","Sabtu","Minggu");
-                                    $hr = $array_hr[date('N')];
-                                    $tgl= date('j');
-                                    $array_bln = array(1=>"Januari","Februari","Maret", "April", "Mei","Juni","Juli","Agustus","September","Oktober", "November","Desember");
-                                    $bln = $array_bln[date('n')];
-                                    $thn = date('Y');
-                                    echo $hr . ", " . $tgl . " " . $bln . " " . $thn . " ";
-                                ?>
-                                </div>
                                 <h1 class="fadeInUp"><strong>GRAFIKA</strong> <span>/</span> Perpustakaan</h1>
                                 <p class="zoomIn">"Ayo! ke perpustakaan SMKN 4 Malang"</p>
                             </div>
-                            <!-- Search Fitur -->
-                            <?php $atribut = array('class'=>'search-top','id'=>'puser') ; ?>
-                            <?php echo form_open('page/cari',$atribut); ?>
-                                <div class="col-md-8">
-                                    <div class="demo-1 search">
-                                            <span class="icon"><i class="fa fa-search"></i></span>
-                                            <input type="text" name="yangdicari" class="search-item" placeholder="Cari sesuatu yang anda inginkan" />
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <select name="cariberdasarkan" class="search-item">
-                                        <option value="">Cari Berdasarkan</option>
-                                        <option value="deskripsi">Judul</option>
-                                        <option value="kategori">Kategori</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-1">
-                                    <input type="submit" value="cari" class="w3-btn create-admin">
-                                </div>
-
-                            <?php echo form_close(); ?>
                         </div>
                     </div>
                 </div>
             </div>
         </header>
     <div>
-        <!-- Portfolio Section -->
-        <div id="portfolio">
+        
+        <!-- Contact Section -->
+        <div id="contact">
             <div class="container">
-                <div class="section-title text-center center">
-                    <h2>Book</h2>
+                <div class="section-title text-center">
+                    <h2>Peminjaman</h2>
                     <hr>
-                    <p>Buku di Perpustakaan SMKN 4 Malang kini tersedia secara online !</p>
+                    <p>Silahkan isi form dan pilih buku sesuai kebutuhan anda</p>
                 </div>
-                <div class="categories">
-                    <ul class="cat">
-                        <li>
-                            <ol class="type">
-                                <li><a href="#" data-filter="*" class="active">All Projects</a></li>
-                            </ol>
-                        </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-
-                
-                <div class="row">
-                    <div class="portfolio-items">
-                    <?php
-                        if( ! empty($gambar)){ // Jika data pada database tidak sama dengan empty (alias ada datanya)
-                        foreach($gambar->result() as $data){
-                    ?>
-                        <div class="col-sm-6 col-md-3 col-lg-3 residential">
-                            <div class="portfolio-item">
-                                <div class="hover-bg"> 
-                                    <div class="hover-text">
-                                        <h4><?php echo "<td>".$data->judul."</td>";?></h4>  
-                                        <a href="<?php echo base_url() ?>index.php/gambar/preview_user/<?php echo $data->id_buku ?>" class="w3-btn read-more">Read More >></a>    
-                                    </div> 
-                                    <?php
-                                      echo "<img src='".base_url("images/".$data->nama_file)."' width='401' height='565' class='img-responsive img-book' alt='Buku Pelajaran'>";
-                                    ?>
-                                </div>
-                            </div>
-                        </div>
+                <div class="col-md-12 card">
+                      <table border="1" class="tabel-admin">
                         <?php
-                                }
-                              }
-                              else{ // Jika data tidak ada
-                                echo "<tr><td colspan='5'>Data tidak ada</td></tr>";
-                              } 
+                        if( ! empty($gambar)){ // Jika data pada database tidak sama dengan empty (alias ada datanya)
+                          foreach($gambar as $data){//Lakukan looping pada variabel gambar dari controller
+
+                            echo"<form action='".base_url()."index.php/gambar/action_add' method='post'>";
+                            echo"<img src='".base_url("images/".$data->nama_file)."' width='100' height='auto' class='img-preview'>";
+                            echo "<p class='label-edit-profile hidden'>ID Buku : </p>";
+                            echo "<input type='text' name='id_buku' value='".$data->id_buku."' class='form-group-add' readonly hidden></input><br>";
+                            echo "<p class='label-edit-profile'>ID Buku : </p>";
+                            echo "<input type='text' name='id_buku' value='".$data->id_buku."' class='form-group-add' readonly></input><br>";
+                            echo "<p class='label-edit-profile'>Judul Buku : </p>";
+                            echo "<input type='text' name='judul' value='".$data->judul."' class='form-group-add' readonly></input><br>";
+                            echo "<p class='label-edit-profile'>NIS / NIP : </p>";
+                            echo "<input type='text' name='id_anggota' value=".$this->session->userdata('ses_id')." class='form-group-add' readonly></input><br>";
+                            echo "<p class='label-edit-profile'>Tanggal Pinjam : </p>";
+                            echo "<input type='text' name='pinjam' value='".$tgl=date('d-')+0,date('-m-'),date('Y')."' class='form-group-add' readonly></input><br>";
+                            echo "<p class='label-edit-profile'>Tanggal Kembali : </p>";
+                            echo "<input type='text' name='kembali' value='".$tgl2=date('d-')+3,date('-m-'),date('Y')."' class='form-group-add' readonly></input><br>";
+                            echo "<div style='display:none;'>";
+                            echo "<p class='label-edit-profile'>Tanggal Sebenarnya : </p>";
+                            echo "<input type='text' name='sebenarnya' value='0' class='form-group-add' readonly></input><br>";
+                            echo "</div>";
+                            echo "<p class='label-edit-profile hidden'>Denda : </p>";
+                            echo "<input type='text' name='denda' value='0' method='post' class='form-group-add hidden' readonly></input><br>";
+                            echo "<input type='submit' name='submit' value='Pinjam' class='form_pinjam btn btn-block bg-pink waves-effect' style='width:200px;height:50px;float:right;margin-right:30%;' onclick='myFunction()'></input><br>";
+                          }
+                        }
+                        else{ // Jika data tidak ada
+                          echo "<tr><td colspan='5'>Data tidak ada</td></tr>";
+                        } 
                         ?>
-                    </div>
+                        </form>
+                      </table>
+                  </div>
                 </div>
             </div>
         </div>
+
         <div id="footer">
             <div class="container text-center">
                 <div class="social">
@@ -191,6 +159,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         }, 5000);
                         
                 });
+
+                function myFunction() {
+                    alert("Terima kasih, data anda berhasil kami proses. Harap segera menuju ke perpustakaan untuk mengambil buku yang sudah anda pinjam");
+                }
         </script>
 
 </body>

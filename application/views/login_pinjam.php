@@ -38,7 +38,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div class="card-login zoomIn">
             <div class="body" id="body">
-            <?php echo form_open('welcome/auth_pinjam'); ?>
+            <?php foreach ($gambar as $data) :?>
+            <form action="<?php echo base_url(); ?>/index.php/welcome/auth_pinjam/<?php echo $data->id_buku ?>" method="post">
+        <?php endforeach ?>
                     <div class="msg">Sign In</div>
                     <div class="input-group">
                         <span class="input-group-addon">
@@ -58,10 +60,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                     <div class="row">
                         <div class="col-xs-4 btn-right">
-                            <input class="btn btn-block bg-pink waves-effect" type="submit" name="login"/>
+                            <?php
+                  if( ! empty($gambar)){ // Jika data pada database tidak sama dengan empty (alias ada datanya)
+                    foreach($gambar as $data){//Lakukan looping pada variabel gambar dari controller
+                      echo "<input class='btn btn-block bg-pink waves-effect' value='Submit' type='submit'></input>";
+                    }
+                  }
+                  else{ // Jika data tidak ada
+                    echo "<tr><td colspan='5'>Data tidak ada</td></tr>";
+                  } 
+                  ?>
                         </div>
                     </div>
-                <?php echo form_close(); ?>
+               </form>
+            </div>
             </div>
         </div>
     </div>

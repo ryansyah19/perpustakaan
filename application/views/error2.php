@@ -18,7 +18,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <!-- Bootstrap Core Css -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/css/bootstrap.css">
@@ -34,20 +33,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/css/style.css">
 </head>
 <body>
-	<div class="error-page-2">
-    	<h1 class="title-error">Maaf ! Silahkan Login terlebih dahulu</h1>
-        <?php
-                  if( ! empty($gambar)){ // Jika data pada database tidak sama dengan empty (alias ada datanya)
-                    foreach($gambar as $data){//Lakukan looping pada variabel gambar dari controller
-                      echo "<div class='hover-bg'> <a class='must-login w3-btn' name='validation-booking' href='".site_url('gambar/login_pinjam/'.$data->id_buku)."'>LOGIN Sekarang</a></div>";
-                    }
-                  }
-                  else{ // Jika data tidak ada
-                    echo "<tr><td colspan='5'>Data tidak ada</td></tr>";
-                  } 
-                  ?>
-		<img src="<?php echo base_url() ?>asset/img/thumbnails/oops.jpg" alt="Error" class="img-responsive">
-                
+	<div class="error-page">
+    	<h1 class="title-error">Maaf, Buku yang anda pinjam sebelumnya belum di kembalikan</h1>
+        <hr style="width: 100%;padding-top:20px;margin-top: 50px;background:#f6434b;">
+		<img src="<?php echo base_url() ?>asset/img/thumbnails/error.jpg" alt="Error" class="img-responsive" style="margin-top: -80px;width: 35%;">
 	</div>
 </body>
 </html>
