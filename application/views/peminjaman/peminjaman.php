@@ -82,11 +82,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                           foreach($gambar as $data){//Lakukan looping pada variabel gambar dari controller
 
                             echo"<form action='".base_url()."index.php/gambar/action_add' method='post'>";
-                            echo"<img src='".base_url("images/".$data->nama_file)."' width='100' height='auto' class='img-preview'>";
+                            echo "<div class='col-md-5'>";
+                            echo"<img src='".base_url("images/".$data->nama_file)."' width='100' height='auto' class='img-peminjaman'>";
+                            echo "</div>";
+                            echo "<div class='col-md-7'>";
                             echo "<p class='label-edit-profile hidden'>ID Buku : </p>";
                             echo "<input type='text' name='id_buku' value='".$data->id_buku."' class='form-group-add' readonly hidden></input><br>";
                             echo "<p class='label-edit-profile'>ID Buku : </p>";
                             echo "<input type='text' name='id_buku' value='".$data->id_buku."' class='form-group-add' readonly></input><br>";
+                            echo "<p class='label-edit-profile'>Nama : </p>";
+                            echo "<input type='text' name='nama' value='".$this->session->userdata('ses_nama')."' class='form-group-add' readonly></input><br>";
+                            echo "<p class='label-edit-profile'>Jurusan / Mapel: </p>";
+                            echo "<input type='text' name='kelas' value='".$this->session->userdata('ses_kelas')."' class='form-group-add' readonly></input><br>";
                             echo "<p class='label-edit-profile'>Judul Buku : </p>";
                             echo "<input type='text' name='judul' value='".$data->judul."' class='form-group-add' readonly></input><br>";
                             echo "<p class='label-edit-profile'>NIS / NIP : </p>";
@@ -102,6 +109,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             echo "<p class='label-edit-profile hidden'>Denda : </p>";
                             echo "<input type='text' name='denda' value='0' method='post' class='form-group-add hidden' readonly></input><br>";
                             echo "<input type='submit' name='submit' value='Pinjam' class='form_pinjam btn btn-block bg-pink waves-effect' style='width:200px;height:50px;float:right;margin-right:30%;' onclick='myFunction()'></input><br>";
+                            echo "</div>";
                           }
                         }
                         else{ // Jika data tidak ada
@@ -161,7 +169,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 });
 
                 function myFunction() {
-                    alert("Terima kasih, data anda berhasil kami proses. Harap segera menuju ke perpustakaan untuk mengambil buku yang sudah anda pinjam");
+                    alert("Terima kasih, data anda akan segera kami proses. Silahkan tunggu beberapa saat");
                 }
         </script>
 

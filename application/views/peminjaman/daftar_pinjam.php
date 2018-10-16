@@ -39,11 +39,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="<?php echo site_url('welcome/admin') ?>" class="page-scroll">Home</a></li>
-                        <li><a href="<?php echo site_url('gambar/') ?>" class="page-scroll">Book</a></li>
-                        <li><a href="<?php echo site_url('peminjaman/') ?>" class="page-scroll">Peminjaman</a></li>
-                        <li><a href="<?php echo site_url('welcome/contact_admin') ?>" class="page-scroll">Contact</a></li>
-                        <li><a href="<?php echo site_url('crud/index') ?>" class="page-scroll">Profile</a></li>
+                        <li><a href="<?php echo site_url('peminjaman/daftar_pinjam') ?>">Home</a></li>
+                        <li><a href="<?php echo site_url('welcome/beranda') ?>">Book</a></li>
+                        <li><a href="<?php echo site_url('welcome/contact_user') ?>">Contact Us</a></li>
                         <li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
                     </ul>
                 </div>
@@ -87,7 +85,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <td>Jatuh Tempo</td>
                     <td>Tanggal Kembali</td>
                     <td>Denda</td>
-                    <td>Action</td>
                 </tr>
                 <?php foreach ($peminjaman->result() as $data): ?>
                     <tr>
@@ -121,9 +118,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     echo "0";
                                 }
                          ?></td>
-                        <td>
-                            <a href="<?php echo base_url() ?>index.php/gambar/delete_pinjam/<?php echo $data->id_anggota?>" class=" w3-btn link-action-delete action-button" onclick="myFunction()">Sudah Kembali</a>
-                        </td>
                     </tr>   
                 <?php endforeach ?> 
             </table>

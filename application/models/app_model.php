@@ -49,7 +49,7 @@ class App_model extends CI_Model {
     $data = array(
       'judul'=>$this->input->post('input_judul'),
       'deskripsi'=>$this->input->post('input_deskripsi'),
-      'nama_file' => $upload['file']['file_name'],
+      'nama_file' => $_FILES['input_gambar']['name'],
       'kategori'=>$this->input->post('input_kategori'),
       'pengarang'=>$this->input->post('input_pengarang'),
       'penerbit'=>$this->input->post('input_penerbit'),

@@ -68,7 +68,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 		<div>
 			<!-- Testimoni Section -->
-        <div id="testimoni" class="text-center">
+        <div id="testimoni" class="text-center" style="margin-top: 5%;margin-bottom: 5%;">
             <div class="overlay">
                 <div class="container">
                     <div class="col-md-8 col-md-offset-2 section-title">

@@ -31,6 +31,7 @@ class Welcome extends CI_Controller {
 	            $this->session->set_userdata('akses','1');
 	            $this->session->set_userdata('ses_id',$data['nip']);
 	            $this->session->set_userdata('ses_nama',$data['nama']);
+	            $this->session->set_userdata('ses_kelas',$data['mapel']);
 	            redirect('welcome/beranda');
         }
 
@@ -41,6 +42,7 @@ class Welcome extends CI_Controller {
 						$this->session->set_userdata('akses','2');
 						$this->session->set_userdata('ses_id',$data['nis']);
 						$this->session->set_userdata('ses_nama',$data['nama']);
+						$this->session->set_userdata('ses_kelas',$data['jurusan']);
 						redirect('welcome/beranda');
 					}else{  // jika username dan password tidak ditemukan atau salah
 						$url=base_url();
@@ -84,6 +86,7 @@ class Welcome extends CI_Controller {
 	            $this->session->set_userdata('akses','1');
 	            $this->session->set_userdata('ses_id',$data['nip']);
 	            $this->session->set_userdata('ses_nama',$data['nama']);
+	            $this->session->set_userdata('ses_kelas',$data['mapel']);
 	            $this->db->where('id_buku',$id);
 				$data['gambar'] = $this->app_model->view('gambar');
 				$this->load->view('gambar/preview_user', $data);
@@ -96,6 +99,7 @@ class Welcome extends CI_Controller {
 						$this->session->set_userdata('akses','2');
 						$this->session->set_userdata('ses_id',$data['nis']);
 						$this->session->set_userdata('ses_nama',$data['nama']);
+						$this->session->set_userdata('ses_kelas',$data['jurusan']);
 						$this->db->where('id_buku',$id);
 						$data['gambar'] = $this->app_model->view('gambar');
 						$this->load->view('gambar/preview_user', $data);

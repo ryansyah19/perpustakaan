@@ -39,11 +39,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="<?php echo site_url('welcome/beranda/#about') ?>" class="page-scroll">About</a></li>
-            <li><a href="<?php echo site_url('welcome/beranda/#portfolio') ?>" class="page-scroll">Book</a></li>
-            <li><a href="<?php echo site_url('welcome/beranda/#testimoni') ?>" class="page-scroll">Testimonial</a></li>
-            <li><a href="<?php echo site_url('welcome/beranda/#contact') ?>" class="page-scroll">Contact Us</a></li>
-            <li><a href="<?php echo site_url('welcome/login') ?>">Login</a></li>
+            <li><a href="<?php echo site_url('welcome/admin') ?>" class="page-scroll">Home</a></li>
+            <li><a href="<?php echo site_url('gambar/') ?>" class="page-scroll">Book</a></li>
+            <li><a href="<?php echo site_url('peminjaman/') ?>" class="page-scroll">Peminjaman</a></li>
+            <li><a href="<?php echo site_url('welcome/contact_admin') ?>" class="page-scroll">Contact</a></li>
+            <li><a href="<?php echo site_url('crud/index') ?>" class="page-scroll">Profile</a></li>
+            <li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
           </ul>
         </div>
         <!-- /.navbar-collapse --> 
@@ -51,15 +52,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </nav>
     
     <!-- Header -->
-    <!-- Header -->
-    <header id="header">
-      <div class="intro" id="image">
+    <header id="header-admin">
+      <div class="intro-admin" id="image">
         <div class="overlay">
           <div class="container">
             <div class="row">
               <div class="intro-text">
-                <h1 class="fadeInUp"><strong>GRAFIKA</strong> <span>/</span> Perpustakaan</h1>
-                <p class="zoomIn">"Ayo! ke perpustakaan SMKN 4 Malang"</p>
+                <h1 class="label-admin">Halaman Admin | CRUD Buku</h1>
               </div>
             </div>
           </div>
@@ -67,21 +66,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
     </header>
     <div class="profile-admin">
-      <h1>Preview Book</h1><hr>
+      <h1>Data Gambar</h1><hr>
+        <a href="<?php echo base_url("index.php/gambar/tambah"); ?>" class="w3-btn create-admin">Create</a><br><br>
         <table border="1" class="tabel-admin">
+          <tr class="title-field">
+            <td>Kode</td>
+            <td>Gambar</td>
+            <td>Judul</td>
+            <td>Deskripsi</td>
+            <td>Kategori</td>
+            <td>Nama File</td>
+            <td>Pengarang</td>
+            <td>Penerbit</td>
+            <td>Tahun Terbit</td>
+            <td>Stok</td>
+            <td>Jumlah Halaman</td>
+            <td>Action</td>
+          </tr>
           <?php
           if( ! empty($gambar)){ // Jika data pada database tidak sama dengan empty (alias ada datanya)
-            foreach($gambar as $data){//Lakukan looping pada variabel gambar dari controller
-              echo "<img src='".base_url("images/".$data->nama_file)."' width='100' height='auto' class='img-preview'>";
-              echo "<p class='desc-book'>Judul Buku :  ".$data->judul."</p>";
-              echo "<p class='desc-book'>Deskripsi Buku :  ".$data->deskripsi."</p>";
-              echo "<p class='desc-book'>Kategori Buku :  ".$data->kategori."</p>";
-              echo "<p class='desc-book'>Pengarang Buku :  ".$data->pengarang."</p>";
-              echo "<p class='desc-book'>Penerbit Buku :  ".$data->penerbit."</p>";
-              echo "<p class='desc-book'>Tahun Terbit :  ".$data->tahunterbit."</p>";
-              echo "<p class='desc-book'>Stok :  ".$data->stok."</p>";
-              echo "<p class='desc-book'>Jumlah Halaman :  ".$data->jml_hal."</p>";
-              echo "<div class='hover-bg'> <a class='booking-book w3-btn' style='float:right;margin-right:20%;' name='validation-booking' href='".site_url('gambar/harus/'.$data->id_buku)."'>Pinjam</a></div>";
+            foreach($gambar as $key){//Lakukan looping pada variabel gambar dari controller
+              echo "<tr>";
+              echo "<td>".$key->id_buku."</td>";
+              echo "<td><img src='".base_url("images/".$key->nama_file)."' width='100' height='138'></td>";
+              echo "<td>".$key->judul."</td>";
+              echo "<td>".$key->deskripsi."</td>";
+              echo "<td>".$key->kategori."</td>";
+              echo "<td>".$key->nama_file."</td>";
+              echo "<td>".$key->pengarang."</td>";
+              echo "<td>".$key->penerbit."</td>";
+              echo "<td>".$key->tahunterbit."</td>";
+              echo "<td>".$key->stok."</td>";
+              echo "<td>".$key->jml_hal."</td>";
+              echo "<td>
+                      <a class='w3-btn  link-action-read action-button' href='".base_url("index.php/gambar/")."'>Kembali</a>
+                    </td>";
+              echo "</tr>";
             }
           }
           else{ // Jika data tidak ada
@@ -108,17 +128,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script type="text/javascript" src="<?php echo base_url() ?>asset/js/contact_me.js"></script> 
     <script type="text/javascript" src="<?php echo base_url() ?>asset/js/main.js"></script>=
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script type="text/javascript">
-    
-        var images = ["buku.jpeg"];
-        $(function () {
-            var i = 0;
-            $("#image").css("background-image", "url(<?php echo base_url() ?>asset/img/thumbnails/" + images[i] + ")");
-            
-        });
-
-    </script>
 
 </body>
 </html>
-

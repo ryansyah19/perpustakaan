@@ -17,6 +17,10 @@ class Peminjaman extends CI_Controller {
 		$this->load->view('peminjaman/daftar', $data);
 	}
 
+	function daftar_pinjam(){
+		$data['peminjaman'] = $this->db->get('peminjaman');
+		$this->load->view('peminjaman/daftar_pinjam',$data);
+	}
 
 
 }

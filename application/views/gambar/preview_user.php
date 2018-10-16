@@ -80,9 +80,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               echo "<p class='desc-book'>Pengarang Buku :  ".$data->pengarang."</p>";
               echo "<p class='desc-book'>Penerbit Buku :  ".$data->penerbit."</p>";
               echo "<p class='desc-book'>Tahun Terbit :  ".$data->tahunterbit."</p>";
+              echo "<p class='desc-book'>Stok :  ".$data->stok."</p>";
               echo "<p class='desc-book'>Jumlah Halaman :  ".$data->jml_hal."</p>";
               if ($data->stok>0){
-                echo "<div class='hover-bg'> <a class='booking-book w3-btn' name='validation-booking' href='".site_url('gambar/peminjaman/'.$data->id_buku)."'>Pinjam</a></div>";
+                echo "<div class='hover-bg'> <a class='booking-book w3-btn' name='validation-booking' style='float:right;margin-right:20%;'href='".site_url('gambar/peminjaman/'.$data->id_buku)."'>Pinjam</a></div>";
               }
               else{
                 echo "<p class='desc-book' style='text-transform:uppercase;font-size:30px;color:#ff0059;font-weight:400;'>Maaf stok sudah habis</p>";

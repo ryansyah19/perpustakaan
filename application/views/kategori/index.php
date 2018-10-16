@@ -58,50 +58,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div class="container">
 						<div class="row">
 							<div class="intro-text">
-								<h1 class="label-admin">Halaman Admin | Edit Data Buku</h1>
+								<h1 class="label-admin">Halaman Admin | CRUD Kategori</h1>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</header>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="profile-admin">
-						<h1>Edit Data</h1>
-						<?php foreach ($gambar->result() as $data): ?>
-							<form action="<?php echo base_url(); ?>index.php/gambar/action_update/<?php echo $data->id_buku ?>" method="post" class="card" enctype="multipart/form-data">
-								<p class="label-edit-profile">Judul:</p>
-			                    <input type="text" name="input_judul" value="<?php echo $data->judul ?>"class="form-group-add" required><br>
-			                    <p class="label-edit-profile">Deskripsi:</p>
-			                    <textarea name="input_deskripsi" class="deskripsi_text" required>
-			                    	<?php echo $data->deskripsi ?>
-			                    </textarea><br>
-			                    <p class="label-edit-profile">Kategori :</p>
-								<select name="input_kategori" value="<?php echo $data->kategori ?>" class="form-group-add">
-								    <?php foreach($content->result() as $data2) : ?>
-				                		<option value="<?php echo $data2->kategori;?>"><?php echo $data2->kategori;?></option>
-				            		<?php endforeach ?><br>
-			                    <p class="label-edit-profile">Gambar :</p>
-			                    <input type="file" name="input_gambar" value="<?php echo $data->nama_file ?>" class="form-group-add"><br>
-			                    <p class="label-edit-profile">Pengarang:</p>
-			                    <input type="text" name="input_pengarang" value="<?php echo $data->pengarang ?>" class="form-group-add" required><br>
-			                    <p class="label-edit-profile">Penerbit:</p>
-			                    <input type="text" name="input_penerbit" value="<?php echo $data->penerbit ?>" class="form-group-add" required><br>
-			                    <p class="label-edit-profile">Tahun Terbit:</p>
-			                    <input type="text" name="input_tahunterbit" value="<?php echo $data->tahunterbit ?>" class="form-group-add" required><br>
-			                    <p class="label-edit-profile">Stok:</p>
-			                    <input type="text" name="input_stok" value="<?php echo $data->stok ?>" class="form-group-add" required><br>
-			                    <p class="label-edit-profile">Jumlah Halaman:</p>
-			                    <input type="text" name="input_jml_hal" value="<?php echo $data->jml_hal ?>" class="form-group-add" required><br>
-								<input type="submit" name="submit" value="Save" class=" w3-btn link-action-delete">
-								<input type="button" value="Cancel" class=" w3-btn link-action-delete" onclick="javascript:window.location='<?php echo site_url('gambar/delete') ?>';">
-							</form>
-						<?php endforeach ?>
-					</div>
-				</div>
-			</div>
+		<div class="profile-admin">
+			<h1>Data Kategori</h1><hr>
+			<a href="<?php echo base_url(); ?>index.php/kategori/add" class="w3-btn create-admin">Create</a>
+			<table border="1" class="tabel-admin" id="customers">
+				<tr class="title-field">
+					<td>ID :</td>
+					<td>Kategori :</td>
+					<td>Action</td>
+				</tr>
+				<?php foreach ($content->result() as $data): ?>
+					<tr>
+						<td><?php echo $data->id ?></td>
+						<td><?php echo $data->kategori ?></td>
+						<td>
+							<a href="<?php echo base_url() ?>index.php/kategori/read/<?php echo $data->id ?>" class="w3-btn  link-action-read">Detail</a>
+							<a href="<?php echo base_url() ?>index.php/kategori/update/<?php echo $data->id ?>" class=" w3-btn link-action-update">Edit</a>
+							<a href="<?php echo base_url() ?>index.php/kategori/delete/<?php echo $data->id ?>" class=" w3-btn link-action-delete">Delete</a>
+						</td>
+					</tr>	
+				<?php endforeach ?>	
+			</table>
 		</div>
 
 		<div id="footer">

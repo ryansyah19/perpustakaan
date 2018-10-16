@@ -66,38 +66,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
     </header>
     <div class="profile-admin">
-      <h1>Data Gambar</h1><hr>
+      <h1>Data Buku</h1><hr>
         <a href="<?php echo base_url("index.php/gambar/tambah"); ?>" class="w3-btn create-admin">Create</a><br><br>
+        <a href="<?php echo base_url("index.php/kategori/add"); ?>" class="w3-btn create-admin">Kategori Baru</a><br><br>
         <table border="1" class="tabel-admin">
           <tr class="title-field">
             <td>Kode</td>
             <td>Gambar</td>
             <td>Judul</td>
-            <td>Deskripsi</td>
             <td>Kategori</td>
-            <td>Nama File</td>
-            <td>Pengarang</td>
-            <td>Penerbit</td>
-            <td>Tahun Terbit</td>
             <td>Stok</td>
-            <td>Jumlah Halaman</td>
             <td>Action</td>
           </tr>
           <?php
           if( ! empty($gambar)){ // Jika data pada database tidak sama dengan empty (alias ada datanya)
             foreach($gambar as $key){//Lakukan looping pada variabel gambar dari controller
               echo "<tr>";
-              echo "<td>".$key->id_buku."</td>";
-              echo "<td><img src='".base_url("images/".$key->nama_file)."' width='100' height='138'></td>";
-              echo "<td>".$key->judul."</td>";
-              echo "<td>".$key->deskripsi."</td>";
-              echo "<td>".$key->kategori."</td>";
-              echo "<td>".$key->nama_file."</td>";
-              echo "<td>".$key->pengarang."</td>";
-              echo "<td>".$key->penerbit."</td>";
-              echo "<td>".$key->tahunterbit."</td>";
-              echo "<td>".$key->stok."</td>";
-              echo "<td>".$key->jml_hal."</td>";
+              echo "<td class='data_buku'>".$key->id_buku."</td>";
+              echo "<td><img src='".base_url("images/".$key->nama_file)."' width='200' height='276'></td>";
+              echo "<td class='data_buku'>".$key->judul."</td>";
+              echo "<td class='data_buku'>".$key->kategori."</td>";
+              echo "<td class='data_buku'>".$key->stok."</td>";
               echo "<td>
                       <a class='w3-btn  link-action-read action-button' href='".base_url("index.php/gambar/read/".$key->id_buku)."'>Detail</a>
                       <a class='w3-btn  link-action-update action-button' href='".base_url("index.php/gambar/update/".$key->id_buku)."'>Edit</a>

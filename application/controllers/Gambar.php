@@ -38,7 +38,7 @@ class Gambar extends CI_Controller {
     $this->db->where('id_buku', $id);
     $data['gambar'] = $this->App_model->view('gambar');
 
-    $this->load->view('gambar/view',$data);
+    $this->load->view('gambar/view_detail',$data);
   }
 
   //Update one item
@@ -46,18 +46,18 @@ class Gambar extends CI_Controller {
   {
     $this->db->where('id_buku', $id);
     $data['gambar'] = $this->db->get('gambar');
+    $data['content'] = $this->db->get('kategori');
 
     $this->load->view('gambar/update', $data);
   }
 
   public function action_update($id= '')
   {
-    $upload=1;
+
     $data = array(
       'judul'=>$this->input->post('input_judul'),
       'deskripsi'=>$this->input->post('input_deskripsi'),
-      'nama_file' => $upload['file']['file_name'],
-      'nama_file'=>$this->input->post('nama_file'),
+      'nama_file' => $_FILES['input_gambar']['name'],
       'kategori'=>$this->input->post('input_kategori'),
       'pengarang'=>$this->input->post('input_pengarang'),
       'penerbit'=>$this->input->post('input_penerbit'),
@@ -77,6 +77,19 @@ class Gambar extends CI_Controller {
       'jml_hal'=>$this->input->post('input_jml_hal')
      );
 
+    if($_POST['submit']){
+      $config['upload_path'] = './images/';
+      $config['allowed_types'] = 'jpg|png|jpeg';
+      $config['max_size']  = '2048';
+      $config['remove_space'] = TRUE;
+      $this->load->library('upload',$config);
+      if($this->upload->do_upload('input_gambar')){
+      }
+      else{
+        $data['nama_file']=$this->upload->data('file_name');
+      }
+
+  
     if(!$data['nama_file']==''){
       $this->db->where('id_buku', $id);
       $this->db->update('gambar', $data);
@@ -87,6 +100,7 @@ class Gambar extends CI_Controller {
       $this->db->update('gambar', $data2);
       redirect('gambar','refresh');
     }
+  }
   }
 
   public function delete( $id = NULL )
@@ -148,6 +162,8 @@ class Gambar extends CI_Controller {
       'id_pinjam' => $this->input->post('id_buku'),
       'id_buku' => $this->input->post('id_buku'),
       'judul' => $this->input->post('judul'),
+      'nama' => $this->input->post('nama'),
+      'kelas' => $this->input->post('kelas'),
       'id_anggota' => $this->input->post('id_anggota'),
       'tgl_pinjam' => $this->input->post('pinjam'),
       'tgl_kembali' => $this->input->post('kembali'),
@@ -157,15 +173,26 @@ class Gambar extends CI_Controller {
     $this->db->insert('peminjaman', $data);
     $id_buku=$data['id_buku'];
     $data=$this->db->query("UPDATE gambar SET stok = stok-1 WHERE id_buku='$id_buku'");
-    redirect('welcome/beranda','refresh');
+    redirect('peminjaman/daftar_pinjam','refresh');
   }
 
-  public function delete_pinjam( $id_pinjam = NULL )
+  public function delete_pinjam( $id_anggota = NULL )
   {
-    $this->db->where('id_pinjam',$id_pinjam);
+    $this->db->where('id_anggota', $id_anggota);
+    $data = $this->db->query("SELECT id_pinjam FROM peminjaman WHERE id_anggota='$id_anggota'");
+           foreach ($data->result_array() as $key) {
+                $key['id_pinjam'];
+           }
+    $id_buku=$key['id_pinjam'];
+    $data2=$this->db->query("UPDATE gambar SET stok = stok+1 WHERE id_buku='$id_buku'");
+    $this->db->where('id_anggota', $id_anggota);
     $this->db->delete('peminjaman');
-    $data2=$this->db->query("UPDATE gambar SET stok = stok+1 WHERE id_buku='$id_pinjam'");
+
     redirect('peminjaman/',$data2);
+    
+    
   }
+
+
 
 }
