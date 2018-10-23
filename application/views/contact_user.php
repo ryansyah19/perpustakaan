@@ -39,10 +39,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="<?php echo site_url('welcome/about_user') ?>">About</a></li>
                         <li><a href="<?php echo site_url('welcome/beranda') ?>">Book</a></li>
-                        <li><a href="<?php echo site_url('welcome/testimoni_user') ?>">Testimonial</a></li>
+                        <li><a href="<?php echo site_url('welcome/daftar_pinjam') ?>">Peminjaman</a></li>
                         <li><a href="<?php echo site_url('welcome/contact_user') ?>">Contact Us</a></li>
+                        <li><a href="<?php echo site_url('crud/update_user') ?>">Profile</a></li>
                         <li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
                     </ul>
                 </div>
@@ -92,15 +92,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <h3>Leave us a message</h3>
                     <form name="sentMessage" id="contactForm" action="<?php echo base_url(); ?>index.php/welcome/action_add" method="post" role="form">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-6 hidden">
                                 <div class="form-group">
-                                    <input type="text" id="nis" class="form-control" required="required" name="nis" value="<?php echo $this->session->userdata('ses_id');?>" disabled>
+                                    <input type="text" id="nis" class="form-control" required="required" name="nis" value="<?php echo $this->session->userdata('ses_id');?>" readonly>
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="email" id="email" class="form-control" placeholder="Email" required="required" name="email">
+                                    <input type="text" id="nama" class="form-control" required="required" name="nama" value="<?php echo $this->session->userdata('ses_nama');?>" readonly>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="email" id="email" class="form-control" placeholder="Email" required="required" name="email" value="<?php echo $this->session->userdata('ses_email');?>">
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
@@ -110,7 +116,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <p class="help-block text-danger"></p>
                         </div>
                         <div id="success"></div>
-                        <button type="submit" class="btn btn-custom btn-lg">Send Message</button>
+                        <button type="submit" class="btn btn-custom btn-lg" onclick="myFunction()">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -160,6 +166,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         }, 5000);
                         
                 });
+
+                function myFunction() {
+                    alert("Terima kasih, pesan anda akan segera kami proses");
+                }
         </script>
 
 </body>

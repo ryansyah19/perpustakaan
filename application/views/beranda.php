@@ -39,10 +39,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="<?php echo site_url('welcome/about_user') ?>">About</a></li>
                         <li><a href="<?php echo site_url('welcome/beranda') ?>">Book</a></li>
-                        <li><a href="<?php echo site_url('welcome/testimoni_user') ?>">Testimonial</a></li>
+                        <li><a href="<?php echo site_url('welcome/daftar_pinjam') ?>">Peminjaman</a></li>
                         <li><a href="<?php echo site_url('welcome/contact_user') ?>">Contact Us</a></li>
+                        <li><a href="<?php echo site_url('crud/update_user') ?>">Profile</a></li>
                         <li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
                     </ul>
                 </div>
@@ -84,6 +84,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <option value="">Cari Berdasarkan</option>
                                         <option value="deskripsi">Judul</option>
                                         <option value="kategori">Kategori</option>
+                                        <option value="penerbit">Penerbit</option>
                                     </select>
                                 </div>
                                 <div class="col-md-1">
@@ -100,11 +101,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- Portfolio Section -->
         <div id="portfolio">
             <div class="container">
+            <?php
+                $id_anggota=$this->session->userdata('ses_id');
+                    $nama=$this->session->userdata('ses_nama');
+                    echo "<div class='user-pinjam text-center center'>";
+                    echo "Hallo! ";
+                    echo $nama;
+                    echo "</div>";
+                    echo "<div class='user-pinjam-2 text-center center'>";
+                    echo "<br>Sudahkah meminjam buku hari ini?";
+                    echo "</div>";
+                ?>
                 <div class="section-title text-center center">
                     <h2>Book</h2>
                     <hr>
                     <p>Buku di Perpustakaan SMKN 4 Malang kini tersedia secara online !</p>
                 </div>
+                <div class='section-title text-center' style='padding-top:5%;'>
                 <div class="categories">
                     <ul class="cat">
                         <li>

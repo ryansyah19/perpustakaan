@@ -164,16 +164,40 @@ class Gambar extends CI_Controller {
       'judul' => $this->input->post('judul'),
       'nama' => $this->input->post('nama'),
       'kelas' => $this->input->post('kelas'),
+      'waktu' => $this->input->post('waktu'),
       'id_anggota' => $this->input->post('id_anggota'),
       'tgl_pinjam' => $this->input->post('pinjam'),
       'tgl_kembali' => $this->input->post('kembali'),
       'sebenarnya' => $this->input->post('sebenarnya'),
-      'denda' => $this->input->post('denda')
+      'denda' => $this->input->post('denda'),
+      'jumlah'=> $this->input->post('jumlah')
      );
     $this->db->insert('peminjaman', $data);
     $id_buku=$data['id_buku'];
     $data=$this->db->query("UPDATE gambar SET stok = stok-1 WHERE id_buku='$id_buku'");
-    redirect('peminjaman/daftar_pinjam','refresh');
+    redirect('welcome/daftar_pinjam','refresh');
+  }
+
+  function action_add_admin()
+  {    
+    $data = array(
+      'id_pinjam' => $this->input->post('id_buku'),
+      'id_buku' => $this->input->post('id_buku'),
+      'judul' => $this->input->post('judul'),
+      'nama' => $this->input->post('nama'),
+      'kelas' => $this->input->post('kelas'),
+      'waktu' => $this->input->post('waktu'),
+      'id_anggota' => $this->input->post('id_anggota'),
+      'tgl_pinjam' => $this->input->post('pinjam'),
+      'tgl_kembali' => $this->input->post('kembali'),
+      'sebenarnya' => $this->input->post('sebenarnya'),
+      'denda' => $this->input->post('denda'),
+      'jumlah'=> $this->input->post('jumlah')
+     );
+    $this->db->insert('peminjaman', $data);
+    $id_buku=$data['id_buku'];
+    $data=$this->db->query("UPDATE gambar SET stok = stok-1 WHERE id_buku='$id_buku'");
+    redirect('peminjaman/','refresh');
   }
 
   public function delete_pinjam( $id_anggota = NULL )

@@ -73,6 +73,10 @@ class kategori extends CI_Controller {
 
 		$this->load->view('kategori/index', $data);
 	}
+
+	public function tutorial(){
+		$this->load->view('kategori/tutorial');
+	}
 }
 
 /* End of file crud.php */

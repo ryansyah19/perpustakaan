@@ -32,6 +32,8 @@ class Welcome extends CI_Controller {
 	            $this->session->set_userdata('ses_id',$data['nip']);
 	            $this->session->set_userdata('ses_nama',$data['nama']);
 	            $this->session->set_userdata('ses_kelas',$data['mapel']);
+	            $this->session->set_userdata('ses_email',$data['email']);
+	            $this->session->set_userdata('ses_level',$data['level']);
 	            redirect('welcome/beranda');
         }
 
@@ -43,6 +45,8 @@ class Welcome extends CI_Controller {
 						$this->session->set_userdata('ses_id',$data['nis']);
 						$this->session->set_userdata('ses_nama',$data['nama']);
 						$this->session->set_userdata('ses_kelas',$data['jurusan']);
+						$this->session->set_userdata('ses_email',$data['email']);
+						$this->session->set_userdata('ses_level',$data['level']);
 						redirect('welcome/beranda');
 					}else{  // jika username dan password tidak ditemukan atau salah
 						$url=base_url();
@@ -67,7 +71,7 @@ class Welcome extends CI_Controller {
         }
         else {
 				echo "<div style='font-size:100px;text-align:center;background:#011627;width:100%;height:100%;margin:0;padding-top:20%;font-weight:900;color:#e40043;font-family: cursive;'> LOGIN GAGAL !!</div>";
-				redirect('welcome/index','refresh');
+				redirect('welcome/login','refresh');
 			}
 
     }
@@ -87,6 +91,9 @@ class Welcome extends CI_Controller {
 	            $this->session->set_userdata('ses_id',$data['nip']);
 	            $this->session->set_userdata('ses_nama',$data['nama']);
 	            $this->session->set_userdata('ses_kelas',$data['mapel']);
+	            $this->session->set_userdata('ses_email',$data['email']);
+	            $this->session->set_userdata('ses_level',$data['level']);
+
 	            $this->db->where('id_buku',$id);
 				$data['gambar'] = $this->app_model->view('gambar');
 				$this->load->view('gambar/preview_user', $data);
@@ -100,6 +107,8 @@ class Welcome extends CI_Controller {
 						$this->session->set_userdata('ses_id',$data['nis']);
 						$this->session->set_userdata('ses_nama',$data['nama']);
 						$this->session->set_userdata('ses_kelas',$data['jurusan']);
+						$this->session->set_userdata('ses_email',$data['email']);
+						$this->session->set_userdata('ses_level',$data['level']);
 						$this->db->where('id_buku',$id);
 						$data['gambar'] = $this->app_model->view('gambar');
 						$this->load->view('gambar/preview_user', $data);
@@ -129,7 +138,7 @@ class Welcome extends CI_Controller {
         }
         else {
 				echo "<div style='font-size:100px;text-align:center;background:#011627;width:100%;height:100%;margin:0;padding-top:20%;font-weight:900;color:#e40043;font-family: cursive;'> LOGIN GAGAL !!</div>";
-				redirect('welcome/index','refresh');
+				redirect('welcome/login','refresh');
 			}
 
     }
@@ -143,6 +152,8 @@ class Welcome extends CI_Controller {
 
 	public function admin()
 	{
+		$data['data']=$this->app_model->get_data_stok2();
+		$data['data2']=$this->app_model->get_data_stok();
 		$data['gambar'] = $this->db->get('gambar');
 		$data['contact']=$this->db->get('contact');
 		$this->load->view('admin',$data);
@@ -169,7 +180,8 @@ class Welcome extends CI_Controller {
 	{
 		$data = array(
 			'nis'=> $this->session->userdata('ses_id'),
-			'email' => $this->input->post('email'),
+			'nama'=> $this->session->userdata('ses_nama'),
+			'email'=> $this->session->userdata('ses_email'),
 			'pesan' => $this->input->post('pesan')
 		 );
 		
@@ -215,5 +227,32 @@ class Welcome extends CI_Controller {
 
 	public function contact_user(){
 		$this->load->view('contact_user');
+	}
+
+	public function daftar_pinjam(){
+		$data['peminjaman'] = $this->db->get('peminjaman');
+		$this->load->view('daftar_pinjam',$data);
+	}
+
+	public function lupa(){
+		$this->load->view('lupa');
+	}
+
+	public function action_lupa()
+	{
+		$data = array(
+			'nis' => $this->input->post('username'),
+			'nama' => $this->input->post('lengkap'),
+			'email' => $this->input->post('email'),
+			'pesan' => $this->input->post('pesan')
+		 );
+
+		$this->db->insert('contact', $data);
+
+		redirect('welcome/','refresh');
+	}
+
+	public function password(){
+		$this->load->view('password');
 	}
 }

@@ -89,6 +89,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<option value="XI">XI</option>
 								<option value="XII">XII</option>
 							</select><br>
+							<p class="label-edit-profile">Email :</p>
+								<input type="text" name="email" placeholder="Masukkan Email" class="form-group-add" required><br>
+								<p class="label-edit-profile">No Telp :</p>
+								<input type="text" name="notelp" placeholder="Masukkan No Telp" class="form-group-add" required><br>
 							<p class="label-edit-profile">Password :</p>
 							<input type="text" name="password" placeholder="Masukkan password" class="form-group-add" required><br>
 							<input type="submit" value="Save" class=" w3-btn link-action-delete">

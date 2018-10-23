@@ -20,6 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<!-- Stylesheet -->
 		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/css/nivo-lightbox/nivo-lightbox.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/css/nivo-lightbox/default.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/css/style.css">
@@ -67,18 +68,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</header>
 		<div class="profile-admin">
 			<h1>Data Contact Admin</h1><hr>
-			<table border="1" class="tabel-admin" id="customers">
-				<tr class="title-field">
-					<td>ID :</td>
-					<td>NIS :</td>
-					<td>Email :</td>
-					<td>Pesan :</td>
-					<td>Action</td>
-				</tr>
+			<table border="1" class="tabel-admin display" id="customers">
+				<thead>
+					<tr class="title-field">
+						<td>ID :</td>
+						<td>NIS :</td>
+						<td>Nama :</td>
+						<td>Email :</td>
+						<td>Pesan :</td>
+						<td>Action</td>
+					</tr>
+				</thead>
+				<tbody>
 				<?php foreach ($contact->result() as $data): ?>
 					<tr>
 						<td><?php echo $data->id ?></td>
 						<td><?php echo $data->nis ?></td>
+						<td><?php echo $data->nama ?></td>
 						<td><?php echo $data->email ?></td>
 						<td><?php echo $data->pesan ?></td>
 						<td>
@@ -86,6 +92,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</td>
 					</tr>	
 				<?php endforeach ?>	
+				</tbody>
 			</table>
 		</div>
 
@@ -104,8 +111,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<script type="text/javascript" src="<?php echo base_url() ?>asset/js/jquery.isotope.js"></script> 
 		<script type="text/javascript" src="<?php echo base_url() ?>asset/js/jqBootstrapValidation.js"></script> 
 		<script type="text/javascript" src="<?php echo base_url() ?>asset/js/contact_me.js"></script> 
-		<script type="text/javascript" src="<?php echo base_url() ?>asset/js/main.js"></script>=
+		<script type="text/javascript" src="<?php echo base_url() ?>asset/js/main.js"></script>
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript">
+        	$(document).ready(function() {
+                $('table.display').DataTable();
+            } );
+        </script>
 
 </body>
 </html>

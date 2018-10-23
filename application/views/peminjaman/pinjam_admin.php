@@ -39,9 +39,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="<?php echo site_url('peminjaman/daftar_pinjam') ?>">Home</a></li>
                         <li><a href="<?php echo site_url('welcome/beranda') ?>">Book</a></li>
+                        <li><a href="<?php echo site_url('welcome/daftar_pinjam') ?>">Peminjaman</a></li>
                         <li><a href="<?php echo site_url('welcome/contact_user') ?>">Contact Us</a></li>
+                        <li><a href="<?php echo site_url('crud/update_user') ?>">Profile</a></li>
                         <li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
                     </ul>
                 </div>
@@ -72,56 +73,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="section-title text-center">
                     <h2>Peminjaman</h2>
                     <hr>
+                    <p>Silahkan isi form dan pilih buku sesuai kebutuhan anda</p>
                 </div>
-                <div class="profile-admin">
-            <table border="1" class="tabel-admin" id="customers">
-                <tr class="title-field">
-                    <td>NIS/NIP</td>
-                    <td>Nama</td>
-                    <td>Kelas/Mapel</td>
-                    <td>Kode Buku</td>
-                    <td>Judul Buku</td>
-                    <td>Tanggal Pinjam</td>
-                    <td>Jatuh Tempo</td>
-                    <td>Tanggal Kembali</td>
-                    <td>Denda</td>
-                </tr>
-                <?php foreach ($peminjaman->result() as $data): ?>
-                    <tr>
-                        <td><?php echo $data->id_anggota ?></td>
-                        <td><?php echo $data->nama ?></td>
-                        <td><?php echo $data->kelas ?></td>
-                        <td><?php echo $data->id_buku ?></td>
-                        <td><?php echo $data->judul ?></td>
-                        <td><?php echo $data->tgl_pinjam ?></td>
-                        <td><?php echo $data->tgl_kembali ?></td>
-                        <td><?php $data->sebenarnya=date('d-m-Y');
-                                if($data->sebenarnya<=$data->tgl_kembali){
-                                    echo $data->sebenarnya;
-                                }
-                                else{
-                                    echo"0";
-                                }
-                        ?></td>
-                        <td><?php $data->denda;
-                                if($data->tgl_kembali>$data->sebenarnya){
-                                $data->denda=$data->sebenarnya-$data->tgl_kembali;
-                                $data->denda;
-                                    if($data->denda<=0){
-                                        echo $data->denda=0;
-                                    }
-                                    elseif($data->denda>0){
-                                        echo "Rp." . $data->denda*1000;
-                                    }
-                            }
-                            elseif($data->tgl_kembali<$data->sebenarnya){
-                                    echo "0";
-                                }
-                         ?></td>
-                    </tr>   
-                <?php endforeach ?> 
-            </table>
-        </div>
+                <div class="col-md-12 card">
+                         <?php
+                            echo"<form action='".base_url()."index.php/gambar/action_add_admin' method='post' class='admin-form-pinjam'>";
+                            echo "<p class='label-edit-pinjam hidden'>ID Buku : </p>";
+                            echo "<input type='text' name='id_buku' class='form-group-add hidden' readonly></input><br>";
+                            echo "<p class='label-edit-pinjam'>ID Buku : </p>";
+                            echo "<input type='text' name='id_buku' class='form-group-add' required></input><br>";
+                            echo "<p class='label-edit-pinjam'>Nama : </p>";
+                            echo "<input type='text' name='nama' class='form-group-add' required></input><br>";
+                            echo "<p class='label-edit-pinjam'>Jurusan / Mapel: </p>";
+                            echo "<input type='text' name='kelas' class='form-group-add' required></input><br>";
+                            echo "<p class='label-edit-pinjam'>Judul Buku : </p>";
+                            echo "<input type='text' name='judul' class='form-group-add' required></input><br>";
+                            echo "<p class='label-edit-pinjam'>NIS / NIP : </p>";
+                            echo "<input type='text' name='id_anggota' class='form-group-add' required></input><br>";
+                            echo "<p class='label-edit-pinjam'>Tanggal Pinjam : </p>";
+                            echo "<input type='text' name='pinjam' value='".$tgl=date('d-')+0,date('-m-'),date('Y')."' class='form-group-add' readonly></input><br>";
+                            echo "<p class='label-edit-pinjam'>Tanggal Kembali : </p>";
+                            echo "<input type='text' name='kembali' value='".$tgl2=date('d-')+3,date('-m-'),date('Y')."' class='form-group-add' readonly></input><br>";
+                            echo "<div style='display:none;'>";
+                            echo "<p class='label-edit-pinjam'>Tanggal Sebenarnya : </p>";
+                            echo "<input type='text' name='sebenarnya' class='form-group-add' readonly></input><br>";
+                            echo "</div>";
+                            echo "<p class='label-edit-pinjam hidden'>Denda : </p>";
+                            echo "<input type='text' name='denda' method='post' class='form-group-add hidden' readonly></input><br>";
+                            echo "<input type='text' name='jumlah' value='1' method='post' class='form-group-add hidden' readonly></input><br>";
+                            echo "<p class='label-edit-pinjam hidden'>Waktu : </p>";
+                            echo "<input type='text' name='waktu' value='".$waktu=gmdate('H:i:sa',time()+60*60*7)."' class='form-group-add hidden' readonly></input><br>";
+                            echo "<input type='submit' name='submit' value='Pinjam' class='form_pinjam btn btn-block bg-pink waves-effect' style='width:200px;height:50px;float:right;margin-right:30%;' onclick='myFunction()'></input><br>";
+                        ?>
+                        </form>
+                  </div>
+                </div>
             </div>
         </div>
 
@@ -171,7 +157,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 });
 
                 function myFunction() {
-                    alert("Anda yakin ? ingin menghapus data ?");
+                    alert("Terima kasih, data anda akan segera kami proses. Silahkan tunggu beberapa saat");
                 }
         </script>
 

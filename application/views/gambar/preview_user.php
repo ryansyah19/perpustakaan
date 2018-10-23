@@ -39,11 +39,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="<?php echo site_url('welcome/about_user') ?>">About</a></li>
-                        <li><a href="<?php echo site_url('welcome/beranda') ?>">Book</a></li>
-                        <li><a href="<?php echo site_url('welcome/testimoni_user') ?>">Testimonial</a></li>
-                        <li><a href="<?php echo site_url('welcome/contact_user') ?>">Contact Us</a></li>
-                        <li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
+            <li><a href="<?php echo site_url('welcome/beranda') ?>">Book</a></li>
+            <li><a href="<?php echo site_url('welcome/daftar_pinjam') ?>">Peminjaman</a></li>
+            <li><a href="<?php echo site_url('welcome/contact_user') ?>">Contact Us</a></li>
+            <li><a href="<?php echo site_url('crud/update_user') ?>">Profile</a></li>
+            <li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
           </ul>
         </div>
         <!-- /.navbar-collapse --> 

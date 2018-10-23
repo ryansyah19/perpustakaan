@@ -20,6 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- Stylesheet -->
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/css/nivo-lightbox/nivo-lightbox.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/css/nivo-lightbox/default.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/css/style.css">
@@ -54,13 +55,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- Header -->
         <header id="header">
             <div class="intro" id="image">
-                <div class="overlay">
-                    <div class="container">
-                        <div class="row">
-                            <div class="intro-text">
-                                <h1 class="fadeInUp"><strong>GRAFIKA</strong> <span>/</span> Perpustakaan</h1>
-                                <p class="zoomIn">"Ayo! ke perpustakaan SMKN 4 Malang"</p>
-                            </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="intro-text">
+                            <h1 class="label-admin">Halaman Admin | Data Peminjaman</h1>
+                            <a href="<?php echo base_url(); ?>index.php/crud/denda" class="w3-btn edit-admin">Edit Denda</a>
                         </div>
                     </div>
                 </div>
@@ -74,21 +73,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="section-title text-center">
                     <h2>Peminjaman</h2>
                     <hr>
+                    <a href="<?php echo base_url("index.php/peminjaman/pinjam_admin"); ?>" class="w3-btn create-admin"> Pinjam Buku</a><br>
                 </div>
                 <div class="profile-admin">
-            <table border="1" class="tabel-admin" id="customers">
+            <table border="1" class="tabel-admin display" id="customers" style="width: 100%;max-width: 100%;">
+          <thead>
                 <tr class="title-field">
                     <td>NIS/NIP</td>
                     <td>Nama</td>
                     <td>Kelas/Mapel</td>
                     <td>Kode Buku</td>
                     <td>Judul Buku</td>
+                    <td>Waktu Pinjam</td>
                     <td>Tanggal Pinjam</td>
                     <td>Jatuh Tempo</td>
                     <td>Tanggal Kembali</td>
                     <td>Denda</td>
                     <td>Action</td>
                 </tr>
+            </thead>
+          <tbody>
                 <?php foreach ($peminjaman->result() as $data): ?>
                     <tr>
                         <td><?php echo $data->id_anggota ?></td>
@@ -96,36 +100,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <td><?php echo $data->kelas ?></td>
                         <td><?php echo $data->id_buku ?></td>
                         <td><?php echo $data->judul ?></td>
+                        <td><?php echo $data->waktu ?></td>
                         <td><?php echo $data->tgl_pinjam ?></td>
                         <td><?php echo $data->tgl_kembali ?></td>
                         <td><?php $data->sebenarnya=date('d-m-Y');
-                                if($data->sebenarnya<=$data->tgl_kembali){
+                                if($data->sebenarnya>=$data->tgl_kembali){
                                     echo $data->sebenarnya;
                                 }
                                 else{
                                     echo"0";
                                 }
                         ?></td>
-                        <td><?php $data->denda;
-                                if($data->tgl_kembali>$data->sebenarnya){
-                                $data->denda=$data->sebenarnya-$data->tgl_kembali;
-                                $data->denda;
-                                    if($data->denda<=0){
-                                        echo $data->denda=0;
-                                    }
-                                    elseif($data->denda>0){
-                                        echo "Rp." . $data->denda*1000;
-                                    }
-                            }
-                            elseif($data->tgl_kembali<$data->sebenarnya){
-                                    echo "0";
-                                }
+                        <td><?php 
+                         $bayar = $this->db->query("SELECT * FROM denda WHERE id='1'");
+                       foreach ($bayar->result_array() as $key) {
+                            $key['denda'];
+                            $uang=$key['denda'];
+                       };
+                    $data->denda=($data->sebenarnya-$data->tgl_kembali)*$uang;
+                    if($data->denda<=0){
+                        $data->denda=0;
+                        echo $data->denda;
+                    }
+                    else{
+                        echo $data->denda;
+                    }
+                                $kirim2=$this->db->query("UPDATE peminjaman SET sebenarnya = '$data->sebenarnya' WHERE id_anggota='$data->id_anggota'");
+                                $kirim=$this->db->query("UPDATE peminjaman SET denda = '$data->denda' WHERE id_anggota='$data->id_anggota'");
                          ?></td>
                         <td>
                             <a href="<?php echo base_url() ?>index.php/gambar/delete_pinjam/<?php echo $data->id_anggota?>" class=" w3-btn link-action-delete action-button" onclick="myFunction()">Sudah Kembali</a>
                         </td>
                     </tr>   
                 <?php endforeach ?> 
+                </tbody>
             </table>
         </div>
             </div>
@@ -157,28 +165,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <script type="text/javascript" src="<?php echo base_url() ?>asset/js/contact_me.js"></script> 
         <script type="text/javascript" src="<?php echo base_url() ?>asset/js/main.js"></script>=
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
         <script type="text/javascript">
         
-                var images = ["buku.jpeg", "book4.jpg", "perpus.jpg", "book2.jpg",];
+                var images = ["back.jpg",];
                 $(function () {
                         var i = 0;
-                        $("#image").css("background-image", "url(<?php echo base_url() ?>asset/img/thumbnails/" + images[i] + ")");
-                        setInterval(function () {
-                                i++;
-                                if (i == images.length) {
-                                        i = 0;
-                                }
-                                $("#image").fadeOut("slow", function () {
-                                        $(this).css("background-image", "url(<?php echo base_url() ?>asset/img/thumbnails/" + images[i] + ")");
-                                        $(this).fadeIn("slow");
-                                });
-                        }, 5000);
+                        $("#image").css("background-image", "url(<?php echo base_url() ?>asset/img/background/" + images[i] + ")");
                         
                 });
 
                 function myFunction() {
                     alert("Anda yakin ? ingin menghapus data ?");
                 }
+                $(document).ready(function() {
+                $('table.display').DataTable();
+            } );
         </script>
 
 </body>

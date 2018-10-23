@@ -39,10 +39,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="<?php echo site_url('welcome/about_user') ?>">About</a></li>
                         <li><a href="<?php echo site_url('welcome/beranda') ?>">Book</a></li>
-                        <li><a href="<?php echo site_url('welcome/testimoni_user') ?>">Testimonial</a></li>
+                        <li><a href="<?php echo site_url('welcome/daftar_pinjam') ?>">Peminjaman</a></li>
                         <li><a href="<?php echo site_url('welcome/contact_user') ?>">Contact Us</a></li>
+                        <li><a href="<?php echo site_url('crud/update_user') ?>">Profile</a></li>
                         <li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
                     </ul>
                 </div>
@@ -87,7 +87,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             echo "</div>";
                             echo "<div class='col-md-7'>";
                             echo "<p class='label-edit-profile hidden'>ID Buku : </p>";
-                            echo "<input type='text' name='id_buku' value='".$data->id_buku."' class='form-group-add' readonly hidden></input><br>";
+                            echo "<input type='text' name='id_buku' value='".$data->id_buku."' class='form-group-add hidden' readonly></input><br>";
                             echo "<p class='label-edit-profile'>ID Buku : </p>";
                             echo "<input type='text' name='id_buku' value='".$data->id_buku."' class='form-group-add' readonly></input><br>";
                             echo "<p class='label-edit-profile'>Nama : </p>";
@@ -104,10 +104,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             echo "<input type='text' name='kembali' value='".$tgl2=date('d-')+3,date('-m-'),date('Y')."' class='form-group-add' readonly></input><br>";
                             echo "<div style='display:none;'>";
                             echo "<p class='label-edit-profile'>Tanggal Sebenarnya : </p>";
-                            echo "<input type='text' name='sebenarnya' value='0' class='form-group-add' readonly></input><br>";
+                            echo "<input type='text' name='sebenarnya' class='form-group-add' readonly></input><br>";
                             echo "</div>";
                             echo "<p class='label-edit-profile hidden'>Denda : </p>";
-                            echo "<input type='text' name='denda' value='0' method='post' class='form-group-add hidden' readonly></input><br>";
+                            echo "<input type='text' name='denda' method='post' class='form-group-add hidden' readonly></input><br>";
+                            echo "<input type='text' name='jumlah' method='post' value='1' class='form-group-add hidden' readonly></input><br>";
+                            echo "<p class='label-edit-profile hidden'>Waktu : </p>";
+                            echo "<input type='text' name='waktu' value='".$waktu=gmdate('H:i:sa',time()+60*60*7)."' class='form-group-add hidden' readonly></input><br>";
                             echo "<input type='submit' name='submit' value='Pinjam' class='form_pinjam btn btn-block bg-pink waves-effect' style='width:200px;height:50px;float:right;margin-right:30%;' onclick='myFunction()'></input><br>";
                             echo "</div>";
                           }

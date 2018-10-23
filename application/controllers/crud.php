@@ -44,6 +44,8 @@ class Crud extends CI_Controller {
 			'kelas' => $this->input->post('kelas'),
 			'jurusan' => $this->input->post('jurusan'),
 			'tingkatan' => $this->input->post('tingkatan'),
+			'email' => $this->input->post('email'),
+			'notelp' => $this->input->post('notelp'),
 			'password' => $this->input->post('password')
 		 );
 
@@ -58,6 +60,8 @@ class Crud extends CI_Controller {
 			'nip' => $this->input->post('nip'),
 			'nama' => $this->input->post('nama'),
 			'mapel' => $this->input->post('mapel'),
+			'email' => $this->input->post('email'),
+			'notelp' => $this->input->post('notelp'),
 			'password' => $this->input->post('password')
 		 );
 
@@ -85,6 +89,13 @@ class Crud extends CI_Controller {
 		$this->load->view('crud/update_guru', $data);
 	}
 
+	public function update_user( $id = NULL )
+	{
+		$data['peminjaman'] = $this->db->get('siswa');
+		$data['peminjaman2'] = $this->db->get('guru');
+		$this->load->view('crud/update_user',$data);
+	}
+
 	public function action_update($id= '')
 	{
 		$data = array(
@@ -93,6 +104,8 @@ class Crud extends CI_Controller {
 			'kelas' => $this->input->post('kelas'),
 			'jurusan' => $this->input->post('jurusan'),
 			'tingkatan' => $this->input->post('tingkatan'),
+			'email' => $this->input->post('email'),
+			'notelp' => $this->input->post('notelp'),
 			'password' => $this->input->post('password')
 		 );
 
@@ -108,6 +121,8 @@ class Crud extends CI_Controller {
 			'nip' => $this->input->post('nip'),
 			'nama' => $this->input->post('nama'),
 			'mapel' => $this->input->post('mapel'),
+			'email' => $this->input->post('email'),
+			'notelp' => $this->input->post('notelp'),
 			'password' => $this->input->post('password')
 		 );
 
@@ -149,6 +164,44 @@ class Crud extends CI_Controller {
 		$data['isi'] = $this->db->get('guru');
 
 		$this->load->view('crud/index_guru', $data);
+	}
+
+	public function admin(){
+		$data['content'] = $this->db->get('admin');
+
+		$this->load->view('crud/admin', $data);
+	}
+
+	public function action_update_admin($id= '')
+	{
+		$data = array(
+			'nama' => $this->input->post('nama'),
+			'username' => $this->input->post('username'),
+			'password' => $this->input->post('password')
+		 );
+
+		$this->db->where('id', $id);
+		$this->db->update('admin', $data);
+
+		redirect('crud','refresh');
+	}
+
+	public function denda(){
+		$data['content'] = $this->db->get('denda');
+
+		$this->load->view('peminjaman/denda', $data);
+	}
+
+	public function action_update_denda($id= '')
+	{
+		$data = array(
+			'denda' => $this->input->post('denda')
+		 );
+
+		$this->db->where('id', $id);
+		$this->db->update('denda', $data);
+
+		redirect('peminjaman','refresh');
 	}
 }
 

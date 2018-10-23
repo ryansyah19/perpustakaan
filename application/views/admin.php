@@ -53,45 +53,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		
 		<!-- Header -->
 		<header id="header">
-			<div class="intro" id="image">
+			<div class="intro-admin" id="image">
 				<div class="overlay">
 					<div class="container">
 						<div class="row">
 							<div class="intro-text">
-								 <div class="date fadeInUp" style=" width: 300px;color:#fff; background-repeat: no-repeat;margin-left: auto;margin-right: auto;font-size: 20px;"><?php
-                                    $array_hr= array(1=>"Senin","Selasa","Rabu","Kamis","Jumat","Sabtu","Minggu");
-                                    $hr = $array_hr[date('N')];
-                                    $tgl= date('j');
-                                    $array_bln = array(1=>"Januari","Februari","Maret", "April", "Mei","Juni","Juli","Agustus","September","Oktober", "November","Desember");
-                                    $bln = $array_bln[date('n')];
-                                    $thn = date('Y');
-                                    echo $hr . ", " . $tgl . " " . $bln . " " . $thn . " ";
-                                ?>
-                                </div>
-								<h1 class="fadeInUp"><strong>GRAFIKA</strong> <span>/</span> Perpustakaan</h1>
-								<p class="zoomIn">"Ayo! ke perpustakaan SMKN 4 Malang"</p>
+								<h1 class="label-admin">Halaman Admin</h1>
 							</div>
-							<!-- Search Fitur -->
-                            <?php $atribut = array('class'=>'search-top','id'=>'puser') ; ?>
-                            <?php echo form_open('page/cari',$atribut); ?>
-                                <div class="col-md-8">
-                                    <div class="demo-1 search">
-                                            <span class="icon"><i class="fa fa-search"></i></span>
-                                            <input type="text" name="yangdicari" class="search-item" placeholder="Cari sesuatu yang anda inginkan" />
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <select name="cariberdasarkan" class="search-item">
-                                        <option value="">Cari Berdasarkan</option>
-                                        <option value="deskripsi">Judul</option>
-                                        <option value="kategori">Kategori</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-1">
-                                    <input type="submit" value="cari" class="w3-btn create-admin">
-                                </div>
-
-                            <?php echo form_close(); ?>
 						</div>
 					</div>
 				</div>
@@ -102,95 +70,38 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div id="portfolio">
 			<div class="container">
 				<div class="section-title text-center center">
-					<h2>Buku</h2>
+					<h2>Statistik Denda</h2>
 					<hr>
-					<p>Silahkan Update Buku Terbaru</p>
-				</div>
-				<div class="categories">
-					<ul class="cat">
-						<li>
-							<ol class="type">
-								<li><a href="#" data-filter="*" class="active">All Book</a></li>
-							</ol>
-						</li>
-					</ul>
-					<div class="clearfix"></div>
+					<?php
+						foreach($data as $data){
+						$merk[] = $data->tgl_pinjam;
+						$stok[] = (float) $data->denda;
+						}
+					?>
+						<h4 class="statistik-denda">Denda</h4>
+						<canvas id="canvas" width="1000" height="280"></canvas>
+						<h4 class="statistik-pinjam">Tanggal Pinjam</h4>
+						<hr style="width:100%;background-color:#e2844d;">
+
+					<h2 style="margin-top: 50px;">Statistik Buku</h2>
+						<hr>
+						<?php
+						foreach($data2 as $data2){
+						$judul[] = $data2->judul;
+						$jumlah[] = (float) $data2->jumlah;
+						}
+						?>
+						<h4 class="statistik-jumlah">Jumlah <br>Peminjaman</h4>
+						<canvas id="canvas2" width="1000" height="280"></canvas>
+						<h4 class="statistik-pinjam">Judul Buku</h4>
 				</div>
 
 				<div class="row">
 					<div class="portfolio-items">
-					<?php
-						if( ! empty($gambar)){ // Jika data pada database tidak sama dengan empty (alias ada datanya)
-					    foreach($gambar->result() as $data){
-					?>
-						<div class="col-sm-6 col-md-3 col-lg-3 residential">
-							<div class="portfolio-item">
-								<div class="hover-bg">
-									<div class="hover-text">
-										<h4><?php echo "<td>".$data->judul."</td>";?></h4>	
-										<a href="<?php echo base_url() ?>index.php/gambar/preview/<?php echo $data->id_buku ?>" class="w3-btn read-more">Read More >></a> 	
-									</div> 
-									<?php
-						              echo "<img src='".base_url("images/".$data->nama_file)."' width='401' height='565' class='img-responsive img-book' alt='Buku Pelajaran'>";
-						          	?>
-								</div>
-							</div>
-						</div>
-						<?php
-					            }
-					          }
-					          else{ // Jika data tidak ada
-					            echo "<tr><td colspan='5'>Data tidak ada</td></tr>";
-					          } 
-						?>
 					</div>
 				</div>
 			</div>
 		</div>
-		
-		<!-- Testimoni Section -->
-		<div id="testimoni" class="text-center">
-			<div class="overlay">
-				<div class="container">
-					<div class="col-md-8 col-md-offset-2 section-title">
-						<h2>Testimonial Siswa</h2>
-						<hr>
-						<p>Apresiasi siswa SMKN 4 Malang terhadap websites ini.</p>
-					</div>
-					<div id="row">
-						<div class="col-md-4 col-sm-8 team">
-							<div class="thumbnail"> <img src="<?php echo base_url() ?>asset/img/thumbnails/afe.jpg" alt="Siswa SMKN 4 Malang" width="684" height="720" class="team-img">
-								<div class="caption">
-									<h3>Afi Lintang C</h3>
-									<p>Siswa Kelas XII RPL A</p>
-									<p>"Webnya sangat bagus & bermanfaat"</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 col-sm-8 team">
-							<div class="thumbnail"> <img src="<?php echo base_url() ?>asset/img/thumbnails/kiki.jpg" alt="Siswa SMKN 4 Malang" width="684" height="720" class="img-circle team-img">
-								<div class="caption">
-									<h3>M Rizqi A</h3>
-									<p>Siswa Kelas XII PD F</p>
-									<p>"Sangat memudahkan Siswa & maupun Guru"</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 col-sm-8 team">
-							<div class="thumbnail"> <img src="<?php echo base_url() ?>asset/img/thumbnails/azalai.jpg" alt="Siswa SMKN 4 Malang" width="837" height="853S" class="img-circle team-img">
-								<div class="caption">
-									<h3>Azalia PB</h3>
-									<p>Siswa Kelas X MM A</p>
-									<p>"Semenjak ada website perpustakaan ini, sangat membantu saya dalam peminjaman buku di perpustakaan SMKN 4 Malang"</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
 		<div id="footer">
 			<div class="container text-center">
 				<div class="social">
@@ -217,24 +128,70 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<script type="text/javascript" src="<?php echo base_url() ?>asset/js/contact_me.js"></script> 
 		<script type="text/javascript" src="<?php echo base_url() ?>asset/js/main.js"></script>=
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-		<script type="text/javascript">
-				var images = ["buku.jpeg", "book4.jpg", "perpus.jpg", "book2.jpg"];
-				$(function () {
-						var i = 0;
-						$("#image").css("background-image", "url(<?php echo base_url() ?>asset/img/thumbnails/" + images[i] + ")");
-						setInterval(function () {
-								i++;
-								if (i == images.length) {
-										i = 0;
-								}
-								$("#image").fadeOut("slow", function () {
-										$(this).css("background-image", "url(<?php echo base_url() ?>asset/img/thumbnails/" + images[i] + ")");
-										$(this).fadeIn("slow");
-								});
-						}, 5000);
-						
-				});
-		</script>
+		<script type="text/javascript" src="<?php echo base_url(); ?>asset/chartjs/Chart.min.js?>"></script>
+
+<script>
+
+        var lineChartData = {
+            labels : <?php echo json_encode($merk);?>,
+            datasets : [
+
+                {
+                    fillColor: "#e60e45",
+                    strokeColor: "#94e610",
+                    pointColor: "#94e610",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "yellow",
+                    data : <?php echo json_encode($stok);?>
+                }
+
+            ],
+            options: {
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero: true
+                      }
+                  }]
+              }
+          }
+        }
+
+    var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Line(lineChartData);
+
+</script>
+<script>
+
+        var lineChartData = {
+            labels : <?php echo json_encode($judul);?>,
+            datasets : [
+
+                {
+                    fillColor: "#94e610",
+                    strokeColor: "#e60e45",
+                    pointColor: "#e60e45",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "#94e610",
+                    data : <?php echo json_encode($jumlah);?>
+                }
+
+            ],
+            options: {
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero: true
+                      }
+                  }]
+              }
+          }
+        }
+
+    var myLine = new Chart(document.getElementById("canvas2").getContext("2d")).Line(lineChartData);
+
+</script>
 
 </body>
 </html>

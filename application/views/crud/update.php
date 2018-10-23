@@ -90,6 +90,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								  <option value="XI">XI</option>
 								  <option value="XII">XII</option>
 								</select><br>
+								<p class="label-edit-profile">Email :</p>
+								<input type="text" name="email" placeholder="Masukkan Email" value="<?php echo $key->email ?>" class="form-group-add"><br>
+								<p class="label-edit-profile">No Telp :</p>
+								<input type="text" name="notelp" placeholder="Masukkan No Telp" value="<?php echo $key->notelp ?>" class="form-group-add"><br>
 								<p class="label-edit-profile">Password :</p>
 								<input type="text" name="password" placeholder="Masukkan Password" value="<?php echo $key->password ?>" class="form-group-add"><br>
 								<input type="submit" value="Save" class=" w3-btn link-action-delete">

@@ -20,6 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<!-- Stylesheet -->
 		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/css/nivo-lightbox/nivo-lightbox.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/css/nivo-lightbox/default.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/css/style.css">
@@ -59,6 +60,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<div class="row">
 							<div class="intro-text">
 								<h1 class="label-admin">Halaman Admin | CRUD Profile</h1>
+								<a href="<?php echo base_url(); ?>index.php/crud/admin" class="w3-btn edit-admin">Edit Profil Admin</a>
 							</div>
 						</div>
 					</div>
@@ -68,17 +70,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="profile-admin">
 			<h1>Data Profil Siswa</h1><hr>
 			<a href="<?php echo base_url(); ?>index.php/crud/add" class="w3-btn create-admin">Create</a>
-			<table border="1" class="tabel-admin" id="customers">
-				<tr class="title-field">
-					<td>ID :</td>
-					<td>NIS :</td>
-					<td>Nama :</td>
-					<td>Kelas :</td>
-					<td>Jurusan :</td>
-					<td>Tingkatan :</td>
-					<td>Password :</td>
-					<td>Action</td>
-				</tr>
+			<table border="1" class="tabel-admin display" id="customers">
+				<thead>
+					<tr class="title-field">
+						<td>ID :</td>
+						<td>NIS :</td>
+						<td>Nama :</td>
+						<td>Kelas :</td>
+						<td>Jurusan :</td>
+						<td>Tingkatan :</td>
+						<td>Email :</td>
+						<td>No. Telp :</td>
+						<td>Password :</td>
+						<td>Action</td>
+					</tr>
+				</thead>
+				<tbody>
 				<?php foreach ($content->result() as $key): ?>
 					<tr>
 						<td><?php echo $key->id ?></td>
@@ -87,14 +94,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<td><?php echo $key->kelas ?></td>
 						<td><?php echo $key->jurusan ?></td>
 						<td><?php echo $key->tingkatan ?></td>
+						<td><?php echo $key->email ?></td>
+						<td><?php echo $key->notelp ?></td>
 						<td><?php echo $key->password ?></td>
 						<td>
-							<a href="<?php echo base_url() ?>index.php/crud/read/<?php echo $key->id ?>" class="w3-btn  link-action-read action-button">Detail</a>
 							<a href="<?php echo base_url() ?>index.php/crud/update/<?php echo $key->id ?>" class=" w3-btn link-action-update action-button">Edit</a>
 							<a href="<?php echo base_url() ?>index.php/crud/delete/<?php echo $key->id ?>" class=" w3-btn link-action-delete action-button">Delete</a>
 						</td>
 					</tr>	
 				<?php endforeach ?>	
+				</tbody>
 			</table>
 			<a href="<?php echo base_url(); ?>index.php/jurusan/add" class="w3-btn create-admin">Create Jurusan</a>
 			<a href="<?php echo base_url(); ?>index.php/mapel/add" class="w3-btn create-admin">Create Mapel</a>
@@ -102,29 +111,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="profile-admin">
 			<h1>Data Profil Guru</h1><hr>
 			<a href="<?php echo base_url(); ?>index.php/crud/add_guru" class="w3-btn create-admin">Create</a>
-			<table border="1" class="tabel-admin" id="customers">
-				<tr class="title-field">
-					<td>ID :</td>
-					<td>NIP :</td>
-					<td>Nama :</td>
-					<td>Mapel :</td>
-					<td>Password :</td>
-					<td>Action</td>
-				</tr>
+			<table border="1" class="tabel-admin display" id="customers">
+				<thead>
+					<tr class="title-field">
+						<td>ID :</td>
+						<td>NIP :</td>
+						<td>Nama :</td>
+						<td>Mapel :</td>
+						<td>Email :</td>
+						<td>No Telp :</td>
+						<td>Password :</td>
+						<td>Action</td>
+					</tr>
+					</thead>
+					<tbody>
 				<?php foreach ($isi->result() as $key2): ?>
 					<tr>
 						<td><?php echo $key2->id ?></td>
 						<td><?php echo $key2->nip ?></td>
 						<td><?php echo $key2->nama ?></td>
 						<td><?php echo $key2->mapel ?></td>
+						<td><?php echo $key2->email ?></td>
+						<td><?php echo $key2->notelp ?></td>
 						<td><?php echo $key2->password ?></td>
 						<td>
-							<a href="<?php echo base_url() ?>index.php/crud/read_guru/<?php echo $key2->id ?>" class="w3-btn  link-action-read action-button">Detail</a>
 							<a href="<?php echo base_url() ?>index.php/crud/update_guru/<?php echo $key2->id ?>" class=" w3-btn link-action-update action-button">Edit</a>
 							<a href="<?php echo base_url() ?>index.php/crud/delete_guru/<?php echo $key2->id ?>" class=" w3-btn link-action-delete action-button">Delete</a>
 						</td>
 					</tr>	
 				<?php endforeach ?>	
+				</tbody>
 			</table>
 		</div>
 
@@ -145,6 +161,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<script type="text/javascript" src="<?php echo base_url() ?>asset/js/contact_me.js"></script> 
 		<script type="text/javascript" src="<?php echo base_url() ?>asset/js/main.js"></script>=
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript">
+        	$(document).ready(function() {
+                $('table.display').DataTable();
+            } );
+        </script>
 
 </body>
 </html>

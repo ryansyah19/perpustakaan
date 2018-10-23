@@ -57,6 +57,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-xs-6 btn-left">
+                            <a href="<?php echo base_url("index.php/welcome/lupa"); ?>" class="w3-btn"><i>Lupa Password?</i></a>
+                        </div>
                         <div class="col-xs-4 btn-right">
                             <input class="btn btn-block bg-pink waves-effect" type="submit" name="login"/>
                         </div>

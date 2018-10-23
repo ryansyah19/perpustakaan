@@ -73,6 +73,7 @@ class App_model extends CI_Model {
   			case "":
   				$this->db->like('judul', $yangdicari);
   				$this->db->or_like('kategori', $yangdicari);
+          $this->db->or_like('penerbit', $yangdicari);
   				break;
 
   				default:
@@ -80,6 +81,28 @@ class App_model extends CI_Model {
   		}
   	
   	return $this->db->get();
+  }
+
+    function get_data_stok2(){
+  $query = $this->db->query("SELECT tgl_pinjam,SUM(denda) AS denda FROM peminjaman GROUP BY tgl_pinjam");
+
+  if($query->num_rows() > 0){
+    foreach($query->result() as $data){
+        $hasil[] = $data;
+    }
+    return $hasil;
+  }
+  }
+
+  function get_data_stok(){
+  $query = $this->db->query("SELECT judul,SUM(jumlah) AS jumlah FROM peminjaman GROUP BY judul");
+
+  if($query->num_rows() > 0){
+    foreach($query->result() as $data2){
+        $hasil[] = $data2;
+    }
+    return $hasil;
+  }
   }
 }
 

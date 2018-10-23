@@ -20,6 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Stylesheet -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/css/nivo-lightbox/nivo-lightbox.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/css/nivo-lightbox/default.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/css/style.css">
@@ -69,21 +70,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <h1>Data Buku</h1><hr>
         <a href="<?php echo base_url("index.php/gambar/tambah"); ?>" class="w3-btn create-admin">Create</a><br><br>
         <a href="<?php echo base_url("index.php/kategori/add"); ?>" class="w3-btn create-admin">Kategori Baru</a><br><br>
-        <table border="1" class="tabel-admin">
-          <tr class="title-field">
-            <td>Kode</td>
-            <td>Gambar</td>
-            <td>Judul</td>
-            <td>Kategori</td>
-            <td>Stok</td>
-            <td>Action</td>
-          </tr>
+        <table border="1" class="tabel-admin display" id="">
+          <thead>
+            <tr class="title-field">
+              <td>Kode</td>
+              <td>Gambar</td>
+              <td>Judul</td>
+              <td>Kategori</td>
+              <td>Stok</td>
+              <td>Action</td>
+            </tr>
+          </thead>
+          <tbody>
           <?php
           if( ! empty($gambar)){ // Jika data pada database tidak sama dengan empty (alias ada datanya)
             foreach($gambar as $key){//Lakukan looping pada variabel gambar dari controller
               echo "<tr>";
               echo "<td class='data_buku'>".$key->id_buku."</td>";
-              echo "<td><img src='".base_url("images/".$key->nama_file)."' width='200' height='276'></td>";
+              echo "<td><img src='".base_url("images/".$key->nama_file)."' width='100' height='140'></td>";
               echo "<td class='data_buku'>".$key->judul."</td>";
               echo "<td class='data_buku'>".$key->kategori."</td>";
               echo "<td class='data_buku'>".$key->stok."</td>";
@@ -99,6 +103,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             echo "<tr><td colspan='5'>Data tidak ada</td></tr>";
           } 
           ?>
+          </tbody>
         </table>
     </div>
 
@@ -109,7 +114,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
       </div>
     </div>
-    <script src="<?php echo base_url() ?>asset/bootstrap/jquery-1.11.0.js"></script> 
+    <script src="<?php echo base_url() ?>asset/bootstrap/jquery-1.11.0.js"></script>
     <script type="text/javascript" src="<?php echo base_url() ?>asset/js/jquery.1.11.1.js"></script> 
     <script type="text/javascript" src="<?php echo base_url() ?>asset/js/bootstrap.js"></script> 
     <script type="text/javascript" src="<?php echo base_url() ?>asset/js/SmoothScroll.js"></script> 
@@ -119,6 +124,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script type="text/javascript" src="<?php echo base_url() ?>asset/js/contact_me.js"></script> 
     <script type="text/javascript" src="<?php echo base_url() ?>asset/js/main.js"></script>=
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+    $('table.display').DataTable();
+} );
+    </script>
 
 </body>
 </html>
