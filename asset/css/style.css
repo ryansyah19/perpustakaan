@@ -141,7 +141,7 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 	background-color: #FFF;
 }
 .section-title {
-	margin-bottom: 70px;
+	margin-bottom: 50px;
 }
 .section-title p {
 	font-size: 18px;
@@ -294,7 +294,6 @@ header .intro-text {
 }
 /* Portfolio Section */
 #portfolio {
-	padding: 120px 0;
 	background: #f6f6f6;
 }
 .categories {
@@ -1243,7 +1242,6 @@ input[type="file"] {
     color: #28d0a4;
     font-family: cursive;
     font-weight: 900;
-    margin-top: -10%;
     padding-top: 50px;
 }
 .user-pinjam-2{
@@ -1339,4 +1337,12 @@ table.dataTable thead .sorting {
     text-transform: uppercase;
     font-weight: 700;
     color: #1090e6c2;
+}
+
+/* Tutorial */
+#tutorial{
+	padding: 120px 0;
+}
+.nav-profile{
+	height: 110px;
 }

@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+if($this->session->userdata('ses_nama') and $this->session->userdata('ses_id')){
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -39,10 +41,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="<?php echo site_url('welcome/beranda') ?>">Book</a></li>
+                        <li><a href="<?php echo site_url('welcome/beranda') ?>">Buku</a></li>
                         <li><a href="<?php echo site_url('welcome/daftar_pinjam') ?>">Peminjaman</a></li>
-                        <li><a href="<?php echo site_url('welcome/contact_user') ?>">Contact Us</a></li>
-                        <li><a href="<?php echo site_url('crud/update_user') ?>">Profile</a></li>
+                        <li><a href="<?php echo site_url('welcome/contact_user') ?>">Pesan</a></li>
+                        <li><a href="<?php echo site_url('crud/update_user') ?>">Profil</a></li>
                         <li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
                     </ul>
                 </div>
@@ -113,16 +115,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     echo "</div>";
                 ?>
                 <div class="section-title text-center center">
-                    <h2>Book</h2>
+                    <h2>Buku</h2>
                     <hr>
                     <p>Buku di Perpustakaan SMKN 4 Malang kini tersedia secara online !</p>
                 </div>
-                <div class='section-title text-center' style='padding-top:5%;'>
+                <div class='section-title text-center'>
                 <div class="categories">
                     <ul class="cat">
                         <li>
                             <ol class="type">
-                                <li><a href="#" data-filter="*" class="active">All Projects</a></li>
+                                <li><a href="#" data-filter="*" class="active">Semua Buku</a></li>
                             </ol>
                         </li>
                     </ul>
@@ -141,7 +143,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="hover-bg"> 
                                     <div class="hover-text">
                                         <h4><?php echo "<td>".$data->judul."</td>";?></h4>  
-                                        <a href="<?php echo base_url() ?>index.php/gambar/preview_user/<?php echo $data->id_buku ?>" class="w3-btn read-more">Read More >></a>    
+                                        <a href="<?php echo base_url() ?>index.php/gambar/preview_user/<?php echo $data->id_buku ?>" class="w3-btn read-more">Lanjut Baca >></a>    
                                     </div> 
                                     <?php
                                       echo "<img src='".base_url("images/".$data->nama_file)."' width='401' height='565' class='img-responsive img-book' alt='Buku Pelajaran'>";
@@ -172,7 +174,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </ul>
                 </div>
                 <div>
-                    <p>&copy; 2018 Designed by <a href="https://www.instagram.com/ryan_syah19/">M Ryan Firmansyah</a> .RPL </p>
+                    <p>&copy; 2018 GrafikaPerpus oleh <a href="https://www.instagram.com/ryan_syah19/">M Ryan Firmansyah</a> .RPL </p>
                 </div>
             </div>
         </div>
@@ -208,4 +210,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </body>
 </html>
-
+<?php } else{
+    $this->load->view('login.php');
+    echo "<script>alert('Maaf, anda tidak bisa kembali ke halaman sebelumnya, silahkan login terlebih dahulu');</script>";
+}?>

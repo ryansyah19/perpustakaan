@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -112,4 +113,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </script>
 </body>
 </html>
-

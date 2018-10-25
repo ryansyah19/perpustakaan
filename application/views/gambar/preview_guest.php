@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -39,10 +40,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="<?php echo site_url('welcome/beranda/#about') ?>" class="page-scroll">About</a></li>
-            <li><a href="<?php echo site_url('welcome/beranda/#portfolio') ?>" class="page-scroll">Book</a></li>
-            <li><a href="<?php echo site_url('welcome/beranda/#testimoni') ?>" class="page-scroll">Testimonial</a></li>
-            <li><a href="<?php echo site_url('welcome/beranda/#contact') ?>" class="page-scroll">Contact Us</a></li>
+            <li><a href="<?php echo site_url('welcome/about') ?>">Tentang</a></li>
+            <li><a href="<?php echo site_url('welcome/index') ?>">Buku</a></li>
+            <li><a href="<?php echo site_url('welcome/testimoni') ?>">Testimoni</a></li>
+            <li><a href="<?php echo site_url('welcome/contact') ?>">Pesan</a></li>
             <li><a href="<?php echo site_url('welcome/login') ?>">Login</a></li>
           </ul>
         </div>
@@ -67,7 +68,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
     </header>
     <div class="profile-admin">
-      <h1>Preview Book</h1><hr>
+      <h1>Preview Buku</h1><hr>
         <table border="1" class="tabel-admin">
           <?php
           if( ! empty($gambar)){ // Jika data pada database tidak sama dengan empty (alias ada datanya)
@@ -94,7 +95,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="footer">
       <div class="container text-center">
         <div>
-          <p>&copy; 2018 Designed by <a href="https://www.instagram.com/ryan_syah19/">M Ryan Firmansyah</a> .RPL </p>
+          <p>&copy; 2018 GrafikaPerpus oleh <a href="https://www.instagram.com/ryan_syah19/">M Ryan Firmansyah</a> .RPL </p>
         </div>
       </div>
     </div>
@@ -121,4 +122,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </body>
 </html>
-

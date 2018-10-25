@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -58,12 +59,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <input type="password" class="form-control" name="password" placeholder="Password" required>
                         </div>
                     </div>
+                    <a href="<?php echo base_url("index.php/welcome/lupa"); ?>" class="w3-btn"><i>Lupa Password?</i></a>
                     <div class="row">
                         <div class="col-xs-4 btn-right">
                             <?php
                   if( ! empty($gambar)){ // Jika data pada database tidak sama dengan empty (alias ada datanya)
                     foreach($gambar as $data){//Lakukan looping pada variabel gambar dari controller
-                      echo "<input class='btn btn-block bg-pink waves-effect' value='Submit' type='submit'></input>";
+                      echo "<input class='btn btn-block bg-pink waves-effect' value='Kirim' type='submit'></input>";
                     }
                   }
                   else{ // Jika data tidak ada
@@ -108,4 +110,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</script>
 </body>
 </html>
-

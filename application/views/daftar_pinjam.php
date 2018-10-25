@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+if($this->session->userdata('ses_nama') and $this->session->userdata('ses_id')){
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -39,10 +41,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="<?php echo site_url('welcome/beranda') ?>">Book</a></li>
+                        <li><a href="<?php echo site_url('welcome/beranda') ?>">Buku</a></li>
                         <li><a href="<?php echo site_url('welcome/daftar_pinjam') ?>">Peminjaman</a></li>
-                        <li><a href="<?php echo site_url('welcome/contact_user') ?>">Contact Us</a></li>
-                        <li><a href="<?php echo site_url('crud/update_user') ?>">Profile</a></li>
+                        <li><a href="<?php echo site_url('welcome/contact_user') ?>">Pesan</a></li>
+                        <li><a href="<?php echo site_url('crud/update_user') ?>">Profil</a></li>
                         <li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
                     </ul>
                 </div>
@@ -68,7 +70,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div>
         
         <!-- Contact Section -->
-        <div id="contact">
+        <div>
             <div class="container">
                 <div class="profile-admin">
             <table border="1" class="tabel-admin" id="customers">
@@ -150,7 +152,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </ul>
                 </div>
                 <div>
-                    <p>&copy; 2018 Designed by <a href="https://www.instagram.com/ryan_syah19/">M Ryan Firmansyah</a> .RPL </p>
+                    <p>&copy; 2018 GrafikaPerpus oleh <a href="https://www.instagram.com/ryan_syah19/">M Ryan Firmansyah</a> .RPL </p>
                 </div>
             </div>
         </div>
@@ -190,4 +192,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </body>
 </html>
-
+<?php } else{
+    $this->load->view('login.php');
+    echo "<script>alert('Maaf, anda tidak bisa kembali ke halaman sebelumnya, silahkan login terlebih dahulu');</script>";
+}?>

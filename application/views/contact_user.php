@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+if($this->session->userdata('ses_nama') and $this->session->userdata('ses_id')){
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -39,10 +41,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="<?php echo site_url('welcome/beranda') ?>">Book</a></li>
+                        <li><a href="<?php echo site_url('welcome/beranda') ?>">Buku</a></li>
                         <li><a href="<?php echo site_url('welcome/daftar_pinjam') ?>">Peminjaman</a></li>
-                        <li><a href="<?php echo site_url('welcome/contact_user') ?>">Contact Us</a></li>
-                        <li><a href="<?php echo site_url('crud/update_user') ?>">Profile</a></li>
+                        <li><a href="<?php echo site_url('welcome/contact_user') ?>">Pesan</a></li>
+                        <li><a href="<?php echo site_url('crud/update_user') ?>">Profil</a></li>
                         <li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
                     </ul>
                 </div>
@@ -71,25 +73,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div id="contact">
             <div class="container">
                 <div class="section-title text-center">
-                    <h2>Contact Us</h2>
+                    <h2>Pesan</h2>
                     <hr>
-                    <p>Silahkan Hubungi Admin jika ada sesuatu hal yang perlu ditanyakan</p>
+                    <p>Silahkan Hubungi Admin memalui fitur ini jika ada sesuatu hal yang perlu ditanyakan</p>
                 </div>
                 <div class="col-md-4">
-                    <h3>Contact Info</h3>
-                    <div class="contact-item"> <span>Address</span>
-                        <p>22 Tanimbar St,<br>
-                            kasin, klojen, Malang city 65117</p>
+                    <h3>Info Kontak</h3>
+                    <div class="contact-item"> <span>Alamat</span>
+                        <p>Jln. Tanimbar 22,<br>
+                            kasin, klojen, Kota Malang 65117</p>
                     </div>
                     <div class="contact-item"> <span>Email</span>
                         <p>mryanfirmansyah88@gmail.com</p>
                     </div>
-                    <div class="contact-item"> <span>Phone</span>
+                    <div class="contact-item"> <span>No. Telepon</span>
                         <p> +62 8123 456 1234</p>
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <h3>Leave us a message</h3>
+                    <h3>Silahkan tuliskan pesan</h3>
                     <form name="sentMessage" id="contactForm" action="<?php echo base_url(); ?>index.php/welcome/action_add" method="post" role="form">
                         <div class="row">
                             <div class="col-md-6 hidden">
@@ -112,11 +114,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                         </div>
                         <div class="form-group">
-                            <textarea name="pesan" id="message" class="form-control" rows="4" placeholder="Message" required></textarea>
+                            <textarea name="pesan" id="message" class="form-control" rows="4" placeholder="Tuliskan Pesan anda" required="required"></textarea>
                             <p class="help-block text-danger"></p>
                         </div>
                         <div id="success"></div>
-                        <button type="submit" class="btn btn-custom btn-lg" onclick="myFunction()">Send Message</button>
+                        <button type="submit" class="btn btn-custom btn-lg" onclick="myFunction()">Kirim Pesan</button>
                     </form>
                 </div>
             </div>
@@ -134,7 +136,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </ul>
                 </div>
                 <div>
-                    <p>&copy; 2018 Designed by <a href="https://www.instagram.com/ryan_syah19/">M Ryan Firmansyah</a> .RPL </p>
+                    <p>&copy; 2018 GrafikaPerpus oleh <a href="https://www.instagram.com/ryan_syah19/">M Ryan Firmansyah</a> .RPL </p>
                 </div>
             </div>
         </div>
@@ -174,4 +176,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </body>
 </html>
-
+<?php } else{
+    $this->load->view('login.php');
+    echo "<script>alert('Maaf, anda tidak bisa kembali ke halaman sebelumnya, silahkan login terlebih dahulu');</script>";
+}?>

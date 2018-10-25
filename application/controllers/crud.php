@@ -19,6 +19,14 @@ class Crud extends CI_Controller {
 		$this->load->view('crud/index', $data);
 	}
 
+	public function index_guru()
+	{
+		$data['content'] = $this->db->get('siswa');
+		$data['isi'] = $this->db->get('guru');
+
+		$this->load->view('crud/index_guru', $data);
+	}
+
 	// Add a new item
 	public function add()
 	{

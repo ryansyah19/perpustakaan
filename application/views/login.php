@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -61,7 +62,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <a href="<?php echo base_url("index.php/welcome/lupa"); ?>" class="w3-btn"><i>Lupa Password?</i></a>
                         </div>
                         <div class="col-xs-4 btn-right">
-                            <input class="btn btn-block bg-pink waves-effect" type="submit" name="login"/>
+                            <input class="btn btn-block bg-pink waves-effect" type="submit" value="Masuk" name="login"/>
                         </div>
                     </div>
                 <?php echo form_close(); ?>
@@ -99,4 +100,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</script>
 </body>
 </html>
-

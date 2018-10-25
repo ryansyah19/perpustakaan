@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -39,10 +40,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="<?php echo site_url('welcome/about') ?>">About</a></li>
-                        <li><a href="<?php echo site_url('welcome/index') ?>">Book</a></li>
-                        <li><a href="<?php echo site_url('welcome/testimoni') ?>">Testimonial</a></li>
-                        <li><a href="<?php echo site_url('welcome/contact') ?>">Contact Us</a></li>
+                        <li><a href="<?php echo site_url('welcome/about') ?>">Tentang</a></li>
+                        <li><a href="<?php echo site_url('welcome/index') ?>">Buku</a></li>
+                        <li><a href="<?php echo site_url('welcome/testimoni') ?>">Testimoni</a></li>
+                        <li><a href="<?php echo site_url('welcome/contact') ?>">Pesan</a></li>
                         <li><a href="<?php echo site_url('welcome/login') ?>">Login</a></li>
                     </ul>
                 </div>
@@ -71,25 +72,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div id="contact">
             <div class="container">
                 <div class="section-title text-center">
-                    <h2>Contact Us</h2>
+                    <h2>Pesan</h2>
                     <hr>
-                    <p>Silahkan Hubungi Admin jika ada sesuatu hal yang perlu ditanyakan</p>
+                    <p>Silahkan Hubungi Admin melalui fitur ini jika ada sesuatu hal yang perlu ditanyakan</p>
                 </div>
                 <div class="col-md-4">
-                    <h3>Contact Info</h3>
-                    <div class="contact-item"> <span>Address</span>
-                        <p>22 Tanimbar St,<br>
-                            kasin, klojen, Malang city 65117</p>
+                    <h3>Info Kontak </h3>
+                    <div class="contact-item"> <span>Alamat</span>
+                        <p>Jln.Tanimbar No.22 ,<br>
+                            kasin, klojen, Kota Malang 65117</p>
                     </div>
                     <div class="contact-item"> <span>Email</span>
                         <p>mryanfirmansyah88@gmail.com</p>
                     </div>
-                    <div class="contact-item"> <span>Phone</span>
+                    <div class="contact-item"> <span>No. Telepon</span>
                         <p> +62 8123 456 1234</p>
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <h3>Leave us a message</h3>
+                    <h3>Silahkan login terlebih dahulu untuk menulis pesan</h3>
                     <form name="sentMessage" id="contactForm" action="<?php echo base_url(); ?>index.php/welcome/action_add" method="post" role="form">
                         <div class="row">
                             <div class="col-md-6">
@@ -110,7 +111,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <p class="help-block text-danger"></p>
                         </div>
                         <div id="success"></div>
-                        <button type="submit" class="btn btn-custom btn-lg" disabled="disabled" >Send Message</button>
+                        <button type="submit" class="btn btn-custom btn-lg" disabled="disabled" >Kirim Pesan</button>
                     </form>
                 </div>
             </div>
@@ -128,7 +129,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </ul>
                 </div>
                 <div>
-                    <p>&copy; 2018 Designed by <a href="https://www.instagram.com/ryan_syah19/">M Ryan Firmansyah</a> .RPL </p>
+                    <p>&copy; 2018 GrafikaPerpus oleh <a href="https://www.instagram.com/ryan_syah19/">M Ryan Firmansyah</a> .RPL </p>
                 </div>
             </div>
         </div>
@@ -164,4 +165,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </body>
 </html>
-

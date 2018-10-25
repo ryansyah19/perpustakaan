@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -27,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
     <!-- Navigation -->
-        <nav id="menu" class="navbar navbar-default navbar-fixed-top">
+        <nav id="menu" class="navbar navbar-default navbar-fixed-top nav-profile">
             <div class="container"> 
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
@@ -39,10 +40,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="<?php echo site_url('welcome/beranda') ?>">Book</a></li>
+                        <li><a href="<?php echo site_url('welcome/beranda') ?>">Buku</a></li>
                         <li><a href="<?php echo site_url('welcome/daftar_pinjam') ?>">Peminjaman</a></li>
-                        <li><a href="<?php echo site_url('welcome/contact_user') ?>">Contact Us</a></li>
-                        <li><a href="<?php echo site_url('crud/update_user') ?>">Profile</a></li>
+                        <li><a href="<?php echo site_url('welcome/contact_user') ?>">Pesan</a></li>
+                        <li><a href="<?php echo site_url('crud/update_user') ?>">Profil</a></li>
                         <li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
                     </ul>
                 </div>
@@ -77,7 +78,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </header>
     <div>
         <!-- Portfolio Section -->
-        <div id="portfolio">
+        <div id="tutorial">
             <div class="container">
                 <div class="section-title text-center center">
                     <h2>Tutorial Peminjaman Buku</h2>
@@ -106,7 +107,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </ul>
                 </div>
                 <div>
-                    <p>&copy; 2018 Designed by <a href="https://www.instagram.com/ryan_syah19/">M Ryan Firmansyah</a> .RPL </p>
+                    <p>&copy; 2018 GrafikaPerpus oleh <a href="https://www.instagram.com/ryan_syah19/">M Ryan Firmansyah</a> .RPL </p>
                 </div>
             </div>
         </div>
@@ -142,4 +143,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </body>
 </html>
-

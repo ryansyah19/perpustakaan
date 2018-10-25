@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+if($this->session->userdata('ses_nama') and $this->session->userdata('ses_id')){
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -103,3 +105,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </body>
 </html>
+<?php } else{
+    $this->load->view('login.php');
+    echo "<script>alert('Maaf, anda tidak bisa kembali ke halaman sebelumnya, silahkan login terlebih dahulu');</script>";
+}?>

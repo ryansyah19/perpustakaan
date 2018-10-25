@@ -507,6 +507,7 @@ class CI_Loader {
 	public function file($path, $return = FALSE)
 	{
 		return $this->_ci_load(array('_ci_path' => $path, '_ci_return' => $return));
+		ini_set('memory_limit', '20000M');
 	}
 
 	// --------------------------------------------------------------------

@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -39,10 +40,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="<?php echo site_url('welcome/beranda') ?>">Book</a></li>
+                        <li><a href="<?php echo site_url('welcome/beranda') ?>">Buku</a></li>
                         <li><a href="<?php echo site_url('welcome/daftar_pinjam') ?>">Peminjaman</a></li>
-                        <li><a href="<?php echo site_url('welcome/contact_user') ?>">Contact Us</a></li>
-                        <li><a href="<?php echo site_url('crud/update_user') ?>">Profile</a></li>
+                        <li><a href="<?php echo site_url('welcome/contact_user') ?>">Pesan</a></li>
+                        <li><a href="<?php echo site_url('crud/update_user') ?>">Profil</a></li>
                         <li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
                     </ul>
                 </div>
@@ -73,7 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="section-title text-center">
                     <h2>Peminjaman</h2>
                     <hr>
-                    <p>Silahkan isi form dan pilih buku sesuai kebutuhan anda</p>
+                    <p>Pastikan data sesuai dengan yang anda inginkan</p>
                 </div>
                 <div class="col-md-12 card">
                       <table border="1" class="tabel-admin">
@@ -138,7 +139,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </ul>
                 </div>
                 <div>
-                    <p>&copy; 2018 Designed by <a href="https://www.instagram.com/ryan_syah19/">M Ryan Firmansyah</a> .RPL </p>
+                    <p>&copy; 2018 GrafikaPerpus oleh <a href="https://www.instagram.com/ryan_syah19/">M Ryan Firmansyah</a> .RPL </p>
                 </div>
             </div>
         </div>
@@ -178,4 +179,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </body>
 </html>
-
