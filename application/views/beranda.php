@@ -46,6 +46,10 @@ if($this->session->userdata('ses_nama') and $this->session->userdata('ses_id')){
                         <li><a href="<?php echo site_url('welcome/contact_user') ?>">Pesan</a></li>
                         <li><a href="<?php echo site_url('crud/update_user') ?>">Profil</a></li>
                         <li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
+                        <?php
+                        $nama=$this->session->userdata('ses_nama');
+                        echo "<p class='name-title'>".$nama."</p>";
+                        ?>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse --> 
@@ -101,19 +105,8 @@ if($this->session->userdata('ses_nama') and $this->session->userdata('ses_id')){
         </header>
     <div>
         <!-- Portfolio Section -->
-        <div id="portfolio">
+        <div id="portfolio" style="padding-top:3%;">
             <div class="container">
-            <?php
-                $id_anggota=$this->session->userdata('ses_id');
-                    $nama=$this->session->userdata('ses_nama');
-                    echo "<div class='user-pinjam text-center center'>";
-                    echo "Hallo! ";
-                    echo $nama;
-                    echo "</div>";
-                    echo "<div class='user-pinjam-2 text-center center'>";
-                    echo "<br>Sudahkah meminjam buku hari ini?";
-                    echo "</div>";
-                ?>
                 <div class="section-title text-center center">
                     <h2>Buku</h2>
                     <hr>
@@ -160,6 +153,7 @@ if($this->session->userdata('ses_nama') and $this->session->userdata('ses_id')){
                         ?>
                     </div>
                 </div>
+                <a href="<?php echo base_url("index.php/kategori/tutorial"); ?>" class="w3-btn create-admin">Ingin meminjam buku?</a>
             </div>
         </div>
         <div id="footer">

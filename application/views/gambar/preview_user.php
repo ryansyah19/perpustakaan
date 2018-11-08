@@ -41,11 +41,15 @@ if($this->session->userdata('ses_nama') and $this->session->userdata('ses_id')){
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="<?php echo site_url('welcome/beranda') ?>">Buku</a></li>
-            <li><a href="<?php echo site_url('welcome/daftar_pinjam') ?>">Peminjaman</a></li>
-            <li><a href="<?php echo site_url('welcome/contact_user') ?>">Pesan</a></li>
-            <li><a href="<?php echo site_url('crud/update_user') ?>">Profil</a></li>
-            <li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
+              <li><a href="<?php echo site_url('welcome/beranda') ?>">Buku</a></li>
+              <li><a href="<?php echo site_url('welcome/daftar_pinjam') ?>">Peminjaman</a></li>
+              <li><a href="<?php echo site_url('welcome/contact_user') ?>">Pesan</a></li>
+              <li><a href="<?php echo site_url('crud/update_user') ?>">Profil</a></li>
+              <li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
+              <?php
+              $nama=$this->session->userdata('ses_nama');
+              echo "<p class='name-title'>".$nama."</p>";
+              ?>
           </ul>
         </div>
         <!-- /.navbar-collapse --> 

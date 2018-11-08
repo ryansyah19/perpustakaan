@@ -73,6 +73,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <input type="text" class="form-control" name="pesan" value="Lupa password" readonly="">
                         </div>
                     </div>
+                    <p><i>"Silahkan cek email anda untuk melihat password anda. Jika email belum masuk, silahkan segera temui Admin(Librarian) di Perpustakaan SMKN 4 Malang"</i></p><br>
                     <div class="row">
                         <div class="col-xs-4 btn-right">
                             <input class="btn btn-block bg-pink waves-effect" type="submit" name="login"/>

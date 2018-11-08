@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+if($this->session->userdata('ses_nama') and $this->session->userdata('ses_id')){
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,6 +46,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <li><a href="<?php echo site_url('welcome/contact_user') ?>">Pesan</a></li>
                         <li><a href="<?php echo site_url('crud/update_user') ?>">Profil</a></li>
                         <li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
+                        <?php
+                        $nama=$this->session->userdata('ses_nama');
+                        echo "<p class='name-title'>".$nama."</p>";
+                        ?>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse --> 
@@ -84,15 +89,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <h2>Tutorial Peminjaman Buku</h2>
                     <hr>
                     <p>Buku yang tersedia di SMKN 4 Malang bisa dipinjam secara Online maupun Offline</p>
-                <h4 class="tutor-text">1.ONLINE</h4>
-                <img src="<?php echo base_url() ?>asset/img/thumbnails/on.png" alt="online" style="width:5%;">
-                <hr>
-                <p>Peminjaman secara online bisa dilakukan oleh seluruh siswa & guru SMKN 4 Malang selaku user. Tentunya lewat website GRAFIKAPERPUS ini. Setelah user login menggunakan NIS/NIP dan password yang sudah diberi Admin, maka hal selanjutnya adalah pemilihan buku yang diinginkan. Setelah buku yang diinginkan ada dan stok memenuhi, maka user bisa langsung mengambil buku yang sudah dipinjam lewat website di perpustakaan SMKN 4 Malang</p>
-                <h4 class="tutor-text">2.OFFLINE</h4>
-                <img src="<?php echo base_url() ?>asset/img/thumbnails/off.png" alt="online" style="width:6%;">
-                <hr>
-                <p>Peminjaman secara offline juga bisa dilakukan oleh seluruh siswa & guru SMKN 4 Malang. Siswa & guru SMKN 4 Malang langsung menuju ke perpustakaan SMKN 4 Malang, lalu memilih sendiri buku yang dinginkan. Setelah buku ada dan ingin dipinjam, silahkan langsung menuju ke lobby perpustakaan untuk proses peminjaman suatu buku yang akan diproses oleh librarian SMKN 4 Malang.</p>
-                </div>
+                    <div class="col-md-12">
+                        <h4 class="tutor-text">1.ONLINE</h4>
+                        <img src="<?php echo base_url() ?>asset/img/thumbnails/on.png" alt="online" style="width:5%;">
+                        <hr>
+                        <p class="definition-tutor">Peminjaman secara online bisa dilakukan oleh seluruh siswa & guru SMKN 4 Malang selaku user. Tentunya lewat website GRAFIKAPERPUS ini. Setelah user login menggunakan NIS/NIP dan password yang sudah diberi Admin, maka hal selanjutnya adalah pemilihan buku yang diinginkan. Setelah buku yang diinginkan ada dan stok memenuhi, maka user bisa langsung mengambil buku yang sudah dipinjam lewat website di perpustakaan SMKN 4 Malang</p>
+                        <img src="<?php echo base_url() ?>asset/img/icons/online.jpg" class="img-tutorial">
+                        <div class="tutorial-text">
+                            <p>1. Silahkan akses website grafikaperpus melalui pc atau smartphone anda</p>
+                            <p>2. Buku sudah tersedia lengkap di website, jadi pilihlah buku sesuai dengan anda inginkan</p>
+                            <p>3. Isi form peminjaman dengan benar sesuai data diri anda</p>
+                            <p>4. Pergi ke perpustakaan SMKN 4 Malang untuk mengambil buku yang sudah dipinjam</p>
+                            <p>5. Menulis data diri di buku pengunjung perpustakaan</p>
+                            <p>6. Temui admin untuk validasi peminjaman</p>
+                            <p>7. Selanjutnya, validasi Kartu Tanda Pelajar, Kartu Tanda Guru</p>
+                            <p>8. Tunggu Librarian untuk mencetak nota peminjaman</p>
+                            <p>9. Peminjaman sudah berhasil, silahkan mengambil buku sesuai yang anda pinjam tadi dan jangan lupa
+                                  mengembalikan sesuai jatuh tempo yang ada di nota peminjaman</p>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <h4 class="tutor-text">2.OFFLINE</h4>
+                        <img src="<?php echo base_url() ?>asset/img/thumbnails/off.png" alt="online" style="width:6%;">
+                        <hr>
+                        <p class="definition-tutor">Peminjaman secara offline juga bisa dilakukan oleh seluruh siswa & guru SMKN 4 Malang. Siswa & guru SMKN 4 Malang langsung menuju ke perpustakaan SMKN 4 Malang, lalu memilih sendiri buku yang dinginkan. Setelah buku ada dan ingin dipinjam, silahkan langsung menuju ke lobby perpustakaan untuk proses peminjaman suatu buku yang akan diproses oleh librarian SMKN 4 Malang.</p>
+                        <img src="<?php echo base_url() ?>asset/img/icons/offline.jpg" class="img-tutorial">
+                        <div class="tutorial-text">
+                            <p>1. Silahkan langsung menuju ke Perpustakaan SMKN 4 Malang</p>
+                            <p>2. Temui Librarian dan tulis data diri anda di buku pengunjung perpustakaan</p>
+                            <p>3. Cari buku sesuai yang anda inginkan di rak buku yang sudah tersedia</p>
+                            <p>4. Jika sudah mendapatkan buku yang dicari, langsung menuju ke Librarian untuk memproses peminjaman buku anda</p>
+                            <p>5. Pastikan anda membawa Kartu Tanda Pelajar, Kartu Tanda Guru sebagai syarat validasi anggota</p>
+                            <p>6. Tunggu Librarian untuk mencetak nota peminjaman</p>
+                            <p>7. Peminjaman sudah berhasil, silahkan mengambil buku sesuai yang anda pinjam tadi dan jangan lupa
+                                  mengembalikan sesuai jatuh tempo yang ada di nota peminjaman</p>
+                        </div>
+                        </div>
+                    </div>
             </div>
         </div>
         <div id="footer">
@@ -143,3 +176,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </body>
 </html>
+<?php } else{
+    $this->load->view('login.php');
+    echo "<script>alert('Maaf, anda tidak bisa kembali ke halaman sebelumnya, silahkan login terlebih dahulu');</script>";
+}?>

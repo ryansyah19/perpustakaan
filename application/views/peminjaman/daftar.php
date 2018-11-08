@@ -125,6 +125,8 @@ if($this->session->userdata('ses_nama') and $this->session->userdata('ses_id')){
                         <div class="row">
                             <div class="intro-text">
                                 <h1 class="label-admin">Halaman Admin | Peminjaman Buku</h1>
+                                <a href="<?php echo base_url(); ?>index.php/crud/denda" class="w3-btn edit-admin">Edit Denda</a>
+
                             </div>
                         </div>
                     </div>
@@ -170,12 +172,7 @@ if($this->session->userdata('ses_nama') and $this->session->userdata('ses_id')){
                         <td><?php echo $data->tgl_pinjam ?></td>
                         <td><?php echo $data->tgl_kembali ?></td>
                         <td><?php $data->sebenarnya=date('d-m-Y');
-                                if($data->sebenarnya>=$data->tgl_kembali){
-                                    echo $data->sebenarnya;
-                                }
-                                else{
-                                    echo"0";
-                                }
+                        echo $data->sebenarnya;
                         ?></td>
                         <td><?php 
                          $bayar = $this->db->query("SELECT * FROM denda WHERE id='1'");

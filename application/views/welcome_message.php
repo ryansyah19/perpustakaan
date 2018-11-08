@@ -85,6 +85,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <option value="">Cari Berdasarkan</option>
                                         <option value="deskripsi">Judul</option>
                                         <option value="kategori">Kategori</option>
+                                        <option value="penerbit">Penerbit</option>
                                     </select>
                                 </div>
                                 <div class="col-md-1">

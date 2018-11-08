@@ -891,6 +891,17 @@ color: #777;
     text-align: right;
     margin-left: -15%;
 }
+.label-edit-profile-deskripsi{
+	color:#fff; 
+	font-size:20px; 
+	padding:10px; 
+	display:inline-block;
+	width: 175px;
+    text-align: right;
+    margin-left: -15%;
+    position: absolute;
+    margin-top: 4%;
+}
 .label-edit-pinjam{
 	color:#fff; 
 	font-size:20px; 
@@ -1230,8 +1241,9 @@ input[type="file"] {
 }
 
 .deskripsi_text{
-	width: 450px;
+	width: 55%;
 	height: 130px;
+	margin-left: 1%;
 }
 
 .data_buku{
@@ -1260,9 +1272,6 @@ input[type="file"] {
 }
 .how{
 	font-size: 20px;
-}
-.tutor-text{
-	padding-top: 70px;
 }
 .edit-admin{
 	text-align: center;
@@ -1345,4 +1354,86 @@ table.dataTable thead .sorting {
 }
 .nav-profile{
 	height: 110px;
+}
+.img-tutorial{
+	width: 40%;
+	padding-top: 20px;
+	float: left;
+}
+.tutorial-text{
+	padding-top: 50px;
+	text-align: left;
+	float: left;
+	width: 60%;
+	padding-left: 5%;
+}
+.tutor-text{
+	padding-top: 70px;
+}
+.definition-tutor{
+	width: 100%;
+}
+.name-title{
+	color: white;
+    float: right;
+    margin-top: 3.2%;
+}
+
+@media (max-width: 1200px){
+
+.navbar-right {
+    float: right !important;
+    margin-right: -75px;
+    margin-top: -65px;
+}
+}
+
+@media (max-width: 1140px){
+
+.navbar-right {
+    margin-right: -5%;
+    margin-top: 0px;
+
+}
+}
+
+@media (max-width: 768px){
+
+#header-admin .intro-text {
+    padding-top: 200px;
+    padding-bottom: 200px;
+    text-align: center;
+}
+.navbar-right {
+    margin-right: 0;
+    margin-top: 0px;
+    width: 100%;
+    text-align: center;
+}
+header .intro-text {
+    margin-top: 20%;
+}
+.intro p {
+    font-size: 18px;
+}
+.intro h1{
+	font-size: 55px;
+}
+.portfolio-item img {
+    width: 75%;
+}
+.name-title{
+    text-align: center;
+    margin-top: 3.2%;
+    width: 100%;
+}
+
+@media (max-width: 639px){
+	#menu a.navbar-brand {
+    margin-top: 0px;
+    margin-left: -20px;
+}
+.create-admin{
+	width: 100%;
+}
 }

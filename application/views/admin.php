@@ -149,14 +149,14 @@ if($this->session->userdata('ses_nama') and $this->session->userdata('ses_id')){
 						<h4 class="statistik-denda">Denda</h4>
 						<canvas id="canvas" width="1000" height="280"></canvas>
 						<h4 class="statistik-pinjam">Tanggal Pinjam</h4>
-						<hr style="width:100%;background-color:#e2844d;">
+						<hr style="width:100%;background-color:#21f9b3;">
 
 					<h2 style="margin-top: 50px;">Statistik Buku</h2>
 						<hr>
 						<?php
 						foreach($data2 as $data2){
 						$judul[] = $data2->judul;
-						$jumlah[] = (float) $data2->jumlah;
+						$jumlah[] =$data2->jumlah;
 						}
 						?>
 						<h4 class="statistik-jumlah">Jumlah <br>Peminjaman</h4>
@@ -252,12 +252,12 @@ document.getElementById("myDropdown").classList.toggle("show");
             datasets : [
 
                 {
-                    fillColor: "#94e610",
+                    fillColor: "#87d4bb",
                     strokeColor: "#e60e45",
                     pointColor: "#e60e45",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "#94e610",
+                    pointStrokeColor: "#e60e45",
+                    pointHighlightFill: "#e60e45",
+                    pointHighlightStroke: "#e60e45",
                     data : <?php echo json_encode($jumlah);?>
                 }
 

@@ -139,7 +139,7 @@ if($this->session->userdata('ses_nama') and $this->session->userdata('ses_id')){
 							<form action="<?php echo base_url(); ?>index.php/gambar/action_update/<?php echo $data->id_buku ?>" method="post" class="card" enctype="multipart/form-data">
 								<p class="label-edit-profile">Judul:</p>
 			                    <input type="text" name="input_judul" value="<?php echo $data->judul ?>"class="form-group-add" required><br>
-			                    <p class="label-edit-profile">Deskripsi:</p>
+			                    <p class="label-edit-profile-deskripsi">Deskripsi:</p>
 			                    <textarea name="input_deskripsi" class="deskripsi_text" required>
 			                    	<?php echo $data->deskripsi ?>
 			                    </textarea><br>

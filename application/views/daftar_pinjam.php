@@ -46,6 +46,10 @@ if($this->session->userdata('ses_nama') and $this->session->userdata('ses_id')){
                         <li><a href="<?php echo site_url('welcome/contact_user') ?>">Pesan</a></li>
                         <li><a href="<?php echo site_url('crud/update_user') ?>">Profil</a></li>
                         <li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
+                        <?php
+                        $nama=$this->session->userdata('ses_nama');
+                        echo "<p class='name-title'>".$nama."</p>";
+                        ?>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse --> 
@@ -89,17 +93,6 @@ if($this->session->userdata('ses_nama') and $this->session->userdata('ses_id')){
                 <?php 
                     $id_anggota=$this->session->userdata('ses_id');
                     $nama=$this->session->userdata('ses_nama');
-                    echo "<div class='user-pinjam'>";
-                    echo "Hallo! ";
-                    echo $nama;
-                    echo "</div>";
-                    echo "<p class=user-pinjam-2>";
-                    echo "<br>Sudahkah meminjam buku hari ini?";
-                    echo "</p>";
-                    echo "<div class='section-title text-center'>
-                            <h2>Data Peminjaman Anda</h2>
-                            <hr>
-                          </div>";
                     $peminjaman = $this->db->query("SELECT * FROM peminjaman WHERE id_anggota='$id_anggota'");
                     foreach ($peminjaman->result() as $data) {
                     echo "<tr>";

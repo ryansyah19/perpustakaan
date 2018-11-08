@@ -45,6 +45,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <li><a href="<?php echo site_url('welcome/contact_user') ?>">Pesan</a></li>
                         <li><a href="<?php echo site_url('crud/update_user') ?>">Profil</a></li>
                         <li><a href="<?php echo site_url('welcome/logout') ?>">Logout</a></li>
+                        <?php
+                        $nama=$this->session->userdata('ses_nama');
+                        echo "<p class='name-title'>".$nama."</p>";
+                        ?>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse --> 
